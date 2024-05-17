@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf_8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>
+					<desc>doreco_kama1351_PKZ_196X_SunWindFrost_flk</desc>
+				</title>
+			</titleStmt>
+			<publicationStmt>
+				<distributor>corflow</distributor>
+			</publicationStmt>
+			<notesStmt>
+				<note type="COMMENTS_DESC">
+					<note type="lastUsedAnnotationId">0</note>
+				</note>
+				<note type="TEMPLATE_DESC">
+					<note xml:id="TI1">
+						<note type="code">ref@PKZ</note>
+						<note type="type">ref</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI2">
+						<note type="code">tx@PKZ</note>
+						<note type="parent">ref@PKZ</note>
+						<note type="type">tx</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI3">
+						<note type="code">ft@PKZ</note>
+						<note type="parent">ref@PKZ</note>
+						<note type="type">ft</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI4">
+						<note type="code">wd@PKZ</note>
+						<note type="parent">ref@PKZ</note>
+						<note type="type">wd</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI5">
+						<note type="code">ps@PKZ</note>
+						<note type="parent">wd@PKZ</note>
+						<note type="type">ps</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI6">
+						<note type="code">mb@PKZ</note>
+						<note type="parent">wd@PKZ</note>
+						<note type="type">mb</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI7">
+						<note type="code">gl@PKZ</note>
+						<note type="parent">mb@PKZ</note>
+						<note type="type">gl</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI8">
+						<note type="code">mb</note>
+						<note type="parent">tx@PKZ</note>
+						<note type="type">omb</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI9">
+						<note type="code">mp</note>
+						<note type="parent">tx@PKZ</note>
+						<note type="type">mp</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI10">
+						<note type="code">ge</note>
+						<note type="parent">tx@PKZ</note>
+						<note type="type">ge</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI11">
+						<note type="code">fr</note>
+						<note type="parent">tx@PKZ</note>
+						<note type="type">fr</note>
+						<note type="speaker">PKZ</note>
+					</note>
+					<note xml:id="TI12">
+						<note type="code">fg</note>
+						<note type="parent">tx@PKZ</note>
+						<note type="type">fg</note>
+						<note type="speaker">PKZ</note>
+					</note>
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<recordingStmt>
+					<recording>
+						<media mimeType="audio/x-wav" url="doreco_kama1351_PKZ_196X_SunWindFrost_flk.wav"/>
+					</recording>
+				</recordingStmt>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<settingDesc>
+				<setting xml:id="d0">
+					<activity/>
+				</setting>
+			</settingDesc>
+			<particDesc>
+				<listPerson>
+					<person xml:id="SPK1">
+						<altGrp mode="incl">
+							<alt type="ref@PKZ"/>
+							<alt type="tx@PKZ"/>
+							<alt type="ft@PKZ"/>
+							<alt type="wd@PKZ"/>
+							<alt type="ps@PKZ"/>
+							<alt type="mb@PKZ"/>
+							<alt type="gl@PKZ"/>
+							<alt type="mb"/>
+							<alt type="mp"/>
+							<alt type="ge"/>
+							<alt type="fr"/>
+							<alt type="fg"/>
+						</altGrp>
+						<persName>PKZ</persName>
+					</person>
+				</listPerson>
+			</particDesc>
+		</profileDesc>
+		<encodingDesc style="0.9.1">
+			<appInfo>
+				<application ident="corflow.toTei" version="1.0">
+					<desc>Python package 'corflow'.</desc>
+				</application>
+			</appInfo>
+		</encodingDesc>
+	</teiHeader>
+	<text>
+		<timeline unit="ms">
+			<when absolute="00:00:00" xml:id="T0"/>
+			<when interval="0676" since="T0" xml:id="T1"/>
+			<when interval="1352" since="T0" xml:id="T2"/>
+			<when interval="2705" since="T0" xml:id="T3"/>
+			<when interval="3381" since="T0" xml:id="T4"/>
+			<when interval="4057" since="T0" xml:id="T5"/>
+			<when interval="4920" since="T0" xml:id="T6"/>
+			<when interval="5351" since="T0" xml:id="T7"/>
+			<when interval="5782" since="T0" xml:id="T8"/>
+			<when interval="6645" since="T0" xml:id="T9"/>
+			<when interval="7186" since="T0" xml:id="T10"/>
+			<when interval="7728" since="T0" xml:id="T11"/>
+			<when interval="8270" since="T0" xml:id="T12"/>
+			<when interval="8812" since="T0" xml:id="T13"/>
+			<when interval="10032" since="T0" xml:id="T14"/>
+			<when interval="10978" since="T0" xml:id="T15"/>
+			<when interval="11450" since="T0" xml:id="T16"/>
+			<when interval="11923" since="T0" xml:id="T17"/>
+			<when interval="12868" since="T0" xml:id="T18"/>
+			<when interval="13814" since="T0" xml:id="T19"/>
+			<when interval="14141" since="T0" xml:id="T20"/>
+			<when interval="14469" since="T0" xml:id="T21"/>
+			<when interval="14797" since="T0" xml:id="T22"/>
+			<when interval="15125" since="T0" xml:id="T23"/>
+			<when interval="15933" since="T0" xml:id="T24"/>
+			<when interval="16704" since="T0" xml:id="T25"/>
+			<when interval="17476" since="T0" xml:id="T26"/>
+			<when interval="18247" since="T0" xml:id="T27"/>
+			<when interval="18504" since="T0" xml:id="T28"/>
+			<when interval="18761" since="T0" xml:id="T29"/>
+			<when interval="19018" since="T0" xml:id="T30"/>
+			<when interval="20214" since="T0" xml:id="T31"/>
+			<when interval="21411" since="T0" xml:id="T32"/>
+			<when interval="22607" since="T0" xml:id="T33"/>
+			<when interval="23803" since="T0" xml:id="T34"/>
+			<when interval="24201" since="T0" xml:id="T35"/>
+			<when interval="24600" since="T0" xml:id="T36"/>
+			<when interval="24999" since="T0" xml:id="T37"/>
+			<when interval="25398" since="T0" xml:id="T38"/>
+			<when interval="25797" since="T0" xml:id="T39"/>
+			<when interval="26196" since="T0" xml:id="T40"/>
+			<when interval="27392" since="T0" xml:id="T41"/>
+			<when interval="28469" since="T0" xml:id="T42"/>
+			<when interval="29546" since="T0" xml:id="T43"/>
+			<when interval="30624" since="T0" xml:id="T44"/>
+			<when interval="31701" since="T0" xml:id="T45"/>
+			<when interval="31970" since="T0" xml:id="T46"/>
+			<when interval="32239" since="T0" xml:id="T47"/>
+			<when interval="32508" since="T0" xml:id="T48"/>
+			<when interval="32778" since="T0" xml:id="T49"/>
+			<when interval="33861" since="T0" xml:id="T50"/>
+			<when interval="34912" since="T0" xml:id="T51"/>
+			<when interval="35962" since="T0" xml:id="T52"/>
+			<when interval="36487" since="T0" xml:id="T53"/>
+			<when interval="37012" since="T0" xml:id="T54"/>
+			<when interval="37982" since="T0" xml:id="T55"/>
+			<when interval="38382" since="T0" xml:id="T56"/>
+			<when interval="38782" since="T0" xml:id="T57"/>
+			<when interval="39183" since="T0" xml:id="T58"/>
+			<when interval="39743" since="T0" xml:id="T59"/>
+			<when interval="40533" since="T0" xml:id="T60"/>
+			<when interval="41323" since="T0" xml:id="T61"/>
+			<when interval="41586" since="T0" xml:id="T62"/>
+			<when interval="41850" since="T0" xml:id="T63"/>
+			<when interval="42114" since="T0" xml:id="T64"/>
+			<when interval="42904" since="T0" xml:id="T65"/>
+			<when interval="43694" since="T0" xml:id="T66"/>
+			<when interval="44484" since="T0" xml:id="T67"/>
+			<when interval="45583" since="T0" xml:id="T68"/>
+		</timeline>
+		<body>
+			<div subtype="d0" type="Situation">
+				<head>
+					<note type="start">#T0</note>
+					<note type="end">T68</note>
+				</head>
+				<annotationBlock xml:id="a0" who="ref@PKZ" ana="#SPK1" start="#T0" end="#T5">
+					<u>
+						<seg>0001_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a1" target="#a0" from="#T0" to="#T5">Nagurgoʔ stalʼi kudonzittə. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a2" target="#a1" from="#T0" to="#T2">nagur-goʔ</span>
+						<span xml:id="a3" target="#a1" from="#T2" to="#T3">****</span>
+						<span xml:id="a4" target="#a1" from="#T3" to="#T5">kudon-zittə</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a5" target="#a1" from="#T0" to="#T2">nagur-göʔ</span>
+						<span xml:id="a6" target="#a1" from="#T2" to="#T3">****</span>
+						<span xml:id="a7" target="#a1" from="#T3" to="#T5">kudonz-zittə</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a8" target="#a1" from="#T0" to="#T2">three-COLL</span>
+						<span xml:id="a9" target="#a1" from="#T2" to="#T3">****</span>
+						<span xml:id="a10" target="#a1" from="#T3" to="#T5">scold-INF.LAT</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a11" target="#a1" from="#T0" to="#T5">Трое начали спорить.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a12" target="#a1" from="#T0" to="#T5">Drei fingen an zu streiten.</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a13" target="#a0" from="#T0" to="#T5">Three [persons] started discussing.</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a14" target="#a0" from="#T0" to="#T2">Nagurgoʔ </span>
+						<span xml:id="a15" target="#a0" from="#T2" to="#T3">stalʼi </span>
+						<span xml:id="a16" target="#a0" from="#T3" to="#T5">kudonzittə. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a17" target="#a14" from="#T0" to="#T2">num</span>
+						<span xml:id="a18" target="#a15" from="#T2" to="#T3">****</span>
+						<span xml:id="a19" target="#a16" from="#T3" to="#T5">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a20" target="#a14" from="#T0" to="#T1">nagur</span>
+						<span xml:id="a21" target="#a14" from="#T1" to="#T2">göʔ</span>
+						<span xml:id="a22" target="#a15" from="#T2" to="#T3">****</span>
+						<span xml:id="a23" target="#a16" from="#T3" to="#T4">kudonz</span>
+						<span xml:id="a24" target="#a16" from="#T4" to="#T5">zittə</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a25" target="#a20" from="#T0" to="#T1">three</span>
+						<span xml:id="a26" target="#a21" from="#T1" to="#T2">COLL</span>
+						<span xml:id="a27" target="#a22" from="#T2" to="#T3">****</span>
+						<span xml:id="a28" target="#a23" from="#T3" to="#T4">scold</span>
+						<span xml:id="a29" target="#a24" from="#T4" to="#T5">INF.LAT</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a30" who="ref@PKZ" ana="#SPK1" start="#T5" end="#T13">
+					<u>
+						<seg>0002_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a31" target="#a30" from="#T5" to="#T13">Šĭšəge măndə:&quot; Măn kănnaːmbim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a32" target="#a31" from="#T5" to="#T6">šĭšəge</span>
+						<span xml:id="a33" target="#a31" from="#T6" to="#T8">măn-də</span>
+						<span xml:id="a34" target="#a31" from="#T8" to="#T9">măn</span>
+						<span xml:id="a35" target="#a31" from="#T9" to="#T13">kăn-naːm-bi-m</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a36" target="#a31" from="#T5" to="#T6">šišəge</span>
+						<span xml:id="a37" target="#a31" from="#T6" to="#T8">mă-ntə</span>
+						<span xml:id="a38" target="#a31" from="#T8" to="#T9">măn</span>
+						<span xml:id="a39" target="#a31" from="#T9" to="#T13">kănzə-laːm-bi-m</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a40" target="#a31" from="#T5" to="#T6">cold.[NOM.SG]</span>
+						<span xml:id="a41" target="#a31" from="#T6" to="#T8">say-IPFVZ.[3SG]</span>
+						<span xml:id="a42" target="#a31" from="#T8" to="#T9">I.NOM</span>
+						<span xml:id="a43" target="#a31" from="#T9" to="#T13">freeze-RES-PST-1SG</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a44" target="#a31" from="#T5" to="#T13">Холод говорит: &quot;Я заморожу&quot;.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a45" target="#a31" from="#T5" to="#T13">Der Frost sagt: &quot;Ich [werde] frieren lassen.&quot;</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a46" target="#a30" from="#T5" to="#T13">The frost says: &quot;I [will] freeze.&quot;</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a47" target="#a30" from="#T5" to="#T6">Šĭšəge </span>
+						<span xml:id="a48" target="#a30" from="#T6" to="#T8">măndə:&quot; </span>
+						<span xml:id="a49" target="#a30" from="#T8" to="#T9">Măn </span>
+						<span xml:id="a50" target="#a30" from="#T9" to="#T13">kănnaːmbim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a51" target="#a47" from="#T5" to="#T6">adj</span>
+						<span xml:id="a52" target="#a48" from="#T6" to="#T8">v</span>
+						<span xml:id="a53" target="#a49" from="#T8" to="#T9">pers</span>
+						<span xml:id="a54" target="#a50" from="#T9" to="#T13">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a55" target="#a47" from="#T5" to="#T6">šišəge</span>
+						<span xml:id="a56" target="#a48" from="#T6" to="#T7">mă</span>
+						<span xml:id="a57" target="#a48" from="#T7" to="#T8">ntə</span>
+						<span xml:id="a58" target="#a49" from="#T8" to="#T9">măn</span>
+						<span xml:id="a59" target="#a50" from="#T9" to="#T10">kănzə</span>
+						<span xml:id="a60" target="#a50" from="#T10" to="#T11">laːm</span>
+						<span xml:id="a61" target="#a50" from="#T11" to="#T12">bi</span>
+						<span xml:id="a62" target="#a50" from="#T12" to="#T13">m</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a63" target="#a55" from="#T5" to="#T6">cold.[NOM.SG]</span>
+						<span xml:id="a64" target="#a56" from="#T6" to="#T7">say</span>
+						<span xml:id="a65" target="#a57" from="#T7" to="#T8">IPFVZ.[3SG]</span>
+						<span xml:id="a66" target="#a58" from="#T8" to="#T9">I.NOM</span>
+						<span xml:id="a67" target="#a59" from="#T9" to="#T10">freeze</span>
+						<span xml:id="a68" target="#a60" from="#T10" to="#T11">RES</span>
+						<span xml:id="a69" target="#a61" from="#T11" to="#T12">PST</span>
+						<span xml:id="a70" target="#a62" from="#T12" to="#T13">1SG</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a71" who="ref@PKZ" ana="#SPK1" start="#T13" end="#T23">
+					<u>
+						<seg>0003_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a72" target="#a71" from="#T13" to="#T23">A beržə măndə:&quot; Măn tože kănnaːllal&quot;. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a73" target="#a72" from="#T13" to="#T14">a</span>
+						<span xml:id="a74" target="#a72" from="#T14" to="#T15">beržə</span>
+						<span xml:id="a75" target="#a72" from="#T15" to="#T17">măn-də</span>
+						<span xml:id="a76" target="#a72" from="#T17" to="#T18">măn</span>
+						<span xml:id="a77" target="#a72" from="#T18" to="#T19">tože</span>
+						<span xml:id="a78" target="#a72" from="#T19" to="#T23">kăn-naːl-la-l</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a79" target="#a72" from="#T13" to="#T14">a</span>
+						<span xml:id="a80" target="#a72" from="#T14" to="#T15">beržə</span>
+						<span xml:id="a81" target="#a72" from="#T15" to="#T17">mă-ntə</span>
+						<span xml:id="a82" target="#a72" from="#T17" to="#T18">măn</span>
+						<span xml:id="a83" target="#a72" from="#T18" to="#T19">tože</span>
+						<span xml:id="a84" target="#a72" from="#T19" to="#T23">kănzə-laːm-lV-l</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a85" target="#a72" from="#T13" to="#T14">but</span>
+						<span xml:id="a86" target="#a72" from="#T14" to="#T15">wind.[NOM.SG]</span>
+						<span xml:id="a87" target="#a72" from="#T15" to="#T17">say-IPFVZ.[3SG]</span>
+						<span xml:id="a88" target="#a72" from="#T17" to="#T18">I.NOM</span>
+						<span xml:id="a89" target="#a72" from="#T18" to="#T19">also</span>
+						<span xml:id="a90" target="#a72" from="#T19" to="#T23">freeze-RES-FUT-2SG</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a91" target="#a72" from="#T13" to="#T23">А ветер говорит: &quot;Я тоже заморожу&quot;.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a92" target="#a72" from="#T13" to="#T23">Und der Wind sagt: &quot;Ich [werde] auch frieren lassen.&quot;</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a93" target="#a71" from="#T13" to="#T23">And the wind says: &quot;I will also freeze.&quot;</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a94" target="#a71" from="#T13" to="#T14">A </span>
+						<span xml:id="a95" target="#a71" from="#T14" to="#T15">beržə </span>
+						<span xml:id="a96" target="#a71" from="#T15" to="#T17">măndə:&quot; </span>
+						<span xml:id="a97" target="#a71" from="#T17" to="#T18">Măn </span>
+						<span xml:id="a98" target="#a71" from="#T18" to="#T19">tože </span>
+						<span xml:id="a99" target="#a71" from="#T19" to="#T23">kănnaːllal&quot;. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a100" target="#a94" from="#T13" to="#T14">conj</span>
+						<span xml:id="a101" target="#a95" from="#T14" to="#T15">n</span>
+						<span xml:id="a102" target="#a96" from="#T15" to="#T17">v</span>
+						<span xml:id="a103" target="#a97" from="#T17" to="#T18">pers</span>
+						<span xml:id="a104" target="#a98" from="#T18" to="#T19">ptcl</span>
+						<span xml:id="a105" target="#a99" from="#T19" to="#T23">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a106" target="#a94" from="#T13" to="#T14">a</span>
+						<span xml:id="a107" target="#a95" from="#T14" to="#T15">beržə</span>
+						<span xml:id="a108" target="#a96" from="#T15" to="#T16">mă</span>
+						<span xml:id="a109" target="#a96" from="#T16" to="#T17">ntə</span>
+						<span xml:id="a110" target="#a97" from="#T17" to="#T18">măn</span>
+						<span xml:id="a111" target="#a98" from="#T18" to="#T19">tože</span>
+						<span xml:id="a112" target="#a99" from="#T19" to="#T20">kănzə</span>
+						<span xml:id="a113" target="#a99" from="#T20" to="#T21">laːm</span>
+						<span xml:id="a114" target="#a99" from="#T21" to="#T22">lV</span>
+						<span xml:id="a115" target="#a99" from="#T22" to="#T23">l</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a116" target="#a106" from="#T13" to="#T14">but</span>
+						<span xml:id="a117" target="#a107" from="#T14" to="#T15">wind.[NOM.SG]</span>
+						<span xml:id="a118" target="#a108" from="#T15" to="#T16">say</span>
+						<span xml:id="a119" target="#a109" from="#T16" to="#T17">IPFVZ.[3SG]</span>
+						<span xml:id="a120" target="#a110" from="#T17" to="#T18">I.NOM</span>
+						<span xml:id="a121" target="#a111" from="#T18" to="#T19">also</span>
+						<span xml:id="a122" target="#a112" from="#T19" to="#T20">freeze</span>
+						<span xml:id="a123" target="#a113" from="#T20" to="#T21">RES</span>
+						<span xml:id="a124" target="#a114" from="#T21" to="#T22">FUT</span>
+						<span xml:id="a125" target="#a115" from="#T22" to="#T23">2SG</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a126" who="ref@PKZ" ana="#SPK1" start="#T23" end="#T30">
+					<u>
+						<seg>0004_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a127" target="#a126" from="#T23" to="#T30">A kuja: &quot;(Măn=) Măn ejümlim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a128" target="#a127" from="#T23" to="#T24">a</span>
+						<span xml:id="a129" target="#a127" from="#T24" to="#T25">kuja</span>
+						<span xml:id="a130" target="#a127" from="#T25" to="#T26">măn</span>
+						<span xml:id="a131" target="#a127" from="#T26" to="#T27">măn</span>
+						<span xml:id="a132" target="#a127" from="#T27" to="#T30">ejüm-li-m</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a133" target="#a127" from="#T23" to="#T24">a</span>
+						<span xml:id="a134" target="#a127" from="#T24" to="#T25">kuja</span>
+						<span xml:id="a135" target="#a127" from="#T25" to="#T26">măn</span>
+						<span xml:id="a136" target="#a127" from="#T26" to="#T27">măn</span>
+						<span xml:id="a137" target="#a127" from="#T27" to="#T30">ejüm-lV-m</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a138" target="#a127" from="#T23" to="#T24">but</span>
+						<span xml:id="a139" target="#a127" from="#T24" to="#T25">sun.[NOM.SG]</span>
+						<span xml:id="a140" target="#a127" from="#T25" to="#T26">I.NOM</span>
+						<span xml:id="a141" target="#a127" from="#T26" to="#T27">I.NOM</span>
+						<span xml:id="a142" target="#a127" from="#T27" to="#T30">become.warm-FUT-1SG</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a143" target="#a127" from="#T23" to="#T30">А солнце: &quot;Я согрею&quot;.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a144" target="#a127" from="#T23" to="#T30">Und die Sonne: &quot;Ich [werde] es wärmen.&quot;</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a145" target="#a126" from="#T23" to="#T30">And the sun: &quot;I will warm.&quot;</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a146" target="#a126" from="#T23" to="#T24">A </span>
+						<span xml:id="a147" target="#a126" from="#T24" to="#T25">kuja: </span>
+						<span xml:id="a148" target="#a126" from="#T25" to="#T26">&quot;(Măn=) </span>
+						<span xml:id="a149" target="#a126" from="#T26" to="#T27">Măn </span>
+						<span xml:id="a150" target="#a126" from="#T27" to="#T30">ejümlim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a151" target="#a146" from="#T23" to="#T24">conj</span>
+						<span xml:id="a152" target="#a147" from="#T24" to="#T25">n</span>
+						<span xml:id="a153" target="#a148" from="#T25" to="#T26">pers</span>
+						<span xml:id="a154" target="#a149" from="#T26" to="#T27">pers</span>
+						<span xml:id="a155" target="#a150" from="#T27" to="#T30">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a156" target="#a146" from="#T23" to="#T24">a</span>
+						<span xml:id="a157" target="#a147" from="#T24" to="#T25">kuja</span>
+						<span xml:id="a158" target="#a148" from="#T25" to="#T26">măn</span>
+						<span xml:id="a159" target="#a149" from="#T26" to="#T27">măn</span>
+						<span xml:id="a160" target="#a150" from="#T27" to="#T28">ejüm</span>
+						<span xml:id="a161" target="#a150" from="#T28" to="#T29">lV</span>
+						<span xml:id="a162" target="#a150" from="#T29" to="#T30">m</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a163" target="#a156" from="#T23" to="#T24">but</span>
+						<span xml:id="a164" target="#a157" from="#T24" to="#T25">sun.[NOM.SG]</span>
+						<span xml:id="a165" target="#a158" from="#T25" to="#T26">I.NOM</span>
+						<span xml:id="a166" target="#a159" from="#T26" to="#T27">I.NOM</span>
+						<span xml:id="a167" target="#a160" from="#T27" to="#T28">become.warm</span>
+						<span xml:id="a168" target="#a161" from="#T28" to="#T29">FUT</span>
+						<span xml:id="a169" target="#a162" from="#T29" to="#T30">1SG</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a170" who="ref@PKZ" ana="#SPK1" start="#T30" end="#T41">
+					<u>
+						<seg>0005_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a171" target="#a170" from="#T30" to="#T41">Dĭgəttə šĭšəge bar ugaːndə kănnaːmbi, kănnaːmbi kuza. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a172" target="#a171" from="#T30" to="#T31">dĭgəttə</span>
+						<span xml:id="a173" target="#a171" from="#T31" to="#T32">šĭšəge</span>
+						<span xml:id="a174" target="#a171" from="#T32" to="#T33">bar</span>
+						<span xml:id="a175" target="#a171" from="#T33" to="#T34">ugaːndə</span>
+						<span xml:id="a176" target="#a171" from="#T34" to="#T37">kăn-naːm-bi</span>
+						<span xml:id="a177" target="#a171" from="#T37" to="#T40">kăn-naːm-bi</span>
+						<span xml:id="a178" target="#a171" from="#T40" to="#T41">kuza</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a179" target="#a171" from="#T30" to="#T31">dĭgəttə</span>
+						<span xml:id="a180" target="#a171" from="#T31" to="#T32">šišəge</span>
+						<span xml:id="a181" target="#a171" from="#T32" to="#T33">bar</span>
+						<span xml:id="a182" target="#a171" from="#T33" to="#T34">ugaːndə</span>
+						<span xml:id="a183" target="#a171" from="#T34" to="#T37">kănzə-laːm-bi</span>
+						<span xml:id="a184" target="#a171" from="#T37" to="#T40">kănzə-laːm-bi</span>
+						<span xml:id="a185" target="#a171" from="#T40" to="#T41">kuza</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a186" target="#a171" from="#T30" to="#T31">then</span>
+						<span xml:id="a187" target="#a171" from="#T31" to="#T32">cold.[NOM.SG]</span>
+						<span xml:id="a188" target="#a171" from="#T32" to="#T33">PTCL</span>
+						<span xml:id="a189" target="#a171" from="#T33" to="#T34">very</span>
+						<span xml:id="a190" target="#a171" from="#T34" to="#T37">freeze-RES-PST.[3SG]</span>
+						<span xml:id="a191" target="#a171" from="#T37" to="#T40">freeze-RES-PST.[3SG]</span>
+						<span xml:id="a192" target="#a171" from="#T40" to="#T41">man.[NOM.SG]</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a193" target="#a171" from="#T30" to="#T41">Потом холод сильно заморозил</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a194" target="#a171" from="#T30" to="#T41">Dann ließ der Frost sehr frieren, er ließ den Mann frieren.</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a195" target="#a170" from="#T30" to="#T41">Then the frost froze very [much], froze the man.</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a196" target="#a170" from="#T30" to="#T31">Dĭgəttə </span>
+						<span xml:id="a197" target="#a170" from="#T31" to="#T32">šĭšəge </span>
+						<span xml:id="a198" target="#a170" from="#T32" to="#T33">bar </span>
+						<span xml:id="a199" target="#a170" from="#T33" to="#T34">ugaːndə </span>
+						<span xml:id="a200" target="#a170" from="#T34" to="#T37">kănnaːmbi, </span>
+						<span xml:id="a201" target="#a170" from="#T37" to="#T40">kănnaːmbi </span>
+						<span xml:id="a202" target="#a170" from="#T40" to="#T41">kuza. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a203" target="#a196" from="#T30" to="#T31">pro.adv</span>
+						<span xml:id="a204" target="#a197" from="#T31" to="#T32">adj</span>
+						<span xml:id="a205" target="#a198" from="#T32" to="#T33">ptcl</span>
+						<span xml:id="a206" target="#a199" from="#T33" to="#T34">adv</span>
+						<span xml:id="a207" target="#a200" from="#T34" to="#T37">v</span>
+						<span xml:id="a208" target="#a201" from="#T37" to="#T40">v</span>
+						<span xml:id="a209" target="#a202" from="#T40" to="#T41">n</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a210" target="#a196" from="#T30" to="#T31">dĭgəttə</span>
+						<span xml:id="a211" target="#a197" from="#T31" to="#T32">šišəge</span>
+						<span xml:id="a212" target="#a198" from="#T32" to="#T33">bar</span>
+						<span xml:id="a213" target="#a199" from="#T33" to="#T34">ugaːndə</span>
+						<span xml:id="a214" target="#a200" from="#T34" to="#T35">kănzə</span>
+						<span xml:id="a215" target="#a200" from="#T35" to="#T36">laːm</span>
+						<span xml:id="a216" target="#a200" from="#T36" to="#T37">bi</span>
+						<span xml:id="a217" target="#a201" from="#T37" to="#T38">kănzə</span>
+						<span xml:id="a218" target="#a201" from="#T38" to="#T39">laːm</span>
+						<span xml:id="a219" target="#a201" from="#T39" to="#T40">bi</span>
+						<span xml:id="a220" target="#a202" from="#T40" to="#T41">kuza</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a221" target="#a210" from="#T30" to="#T31">then</span>
+						<span xml:id="a222" target="#a211" from="#T31" to="#T32">cold.[NOM.SG]</span>
+						<span xml:id="a223" target="#a212" from="#T32" to="#T33">PTCL</span>
+						<span xml:id="a224" target="#a213" from="#T33" to="#T34">very</span>
+						<span xml:id="a225" target="#a214" from="#T34" to="#T35">freeze</span>
+						<span xml:id="a226" target="#a215" from="#T35" to="#T36">RES</span>
+						<span xml:id="a227" target="#a216" from="#T36" to="#T37">PST.[3SG]</span>
+						<span xml:id="a228" target="#a217" from="#T37" to="#T38">freeze</span>
+						<span xml:id="a229" target="#a218" from="#T38" to="#T39">RES</span>
+						<span xml:id="a230" target="#a219" from="#T39" to="#T40">PST.[3SG]</span>
+						<span xml:id="a231" target="#a220" from="#T40" to="#T41">man.[NOM.SG]</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a232" who="ref@PKZ" ana="#SPK1" start="#T41" end="#T49">
+					<u>
+						<seg>0006_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a233" target="#a232" from="#T41" to="#T49">Dĭgəttə beržə:&quot; Măn tože kănnaːmnim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a234" target="#a233" from="#T41" to="#T42">dĭgəttə</span>
+						<span xml:id="a235" target="#a233" from="#T42" to="#T43">beržə</span>
+						<span xml:id="a236" target="#a233" from="#T43" to="#T44">măn</span>
+						<span xml:id="a237" target="#a233" from="#T44" to="#T45">tože</span>
+						<span xml:id="a238" target="#a233" from="#T45" to="#T49">kăn-naːm-ni-m</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a239" target="#a233" from="#T41" to="#T42">dĭgəttə</span>
+						<span xml:id="a240" target="#a233" from="#T42" to="#T43">beržə</span>
+						<span xml:id="a241" target="#a233" from="#T43" to="#T44">măn</span>
+						<span xml:id="a242" target="#a233" from="#T44" to="#T45">tože</span>
+						<span xml:id="a243" target="#a233" from="#T45" to="#T49">kănzə-laːm-lV-m</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a244" target="#a233" from="#T41" to="#T42">then</span>
+						<span xml:id="a245" target="#a233" from="#T42" to="#T43">wind.[NOM.SG]</span>
+						<span xml:id="a246" target="#a233" from="#T43" to="#T44">I.NOM</span>
+						<span xml:id="a247" target="#a233" from="#T44" to="#T45">also</span>
+						<span xml:id="a248" target="#a233" from="#T45" to="#T49">freeze-RES-FUT-1SG</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a249" target="#a233" from="#T41" to="#T49">А ветер: &quot;Я тоже заморожу&quot;.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a250" target="#a233" from="#T41" to="#T49">Dann der Wind: &quot;Ich lasse auch frieren.&quot;</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a251" target="#a232" from="#T41" to="#T49">Then the wind: &quot;I also freeze.&quot;</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a252" target="#a232" from="#T41" to="#T42">Dĭgəttə </span>
+						<span xml:id="a253" target="#a232" from="#T42" to="#T43">beržə:&quot; </span>
+						<span xml:id="a254" target="#a232" from="#T43" to="#T44">Măn </span>
+						<span xml:id="a255" target="#a232" from="#T44" to="#T45">tože </span>
+						<span xml:id="a256" target="#a232" from="#T45" to="#T49">kănnaːmnim&quot;. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a257" target="#a252" from="#T41" to="#T42">pro.adv</span>
+						<span xml:id="a258" target="#a253" from="#T42" to="#T43">n</span>
+						<span xml:id="a259" target="#a254" from="#T43" to="#T44">pers</span>
+						<span xml:id="a260" target="#a255" from="#T44" to="#T45">ptcl</span>
+						<span xml:id="a261" target="#a256" from="#T45" to="#T49">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a262" target="#a252" from="#T41" to="#T42">dĭgəttə</span>
+						<span xml:id="a263" target="#a253" from="#T42" to="#T43">beržə</span>
+						<span xml:id="a264" target="#a254" from="#T43" to="#T44">măn</span>
+						<span xml:id="a265" target="#a255" from="#T44" to="#T45">tože</span>
+						<span xml:id="a266" target="#a256" from="#T45" to="#T46">kănzə</span>
+						<span xml:id="a267" target="#a256" from="#T46" to="#T47">laːm</span>
+						<span xml:id="a268" target="#a256" from="#T47" to="#T48">lV</span>
+						<span xml:id="a269" target="#a256" from="#T48" to="#T49">m</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a270" target="#a262" from="#T41" to="#T42">then</span>
+						<span xml:id="a271" target="#a263" from="#T42" to="#T43">wind.[NOM.SG]</span>
+						<span xml:id="a272" target="#a264" from="#T43" to="#T44">I.NOM</span>
+						<span xml:id="a273" target="#a265" from="#T44" to="#T45">also</span>
+						<span xml:id="a274" target="#a266" from="#T45" to="#T46">freeze</span>
+						<span xml:id="a275" target="#a267" from="#T46" to="#T47">RES</span>
+						<span xml:id="a276" target="#a268" from="#T47" to="#T48">FUT</span>
+						<span xml:id="a277" target="#a269" from="#T48" to="#T49">1SG</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a278" who="ref@PKZ" ana="#SPK1" start="#T49" end="#T54">
+					<u>
+						<seg>0007_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a279" target="#a278" from="#T49" to="#T54">Dĭgəttə kuja bar uʔbdəbi. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a280" target="#a279" from="#T49" to="#T50">dĭgəttə</span>
+						<span xml:id="a281" target="#a279" from="#T50" to="#T51">kuja</span>
+						<span xml:id="a282" target="#a279" from="#T51" to="#T52">bar</span>
+						<span xml:id="a283" target="#a279" from="#T52" to="#T54">uʔbdə-bi</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a284" target="#a279" from="#T49" to="#T50">dĭgəttə</span>
+						<span xml:id="a285" target="#a279" from="#T50" to="#T51">kuja</span>
+						<span xml:id="a286" target="#a279" from="#T51" to="#T52">bar</span>
+						<span xml:id="a287" target="#a279" from="#T52" to="#T54">uʔbdə-bi</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a288" target="#a279" from="#T49" to="#T50">then</span>
+						<span xml:id="a289" target="#a279" from="#T50" to="#T51">sun.[NOM.SG]</span>
+						<span xml:id="a290" target="#a279" from="#T51" to="#T52">PTCL</span>
+						<span xml:id="a291" target="#a279" from="#T52" to="#T54">get.up-PST.[3SG]</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a292" target="#a279" from="#T49" to="#T54">Тогда солнце встало.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a293" target="#a279" from="#T49" to="#T54">Dann ging die Sonne auf.</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a294" target="#a278" from="#T49" to="#T54">Then the sun got up.</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a295" target="#a278" from="#T49" to="#T50">Dĭgəttə </span>
+						<span xml:id="a296" target="#a278" from="#T50" to="#T51">kuja </span>
+						<span xml:id="a297" target="#a278" from="#T51" to="#T52">bar </span>
+						<span xml:id="a298" target="#a278" from="#T52" to="#T54">uʔbdəbi. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a299" target="#a295" from="#T49" to="#T50">pro.adv</span>
+						<span xml:id="a300" target="#a296" from="#T50" to="#T51">n</span>
+						<span xml:id="a301" target="#a297" from="#T51" to="#T52">ptcl</span>
+						<span xml:id="a302" target="#a298" from="#T52" to="#T54">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a303" target="#a295" from="#T49" to="#T50">dĭgəttə</span>
+						<span xml:id="a304" target="#a296" from="#T50" to="#T51">kuja</span>
+						<span xml:id="a305" target="#a297" from="#T51" to="#T52">bar</span>
+						<span xml:id="a306" target="#a298" from="#T52" to="#T53">uʔbdə</span>
+						<span xml:id="a307" target="#a298" from="#T53" to="#T54">bi</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a308" target="#a303" from="#T49" to="#T50">then</span>
+						<span xml:id="a309" target="#a304" from="#T50" to="#T51">sun.[NOM.SG]</span>
+						<span xml:id="a310" target="#a305" from="#T51" to="#T52">PTCL</span>
+						<span xml:id="a311" target="#a306" from="#T52" to="#T53">get.up</span>
+						<span xml:id="a312" target="#a307" from="#T53" to="#T54">PST.[3SG]</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a313" who="ref@PKZ" ana="#SPK1" start="#T54" end="#T58">
+					<u>
+						<seg>0008_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a314" target="#a313" from="#T54" to="#T58">Ejü molaːmbi. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a315" target="#a314" from="#T54" to="#T55">ejü</span>
+						<span xml:id="a316" target="#a314" from="#T55" to="#T58">mo-laːm-bi</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a317" target="#a314" from="#T54" to="#T55">ejü</span>
+						<span xml:id="a318" target="#a314" from="#T55" to="#T58">mo-laːm-bi</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a319" target="#a314" from="#T54" to="#T55">warm.[NOM.SG]</span>
+						<span xml:id="a320" target="#a314" from="#T55" to="#T58">become-RES-PST.[3SG]</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a321" target="#a314" from="#T54" to="#T58">Стало тепло.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a322" target="#a314" from="#T54" to="#T58">Es wurde warm.</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a323" target="#a313" from="#T54" to="#T58">It became warm.</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a324" target="#a313" from="#T54" to="#T55">Ejü </span>
+						<span xml:id="a325" target="#a313" from="#T55" to="#T58">molaːmbi. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a326" target="#a324" from="#T54" to="#T55">adj</span>
+						<span xml:id="a327" target="#a325" from="#T55" to="#T58">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a328" target="#a324" from="#T54" to="#T55">ejü</span>
+						<span xml:id="a329" target="#a325" from="#T55" to="#T56">mo</span>
+						<span xml:id="a330" target="#a325" from="#T56" to="#T57">laːm</span>
+						<span xml:id="a331" target="#a325" from="#T57" to="#T58">bi</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a332" target="#a328" from="#T54" to="#T55">warm.[NOM.SG]</span>
+						<span xml:id="a333" target="#a329" from="#T55" to="#T56">become</span>
+						<span xml:id="a334" target="#a330" from="#T56" to="#T57">RES</span>
+						<span xml:id="a335" target="#a331" from="#T57" to="#T58">PST.[3SG]</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a336" who="ref@PKZ" ana="#SPK1" start="#T58" end="#T67">
+					<u>
+						<seg>0009_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a337" target="#a336" from="#T58" to="#T67">I bar beržə kulaːmbi i šĭšəge naga. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a338" target="#a337" from="#T58" to="#T59">i</span>
+						<span xml:id="a339" target="#a337" from="#T59" to="#T60">bar</span>
+						<span xml:id="a340" target="#a337" from="#T60" to="#T61">beržə</span>
+						<span xml:id="a341" target="#a337" from="#T61" to="#T64">ku-laːm-bi</span>
+						<span xml:id="a342" target="#a337" from="#T64" to="#T65">i</span>
+						<span xml:id="a343" target="#a337" from="#T65" to="#T66">šĭšəge</span>
+						<span xml:id="a344" target="#a337" from="#T66" to="#T67">naga</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a345" target="#a337" from="#T58" to="#T59">i</span>
+						<span xml:id="a346" target="#a337" from="#T59" to="#T60">bar</span>
+						<span xml:id="a347" target="#a337" from="#T60" to="#T61">beržə</span>
+						<span xml:id="a348" target="#a337" from="#T61" to="#T64">ku-laːm-bi</span>
+						<span xml:id="a349" target="#a337" from="#T64" to="#T65">i</span>
+						<span xml:id="a350" target="#a337" from="#T65" to="#T66">šišəge</span>
+						<span xml:id="a351" target="#a337" from="#T66" to="#T67">naga</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a352" target="#a337" from="#T58" to="#T59">and</span>
+						<span xml:id="a353" target="#a337" from="#T59" to="#T60">PTCL</span>
+						<span xml:id="a354" target="#a337" from="#T60" to="#T61">wind.[NOM.SG]</span>
+						<span xml:id="a355" target="#a337" from="#T61" to="#T64">see-RES-PST.[3SG]</span>
+						<span xml:id="a356" target="#a337" from="#T64" to="#T65">and</span>
+						<span xml:id="a357" target="#a337" from="#T65" to="#T66">cold.[NOM.SG]</span>
+						<span xml:id="a358" target="#a337" from="#T66" to="#T67">NEG.EX</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a359" target="#a337" from="#T58" to="#T67">И ветер умер, и холода больше нет.</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a360" target="#a337" from="#T58" to="#T67">Und der Wind starb und es war kein Frost mehr da.</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a361" target="#a336" from="#T58" to="#T67">And the wind died and there was no frost.</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a362" target="#a336" from="#T58" to="#T59">I </span>
+						<span xml:id="a363" target="#a336" from="#T59" to="#T60">bar </span>
+						<span xml:id="a364" target="#a336" from="#T60" to="#T61">beržə </span>
+						<span xml:id="a365" target="#a336" from="#T61" to="#T64">kulaːmbi </span>
+						<span xml:id="a366" target="#a336" from="#T64" to="#T65">i </span>
+						<span xml:id="a367" target="#a336" from="#T65" to="#T66">šĭšəge </span>
+						<span xml:id="a368" target="#a336" from="#T66" to="#T67">naga. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a369" target="#a362" from="#T58" to="#T59">conj</span>
+						<span xml:id="a370" target="#a363" from="#T59" to="#T60">ptcl</span>
+						<span xml:id="a371" target="#a364" from="#T60" to="#T61">n</span>
+						<span xml:id="a372" target="#a365" from="#T61" to="#T64">v</span>
+						<span xml:id="a373" target="#a366" from="#T64" to="#T65">conj</span>
+						<span xml:id="a374" target="#a367" from="#T65" to="#T66">adj</span>
+						<span xml:id="a375" target="#a368" from="#T66" to="#T67">v</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a376" target="#a362" from="#T58" to="#T59">i</span>
+						<span xml:id="a377" target="#a363" from="#T59" to="#T60">bar</span>
+						<span xml:id="a378" target="#a364" from="#T60" to="#T61">beržə</span>
+						<span xml:id="a379" target="#a365" from="#T61" to="#T62">ku</span>
+						<span xml:id="a380" target="#a365" from="#T62" to="#T63">laːm</span>
+						<span xml:id="a381" target="#a365" from="#T63" to="#T64">bi</span>
+						<span xml:id="a382" target="#a366" from="#T64" to="#T65">i</span>
+						<span xml:id="a383" target="#a367" from="#T65" to="#T66">šišəge</span>
+						<span xml:id="a384" target="#a368" from="#T66" to="#T67">naga</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a385" target="#a376" from="#T58" to="#T59">and</span>
+						<span xml:id="a386" target="#a377" from="#T59" to="#T60">PTCL</span>
+						<span xml:id="a387" target="#a378" from="#T60" to="#T61">wind.[NOM.SG]</span>
+						<span xml:id="a388" target="#a379" from="#T61" to="#T62">see</span>
+						<span xml:id="a389" target="#a380" from="#T62" to="#T63">RES</span>
+						<span xml:id="a390" target="#a381" from="#T63" to="#T64">PST.[3SG]</span>
+						<span xml:id="a391" target="#a382" from="#T64" to="#T65">and</span>
+						<span xml:id="a392" target="#a383" from="#T65" to="#T66">cold.[NOM.SG]</span>
+						<span xml:id="a393" target="#a384" from="#T66" to="#T67">NEG.EX</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a394" who="ref@PKZ" ana="#SPK1" start="#T67" end="#T68">
+					<u>
+						<seg>0010_DoReCo_doreco_kama1351_PKZ_196X_SunWindFrost_flk</seg>
+					</u>
+					<spanGrp type="tx@PKZ">
+						<span xml:id="a395" target="#a394" from="#T67" to="#T68">Kabarləj. </span>
+					</spanGrp>
+					<spanGrp type="mb">
+						<span xml:id="a396" target="#a395" from="#T67" to="#T68">kabarləj</span>
+					</spanGrp>
+					<spanGrp type="mp">
+						<span xml:id="a397" target="#a395" from="#T67" to="#T68">kabarləj</span>
+					</spanGrp>
+					<spanGrp type="ge">
+						<span xml:id="a398" target="#a395" from="#T67" to="#T68">enough</span>
+					</spanGrp>
+					<spanGrp type="fr">
+						<span xml:id="a399" target="#a395" from="#T67" to="#T68">Хватит!</span>
+					</spanGrp>
+					<spanGrp type="fg">
+						<span xml:id="a400" target="#a395" from="#T67" to="#T68">Genug!</span>
+					</spanGrp>
+					<spanGrp type="ft@PKZ">
+						<span xml:id="a401" target="#a394" from="#T67" to="#T68">Enough!</span>
+					</spanGrp>
+					<spanGrp type="wd@PKZ">
+						<span xml:id="a402" target="#a394" from="#T67" to="#T68">Kabarləj. </span>
+					</spanGrp>
+					<spanGrp type="ps@PKZ">
+						<span xml:id="a403" target="#a402" from="#T67" to="#T68">ptcl</span>
+					</spanGrp>
+					<spanGrp type="mb@PKZ">
+						<span xml:id="a404" target="#a402" from="#T67" to="#T68">kabarləj</span>
+					</spanGrp>
+					<spanGrp type="gl@PKZ">
+						<span xml:id="a405" target="#a404" from="#T67" to="#T68">enough</span>
+					</spanGrp>
+				</annotationBlock>
+			</div>
+		</body>
+	</text>
+</TEI>

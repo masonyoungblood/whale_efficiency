@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf_8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>
+					<desc>doreco_orko1234_LM1_7</desc>
+				</title>
+			</titleStmt>
+			<publicationStmt>
+				<distributor>corflow</distributor>
+			</publicationStmt>
+			<notesStmt>
+				<note type="COMMENTS_DESC">
+					<note type="lastUsedAnnotationId">0</note>
+				</note>
+				<note type="TEMPLATE_DESC">
+					<note xml:id="TI1">
+						<note type="code">ref@LM1</note>
+						<note type="type">ref</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI2">
+						<note type="code">ft@LM1</note>
+						<note type="parent">ref@LM1</note>
+						<note type="type">ft</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI3">
+						<note type="code">tx@LM1</note>
+						<note type="parent">ref@LM1</note>
+						<note type="type">tx</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI4">
+						<note type="code">wd@LM1</note>
+						<note type="parent">ref@LM1</note>
+						<note type="type">wd</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI5">
+						<note type="code">mb@LM1</note>
+						<note type="parent">wd@LM1</note>
+						<note type="type">mb</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI6">
+						<note type="code">gl@LM1</note>
+						<note type="parent">mb@LM1</note>
+						<note type="type">gl</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI7">
+						<note type="code">ref@WS1</note>
+						<note type="type">ref</note>
+						<note type="speaker">WS1</note>
+					</note>
+					<note xml:id="TI8">
+						<note type="code">ft@WS1</note>
+						<note type="parent">ref@WS1</note>
+						<note type="type">ft</note>
+						<note type="speaker">WS1</note>
+					</note>
+					<note xml:id="TI9">
+						<note type="code">tx@WS1</note>
+						<note type="parent">ref@WS1</note>
+						<note type="type">tx</note>
+						<note type="speaker">WS1</note>
+					</note>
+					<note xml:id="TI10">
+						<note type="code">wd@WS1</note>
+						<note type="parent">ref@WS1</note>
+						<note type="type">wd</note>
+						<note type="speaker">WS1</note>
+					</note>
+					<note xml:id="TI11">
+						<note type="code">ref@C</note>
+						<note type="type">ref</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI12">
+						<note type="code">ft@C</note>
+						<note type="parent">ref@C</note>
+						<note type="type">ft</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI13">
+						<note type="code">tx@C</note>
+						<note type="parent">ref@C</note>
+						<note type="type">tx</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI14">
+						<note type="code">wd@C</note>
+						<note type="parent">ref@C</note>
+						<note type="type">wd</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI15">
+						<note type="code">mb@C</note>
+						<note type="parent">wd@C</note>
+						<note type="type">mb</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI16">
+						<note type="code">gl@C</note>
+						<note type="parent">mb@C</note>
+						<note type="type">gl</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI17">
+						<note type="code">A_morph-type</note>
+						<note type="parent">mb@LM1</note>
+						<note type="type">morph-item</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI18">
+						<note type="code">A_phrase-gls-bi</note>
+						<note type="parent">ref@LM1</note>
+						<note type="type">phrase-item</note>
+						<note type="speaker">LM1</note>
+					</note>
+					<note xml:id="TI19">
+						<note type="code">B_phrase-gls-bi</note>
+						<note type="parent">ref@WS1</note>
+						<note type="type">phrase-item</note>
+						<note type="speaker">WS1</note>
+					</note>
+					<note xml:id="TI20">
+						<note type="code">C_morph-type</note>
+						<note type="parent">mb@C</note>
+						<note type="type">morph-item</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI21">
+						<note type="code">C_phrase-gls-bi</note>
+						<note type="parent">ref@C</note>
+						<note type="type">phrase-item</note>
+						<note type="speaker">C</note>
+					</note>
+					<note xml:id="TI22">
+						<note type="code">interlinear-text-source-qaa-x-aaa</note>
+						<note type="parent">interlinear-text-title-qaa-x-aaa</note>
+						<note type="type">interlinear-text-item</note>
+						<note type="speaker">UNK</note>
+					</note>
+					<note xml:id="TI23">
+						<note type="code">interlinear-text-title-abbreviation-qaa-x-aaa</note>
+						<note type="parent">interlinear-text-title-qaa-x-aaa</note>
+						<note type="type">interlinear-text-item</note>
+						<note type="speaker">UNK</note>
+					</note>
+					<note xml:id="TI24">
+						<note type="code">interlinear-text-title-qaa-x-aaa</note>
+						<note type="type">txt</note>
+						<note type="speaker">UNK</note>
+					</note>
+				</note>
+			</notesStmt>
+			<sourceDesc>
+				<recordingStmt>
+					<recording>
+						<media mimeType="audio/x-wav" url="doreco_orko1234_LM1_7.wav"/>
+					</recording>
+				</recordingStmt>
+			</sourceDesc>
+		</fileDesc>
+		<profileDesc>
+			<settingDesc>
+				<setting xml:id="d0">
+					<activity/>
+				</setting>
+			</settingDesc>
+			<particDesc>
+				<listPerson>
+					<person xml:id="SPK1">
+						<altGrp mode="incl">
+							<alt type="ref@LM1"/>
+							<alt type="ft@LM1"/>
+							<alt type="tx@LM1"/>
+							<alt type="wd@LM1"/>
+							<alt type="mb@LM1"/>
+							<alt type="gl@LM1"/>
+							<alt type="A_morph-type"/>
+							<alt type="A_phrase-gls-bi"/>
+						</altGrp>
+						<persName>LM1</persName>
+					</person>
+					<person xml:id="SPK2">
+						<altGrp mode="incl">
+							<alt type="ref@WS1"/>
+							<alt type="ft@WS1"/>
+							<alt type="tx@WS1"/>
+							<alt type="wd@WS1"/>
+							<alt type="B_phrase-gls-bi"/>
+						</altGrp>
+						<persName>WS1</persName>
+					</person>
+					<person xml:id="SPK3">
+						<altGrp mode="incl">
+							<alt type="ref@C"/>
+							<alt type="ft@C"/>
+							<alt type="tx@C"/>
+							<alt type="wd@C"/>
+							<alt type="mb@C"/>
+							<alt type="gl@C"/>
+							<alt type="C_morph-type"/>
+							<alt type="C_phrase-gls-bi"/>
+						</altGrp>
+						<persName>C</persName>
+					</person>
+					<person xml:id="SPK4">
+						<altGrp mode="incl">
+							<alt type="interlinear-text-source-qaa-x-aaa"/>
+							<alt type="interlinear-text-title-abbreviation-qaa-x-aaa"/>
+							<alt type="interlinear-text-title-qaa-x-aaa"/>
+						</altGrp>
+						<persName>UNK</persName>
+					</person>
+				</listPerson>
+			</particDesc>
+		</profileDesc>
+		<encodingDesc style="0.9.1">
+			<appInfo>
+				<application ident="corflow.toTei" version="1.0">
+					<desc>Python package 'corflow'.</desc>
+				</application>
+			</appInfo>
+		</encodingDesc>
+	</teiHeader>
+	<text>
+		<timeline unit="ms">
+			<when absolute="00:00:00" xml:id="T0"/>
+			<when interval="7580" since="T0" xml:id="T1"/>
+			<when interval="8090" since="T0" xml:id="T2"/>
+			<when interval="8600" since="T0" xml:id="T3"/>
+			<when interval="9110" since="T0" xml:id="T4"/>
+			<when interval="9620" since="T0" xml:id="T5"/>
+			<when interval="10130" since="T0" xml:id="T6"/>
+			<when interval="11620" since="T0" xml:id="T7"/>
+			<when interval="12163" since="T0" xml:id="T8"/>
+			<when interval="12706" since="T0" xml:id="T9"/>
+			<when interval="13250" since="T0" xml:id="T10"/>
+			<when interval="18490" since="T0" xml:id="T11"/>
+			<when interval="18987" since="T0" xml:id="T12"/>
+			<when interval="19485" since="T0" xml:id="T13"/>
+			<when interval="19982" since="T0" xml:id="T14"/>
+			<when interval="20480" since="T0" xml:id="T15"/>
+			<when interval="21910" since="T0" xml:id="T16"/>
+			<when interval="22212" since="T0" xml:id="T17"/>
+			<when interval="22515" since="T0" xml:id="T18"/>
+			<when interval="22817" since="T0" xml:id="T19"/>
+			<when interval="23120" since="T0" xml:id="T20"/>
+			<when interval="23422" since="T0" xml:id="T21"/>
+			<when interval="23725" since="T0" xml:id="T22"/>
+			<when interval="24027" since="T0" xml:id="T23"/>
+			<when interval="24330" since="T0" xml:id="T24"/>
+			<when interval="25145" since="T0" xml:id="T25"/>
+			<when interval="25565" since="T0" xml:id="T26"/>
+			<when interval="25985" since="T0" xml:id="T27"/>
+			<when interval="26405" since="T0" xml:id="T28"/>
+		</timeline>
+		<body>
+			<div subtype="d0" type="Situation">
+				<head>
+					<note type="start">#T0</note>
+					<note type="end">T28</note>
+				</head>
+				<annotationBlock xml:id="a0" who="ref@LM1" ana="#SPK1" start="#T0" end="#T1">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a1" target="#a0" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a2" target="#a0" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a3" target="#a0" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a4" target="#a3" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a5" target="#a4" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a6" target="#a4" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a7" target="#a0" from="#T0" to="#T1">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a8" who="ref@WS1" ana="#SPK2" start="#T0" end="#T11">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@WS1">
+						<span xml:id="a9" target="#a8" from="#T0" to="#T11">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@WS1">
+						<span xml:id="a10" target="#a8" from="#T0" to="#T11">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@WS1">
+						<span xml:id="a11" target="#a8" from="#T0" to="#T11">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="B_phrase-gls-bi">
+						<span xml:id="a12" target="#a8" from="#T0" to="#T11">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a13" who="ref@C" ana="#SPK3" start="#T0" end="#T16">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@C">
+						<span xml:id="a14" target="#a13" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@C">
+						<span xml:id="a15" target="#a13" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@C">
+						<span xml:id="a16" target="#a13" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="mb@C">
+						<span xml:id="a17" target="#a16" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="gl@C">
+						<span xml:id="a18" target="#a17" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="C_morph-type">
+						<span xml:id="a19" target="#a17" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="C_phrase-gls-bi">
+						<span xml:id="a20" target="#a13" from="#T0" to="#T16">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a21" who="interlinear-text-title-qaa-x-aaa" ana="#SPK4" start="#T0" end="#T28">
+					<u>
+						<seg>lungo ne maal</seg>
+					</u>
+					<spanGrp type="interlinear-text-source-qaa-x-aaa">
+						<span xml:id="a22" target="#a21" from="#T0" to="#T28">LM1</span>
+					</spanGrp>
+					<spanGrp type="interlinear-text-title-abbreviation-qaa-x-aaa">
+						<span xml:id="a23" target="#a21" from="#T0" to="#T28">LM1_7</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a24" who="ref@LM1" ana="#SPK1" start="#T1" end="#T6">
+					<u>
+						<seg>0001_DoReCo_doreco_orko1234_LM1_7</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a25" target="#a24" from="#T1" to="#T6">that is a bird&#x27;s nest now</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a26" target="#a24" from="#T1" to="#T6">lungo ne bail nga ngela</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a27" target="#a24" from="#T1" to="#T2">lungo</span>
+						<span xml:id="a28" target="#a24" from="#T2" to="#T3">ne</span>
+						<span xml:id="a29" target="#a24" from="#T3" to="#T4">bail</span>
+						<span xml:id="a30" target="#a24" from="#T4" to="#T5">nga</span>
+						<span xml:id="a31" target="#a24" from="#T5" to="#T6">ngela</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a32" target="#a27" from="#T1" to="#T2">lungo</span>
+						<span xml:id="a33" target="#a28" from="#T2" to="#T3">ne</span>
+						<span xml:id="a34" target="#a29" from="#T3" to="#T4">bail</span>
+						<span xml:id="a35" target="#a30" from="#T4" to="#T5">nga</span>
+						<span xml:id="a36" target="#a31" from="#T5" to="#T6">ngela</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a37" target="#a32" from="#T1" to="#T2">nest</span>
+						<span xml:id="a38" target="#a33" from="#T2" to="#T3">ASS</span>
+						<span xml:id="a39" target="#a34" from="#T3" to="#T4">bird</span>
+						<span xml:id="a40" target="#a35" from="#T4" to="#T5">just</span>
+						<span xml:id="a41" target="#a36" from="#T5" to="#T6">then</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a42" target="#a32" from="#T1" to="#T2">stem</span>
+						<span xml:id="a43" target="#a33" from="#T2" to="#T3">stem</span>
+						<span xml:id="a44" target="#a34" from="#T3" to="#T4">stem</span>
+						<span xml:id="a45" target="#a35" from="#T4" to="#T5">stem</span>
+						<span xml:id="a46" target="#a36" from="#T5" to="#T6">stem</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a47" target="#a24" from="#T1" to="#T6"/>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a48" who="ref@LM1" ana="#SPK1" start="#T6" end="#T7">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a49" target="#a48" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a50" target="#a48" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a51" target="#a48" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a52" target="#a51" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a53" target="#a52" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a54" target="#a52" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a55" target="#a48" from="#T6" to="#T7">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a56" who="ref@LM1" ana="#SPK1" start="#T7" end="#T10">
+					<u>
+						<seg>0002_DoReCo_doreco_orko1234_LM1_7</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a57" target="#a56" from="#T7" to="#T10">ground dove&#x27;s nest</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a58" target="#a56" from="#T7" to="#T10">lungo ne maal</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a59" target="#a56" from="#T7" to="#T8">lungo</span>
+						<span xml:id="a60" target="#a56" from="#T8" to="#T9">ne</span>
+						<span xml:id="a61" target="#a56" from="#T9" to="#T10">maal</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a62" target="#a59" from="#T7" to="#T8">lungo</span>
+						<span xml:id="a63" target="#a60" from="#T8" to="#T9">ne</span>
+						<span xml:id="a64" target="#a61" from="#T9" to="#T10">maal</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a65" target="#a62" from="#T7" to="#T8">nest</span>
+						<span xml:id="a66" target="#a63" from="#T8" to="#T9">ASS</span>
+						<span xml:id="a67" target="#a64" from="#T9" to="#T10">dove</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a68" target="#a62" from="#T7" to="#T8">stem</span>
+						<span xml:id="a69" target="#a63" from="#T8" to="#T9">stem</span>
+						<span xml:id="a70" target="#a64" from="#T9" to="#T10">stem</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a71" target="#a56" from="#T7" to="#T10"/>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a72" who="ref@LM1" ana="#SPK1" start="#T10" end="#T25">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a73" target="#a72" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a74" target="#a72" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a75" target="#a72" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a76" target="#a75" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a77" target="#a76" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a78" target="#a76" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a79" target="#a72" from="#T10" to="#T25">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a80" who="ref@WS1" ana="#SPK2" start="#T11" end="#T15">
+					<u>
+						<seg>0004_DoReCo_doreco_orko1234_LM1_7</seg>
+					</u>
+					<spanGrp type="ft@WS1">
+						<span xml:id="a81" target="#a80" from="#T11" to="#T15">this is a bird&#x27;s nest</span>
+					</spanGrp>
+					<spanGrp type="tx@WS1">
+						<span xml:id="a82" target="#a80" from="#T11" to="#T15">hemia nes blo pijin</span>
+					</spanGrp>
+					<spanGrp type="wd@WS1">
+						<span xml:id="a83" target="#a80" from="#T11" to="#T12">hemia</span>
+						<span xml:id="a84" target="#a80" from="#T12" to="#T13">nes</span>
+						<span xml:id="a85" target="#a80" from="#T13" to="#T14">blo</span>
+						<span xml:id="a86" target="#a80" from="#T14" to="#T15">pijin</span>
+					</spanGrp>
+					<spanGrp type="B_phrase-gls-bi">
+						<span xml:id="a87" target="#a80" from="#T11" to="#T15"/>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a88" who="ref@WS1" ana="#SPK2" start="#T15" end="#T28">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@WS1">
+						<span xml:id="a89" target="#a88" from="#T15" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@WS1">
+						<span xml:id="a90" target="#a88" from="#T15" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@WS1">
+						<span xml:id="a91" target="#a88" from="#T15" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="B_phrase-gls-bi">
+						<span xml:id="a92" target="#a88" from="#T15" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a93" who="ref@C" ana="#SPK3" start="#T16" end="#T24">
+					<u>
+						<seg>0005_DoReCo_doreco_orko1234_LM1_7</seg>
+					</u>
+					<spanGrp type="ft@C">
+						<span xml:id="a94" target="#a93" from="#T16" to="#T24">tell it in the language of Fanbak</span>
+					</spanGrp>
+					<spanGrp type="tx@C">
+						<span xml:id="a95" target="#a93" from="#T16" to="#T24">fō fe , fō fe ran ral Fanbak</span>
+					</spanGrp>
+					<spanGrp type="wd@C">
+						<span xml:id="a96" target="#a93" from="#T16" to="#T17">fō</span>
+						<span xml:id="a97" target="#a93" from="#T17" to="#T18">fe</span>
+						<span xml:id="a98" target="#a93" from="#T18" to="#T19">,</span>
+						<span xml:id="a99" target="#a93" from="#T19" to="#T20">fō</span>
+						<span xml:id="a100" target="#a93" from="#T20" to="#T21">fe</span>
+						<span xml:id="a101" target="#a93" from="#T21" to="#T22">ran</span>
+						<span xml:id="a102" target="#a93" from="#T22" to="#T23">ral</span>
+						<span xml:id="a103" target="#a93" from="#T23" to="#T24">Fanbak</span>
+					</spanGrp>
+					<spanGrp type="mb@C">
+						<span xml:id="a104" target="#a96" from="#T16" to="#T17">****</span>
+						<span xml:id="a105" target="#a97" from="#T17" to="#T18">fe</span>
+						<span xml:id="a106" target="#a98" from="#T18" to="#T19">****</span>
+						<span xml:id="a107" target="#a99" from="#T19" to="#T20">****</span>
+						<span xml:id="a108" target="#a100" from="#T20" to="#T21">fe</span>
+						<span xml:id="a109" target="#a101" from="#T21" to="#T22">ran</span>
+						<span xml:id="a110" target="#a102" from="#T22" to="#T23">****</span>
+						<span xml:id="a111" target="#a103" from="#T23" to="#T24">Fanbak</span>
+					</spanGrp>
+					<spanGrp type="gl@C">
+						<span xml:id="a112" target="#a104" from="#T16" to="#T17">****</span>
+						<span xml:id="a113" target="#a105" from="#T17" to="#T18">****</span>
+						<span xml:id="a114" target="#a106" from="#T18" to="#T19">****</span>
+						<span xml:id="a115" target="#a107" from="#T19" to="#T20">****</span>
+						<span xml:id="a116" target="#a108" from="#T20" to="#T21">****</span>
+						<span xml:id="a117" target="#a109" from="#T21" to="#T22">still</span>
+						<span xml:id="a118" target="#a110" from="#T22" to="#T23">****</span>
+						<span xml:id="a119" target="#a111" from="#T23" to="#T24">Fanbak village</span>
+					</spanGrp>
+					<spanGrp type="C_morph-type">
+						<span xml:id="a120" target="#a104" from="#T16" to="#T17">****</span>
+						<span xml:id="a121" target="#a105" from="#T17" to="#T18">****</span>
+						<span xml:id="a122" target="#a106" from="#T18" to="#T19">****</span>
+						<span xml:id="a123" target="#a107" from="#T19" to="#T20">****</span>
+						<span xml:id="a124" target="#a108" from="#T20" to="#T21">****</span>
+						<span xml:id="a125" target="#a109" from="#T21" to="#T22">stem</span>
+						<span xml:id="a126" target="#a110" from="#T22" to="#T23">****</span>
+						<span xml:id="a127" target="#a111" from="#T23" to="#T24">stem</span>
+					</spanGrp>
+					<spanGrp type="C_phrase-gls-bi">
+						<span xml:id="a128" target="#a93" from="#T16" to="#T24"/>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a129" who="ref@C" ana="#SPK3" start="#T24" end="#T28">
+					<u>
+						<seg>&lt;p:&gt;</seg>
+					</u>
+					<spanGrp type="ft@C">
+						<span xml:id="a130" target="#a129" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="tx@C">
+						<span xml:id="a131" target="#a129" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="wd@C">
+						<span xml:id="a132" target="#a129" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="mb@C">
+						<span xml:id="a133" target="#a132" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="gl@C">
+						<span xml:id="a134" target="#a133" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="C_morph-type">
+						<span xml:id="a135" target="#a133" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+					<spanGrp type="C_phrase-gls-bi">
+						<span xml:id="a136" target="#a129" from="#T24" to="#T28">&lt;p:&gt;</span>
+					</spanGrp>
+				</annotationBlock>
+				<annotationBlock xml:id="a137" who="ref@LM1" ana="#SPK1" start="#T25" end="#T28">
+					<u>
+						<seg>0003_DoReCo_doreco_orko1234_LM1_7</seg>
+					</u>
+					<spanGrp type="ft@LM1">
+						<span xml:id="a138" target="#a137" from="#T25" to="#T28">bird&#x27;s nest</span>
+					</spanGrp>
+					<spanGrp type="tx@LM1">
+						<span xml:id="a139" target="#a137" from="#T25" to="#T28">lungo ne maal</span>
+					</spanGrp>
+					<spanGrp type="wd@LM1">
+						<span xml:id="a140" target="#a137" from="#T25" to="#T26">lungo</span>
+						<span xml:id="a141" target="#a137" from="#T26" to="#T27">ne</span>
+						<span xml:id="a142" target="#a137" from="#T27" to="#T28">maal</span>
+					</spanGrp>
+					<spanGrp type="mb@LM1">
+						<span xml:id="a143" target="#a140" from="#T25" to="#T26">lungo</span>
+						<span xml:id="a144" target="#a141" from="#T26" to="#T27">ne</span>
+						<span xml:id="a145" target="#a142" from="#T27" to="#T28">maal</span>
+					</spanGrp>
+					<spanGrp type="gl@LM1">
+						<span xml:id="a146" target="#a143" from="#T25" to="#T26">nest</span>
+						<span xml:id="a147" target="#a144" from="#T26" to="#T27">ASS</span>
+						<span xml:id="a148" target="#a145" from="#T27" to="#T28">dove</span>
+					</spanGrp>
+					<spanGrp type="A_morph-type">
+						<span xml:id="a149" target="#a143" from="#T25" to="#T26">stem</span>
+						<span xml:id="a150" target="#a144" from="#T26" to="#T27">stem</span>
+						<span xml:id="a151" target="#a145" from="#T27" to="#T28">stem</span>
+					</spanGrp>
+					<spanGrp type="A_phrase-gls-bi">
+						<span xml:id="a152" target="#a137" from="#T25" to="#T28"/>
+					</spanGrp>
+				</annotationBlock>
+			</div>
+		</body>
+	</text>
+</TEI>

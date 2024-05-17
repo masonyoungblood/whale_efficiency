@@ -1,0 +1,111 @@
+i;i
+e;e
+a;a
+o;o
+u;u
+ö;2
+ü;y
+ă;6
+ĭ;I
+i̮;1
+ə;@
+aː;a:
+eː;e:
+oː;o:
+b;b
+d;d
+f;f
+g;g
+h;h
+j;j
+jj;j:
+k;k
+l;l
+ll;l:
+m;m
+n;n
+nn;n:
+p;p
+r;r
+s;s
+ss;s:
+t;t
+tt;t:
+v;w
+x;h
+z;z
+š;S
+šš;S:
+ž;Z
+č;tS
+ŋ;N
+ŋŋ;N:
+ʔ;?
+bʼ;b_j
+dʼ;d_j
+gʼ;g_j
+pʼ;p_j
+tʼ;t_j
+tʼtʼ;t:_j
+kʼ;k_j
+lʼ;l_j
+mʼ;m_j
+nʼ;n_j
+nʼnʼ;n_jn
+rʼ;r_j
+sʼ;s_j
+zʼ;z_j
+vʼ;v_j
+čʼ;t_j
+šʼ;S_j
+
+%%% Glottal stop deletion %%%
+set AFTER_B d;t
+set AFTER_B z;s
+set AFTER_B t;t
+set AFTER_B s;s
+ʔb$AFTER_B$;p .
+
+%%% Devoicing of obstruent clusters %%%
+set OBSTR b;p
+set OBSTR d;t
+set OBSTR f;f
+set OBSTR g;k
+set OBSTR h;h
+set OBSTR k;k
+set OBSTR p;p
+set OBSTR s;s
+set OBSTR ss;s:
+set OBSTR t;t
+set OBSTR tt;t:
+set OBSTR x;h
+set OBSTR z;s
+set OBSTR š;S
+set OBSTR šš;S:
+set OBSTR ž;S
+set OBSTR č;tS
+set OBSTR ʔ;?
+set OBSTR bʼ;p_j
+set OBSTR dʼ;t_j
+set OBSTR gʼ;k_j
+set OBSTR pʼ;p_j
+set OBSTR tʼ;t_j
+set OBSTR tʼtʼ;t:_j
+set OBSTR kʼ;k_j
+set OBSTR sʼ;s_j
+set OBSTR zʼ;s_j
+set OBSTR vʼ;f_j
+set OBSTR čʼ;t_j
+set OBSTR šʼ;S_j
+$OBSTR$$OBSTR$;. .
+
+%%% Rules accounting for peculiarities in the pronunciation of PKZ %%%
+pho t_j;tS_j
+pho d_j;dZ_j
+pho 2;o
+pho y;u
+ĭmbi;m b i
+tănan;t n a n
+
+%%% Sounds from Russian %%% 
+c;ts

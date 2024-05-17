@@ -1,0 +1,149 @@
+a;a
+b;b
+set PAL b;b_j
+bje;b_j E
+b#;p
+c;ts
+cb;dz b
+č;tS
+ć;ts\
+d;d
+ds;ts
+dš;ts`
+dś;ts\
+d#;t
+e;E
+ě;I
+ěj;e j
+f;f
+fje;f_j E
+set PAL f;f_j
+g;g
+set PALL g;g_j
+g#;k
+h;#
+i;i
+j;j
+aji;a i
+eji;E i
+oji;O i
+uji;u i
+iji;i i
+ij#;i
+k;k
+set PALL k;k_j
+ł;w
+l;l
+set PALL l;l_j
+m;m
+mje;m_j E
+set PAL m;m_j
+n;n
+set PAL n;J
+nje;J E
+ń;J
+o;O
+#how;o w
+#hoł;o w
+#wow;o w
+ó;E
+p;p
+pje;p_j E
+set PAL p;p_j
+r;r
+rje;r_j E
+set PAL r;r_j
+rdž;dz`
+ŕ;r_j
+s;s
+š;s`
+šć;s\ ts\
+ś;s\
+śb;z\ b
+sćź;z\ dz\
+t;t
+set PAL t;t_j
+tc;ts
+tč;tS
+tt;t
+ttš;ts`
+ttś;ts\
+tz;dz
+tž;dz`
+tź;dz\
+u;u
+v;v
+v#;f
+set PAL w;w_j
+wje;w_j E
+#wje;w_j E
+#wa;w a
+#we;w E
+#wó;w E
+#wo;w O
+#wu;w u
+#wy;w 1
+#wi;w_j i
+#wě;w_j I
+#wja;w j a
+#wju;w j o
+#wjo;w j u
+#w;#
+w;w
+y;1
+z;z
+z#;s
+#z#;z
+ž;z`
+ždź;z\ dz\
+ž#;s`
+žč;S tS
+ź;z\
+ź#;s\
+ch;x
+set PAL ch;ch_j
+dz;dz
+dž;dz`
+dź;dz\
+dź#;ts\
+ts;ts
+tš;ts`
+tś;ts\
+
+%%% German sounds %%%
+ä;E
+ü;y
+ö;2
+ß;s
+sch;S
+qu;k f
+x;ks
+
+%%% Polish sounds %%%
+ę;E n
+
+%%% Palatalization %%%
+$PAL$i;. i
+$PAL$ě;. I
+$PALL$i;. i
+$PALL$ě;. I
+$PALL$e;. E
+
+%%% ł-deletion %%%
+set OBS b;b
+set OBS p;p
+set OBS d;d
+set OBS t;t
+set OBS k;k
+set OBS g;g
+set OBS s;s
+set OBS z;z
+set OBS š;s`
+set OBS ž;z`
+set OBS ś;s\
+set OBS ź;z\
+set OBS x;x
+set OBS f;f
+set OBS v;v
+$OBS$ł#;.
+#ł$OBS$;.
