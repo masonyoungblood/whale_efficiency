@@ -49,16 +49,25 @@ fig_caption: true
 <!-- includes legends, acknowledgments, and funding statements -->
 <!-- budget of three figures and three tables -->
 
-```{r word-doc, echo = FALSE, eval = FALSE}
-#optionally hide all code
-knitr::opts_chunk$set(echo = FALSE)
-
-#set fonts of flextables
-flextable::set_flextable_defaults(font.family = "Garamond", font.size = 10, padding.top = 1, padding.bottom = 1, keep_with_next = TRUE)
-```
-
 <!--- Bibliography management done via (cmd+k to insert): https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/ -->
 <!-- Github hosting done via: https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page -->
+
+```{r word-doc, echo = FALSE}
+#note that several aspects of formatting aren't working properly
+  #incorrect formatting of special characters in table 1
+  #code blocks print
+  #abstract header looks bad
+  #equation labels of 7 and 8 need custom formatting
+  #set font to 10-point garamond in table 2
+#if output is a word document
+if(!knitr::is_html_output()){
+  #hide all code
+  knitr::opts_chunk$set(echo = FALSE)
+  
+  #set fonts of flextables
+  flextable::set_flextable_defaults(font.family = "Garamond", font.size = 10, padding.top = 1, padding.bottom = 1, keep_with_next = TRUE)
+}
+```
 
 ```{css, echo = FALSE}
 pre, code {white-space:pre !important; overflow-x:auto}
@@ -69,14 +78,14 @@ div.col-md-12 .pull-right {
 }
 ```
 
-<br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg)
-&copy; Popular Mechanics
+<!-- <br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg) -->
+<!-- &copy; Popular Mechanics -->
 
-# Links {-}
+<!-- # Links {-} -->
 
-* [Main text](https://masonyoungblood.github.io/whale_efficiency/)
-* [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
-* [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
+<!-- * [Main text](https://masonyoungblood.github.io/whale_efficiency/) -->
+<!-- * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) -->
+<!-- * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency) -->
 
 <!-- * [PsyArXiv preprint]() -->
 
@@ -892,7 +901,7 @@ flextable(table, col_keys = colnames(table)) %>%
 
 # Discussion
 
-The vocalizations of 11 of the 16 whale species included in this analysis adhere to Menzerath's law, suggesting that they have undergone compression for increased communicative efficiency. Among these 11 species, the strength of Menzerath's law is comparable to, and sometimes far greater than, what is observed in spoken human language data. In the main text, I compared the whale sequences to phonemes within words because I was working with the smallest reported units for each species, but the results are similar for words within sentences (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)). For two species, humpback whales and killer whales, I was able to analyze sequences at two levels of analysis. Humpback whales exhibit Menzerath's law for both notes within phrases and phrases within songs. Killer whales, on the other hand, only exhibit Menzerath's law at the level of call sequences, as opposed to the elements comprising calls. When data from all 16 whale species are included a single analysis, there is strong evidence for both Menzerath's law and for an effect of position&mdash;elements and intervals tend to be shortened over the course of sequences.
+The vocalizations of 11 of the 16 whale species included in this analysis adhere to Menzerath's law, suggesting that they have undergone compression for increased communicative efficiency. Among these 11 species, the strength of Menzerath's law is comparable to, and sometimes far greater than, what is observed in spoken human language data. In the main text, I compared the whale sequences to phonemes within words because I was working with the smallest reported units for each species, but the results are similar for words within sentences (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)). For two species, humpback whales and killer whales, I was able to analyze sequences at two levels of analysis. Humpback whales exhibit Menzerath's law for both notes within phrases and phrases within songs. Killer whales, on the other hand, only exhibit Menzerath's law at the level of call sequences, as opposed to the elements comprising calls. When data from all 16 whale species are included in a single analysis, there is strong evidence for both Menzerath's law and for an effect of position&mdash;elements and intervals tend to be shortened over the course of sequences.
 
 Several species' produce vocalizations that do not adhere to Menzerath's law&mdash;killer whales (at the level of elements within calls), North Pacific right whales, and the three *Cephalorhynchus* dolphin species. The fact that killer whale vocalizations exhibit Menzerath's law in their call sequences, but not elements within calls, suggests that the former may be the more relevant level of analysis for communication [@kershenbaum_etal16]. The results from the North Pacific right whales are more puzzling. The data used in this study are from the first documented recordings of song in any right whale species [@crance_etal19], and are comprised of four song types with fairly dramatic differences in sequence lengths and interval durations (see clusters in Figure \@ref(fig:figure-myst-plot)). When Menzerath's law is assessed separately on each song type, two display the expected negative relationship, one displays a neutral relationship, and one displays a positive relationship between sequence length and interval duration. One speculative explanation for the mixed results in North Pacific right whales is that the songs may be in an early stage of cultural evolution. @crance_etal19 found only one clear case of difference animals producing the same song type, and linguistic laws may emerge from repeated cultural transmission between individuals [@arnon_kirby24]. The three *Cephalorhynchus* species in this study&mdash;Hector's dolphins, Commerson's dolphins, and Heaviside's dolphins&mdash;all produce both narrowband high-frequency and broadband clicks that are thought to function in both echolocation and communication [@nielsen_etal24; @martin_etal21; @martin_etal18]. I only analyzed the rapid burst pulses of these clicks that are associated with social behavior, but it is possible that the clicks' use in echolocation reduces pressure for communicative efficiency. However, the burst pulses of the four other dolphin and porpoise species included in this study do adhere to Menzerath's law, so this hypothesis only makes sense if the boundaries between echolocation and communication are fuzzier in *Cephalorhynchus*.
 
