@@ -2,24 +2,24 @@
 title: "Language-like efficiency in whale communication"
 abstract: "Human language and other animal communication systems tend to be optimized for efficiency---the benefits that they bestow relative to the costs of learning and producing them. One of the clearest manifestations of communicative efficiency is Menzerath's law, which predicts that longer sequences (e.g., songs) will be comprised of shorter elements (e.g., notes). In this study, I assessed the evidence for Menzerath's law in cetaceans by analyzing vocal sequences from 16 baleen and toothed whale species and comparing them to spoken data from 51 human languages. The vocalizations of 11 of the 16 whale species included in this analysis adhere to Menzerath's law to an extent that is comparable to, and sometimes far greater than, what is observed in spoken human language data. Humpback whales exhibit Menzerath's law both at the level of notes within phrases and phrases within songs. There is also a broad tendency for vocal shortening---elements or intervals getting shorter over the course of sequences---which may point to simple energetic constraints. Overall, the results of this study suggest that the vocalizations of a wide range of whale species have undergone compression for increased communicative efficiency."
 keywords: "whale song, Menzerath's law, linguistic laws, communicative efficiency, cultural evolution"
-# author:
-#   name: Mason Youngblood
-#   email: masonyoungblood@gmail.com
-#   affiliation: Institute for Advanced Computational Science, Stony Brook University
-# output:
-#   bookdown::html_document2:
-#     theme: cosmo
-#     code_folding: hide
-#     toc: true
-#     toc_depth: 3
-#     toc_float: true
-#     global_numbering: true
 author:
-  - Mason Youngblood ^[Institute for Advanced Computational Science, Stony Brook University, masonyoungblood@gmail.com]
+  name: Mason Youngblood
+  email: masonyoungblood@gmail.com
+  affiliation: Institute for Advanced Computational Science, Stony Brook University
 output:
-  bookdown::word_document2:
-    reference_docx: "template.docx"
+  bookdown::html_document2:
+    theme: cosmo
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: true
     global_numbering: true
+# author:
+#   - Mason Youngblood ^[Institute for Advanced Computational Science, Stony Brook University, masonyoungblood@gmail.com]
+# output:
+#   bookdown::word_document2:
+#     reference_docx: "template.docx"
+#     global_numbering: true
 always_allow_html: true
 bibliography: bibliography.json
 link-citations: true
@@ -52,7 +52,7 @@ fig_caption: true
 <!--- Bibliography management done via (cmd+k to insert): https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/ -->
 <!-- Github hosting done via: https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page -->
 
-```{r word-doc, echo = FALSE, eval = TRUE}
+```{r word-doc, echo = FALSE, eval = FALSE}
 #note that several aspects of formatting aren't working properly
   #incorrect formatting of special characters in table 1
   #code blocks print
@@ -78,15 +78,15 @@ div.col-md-12 .pull-right {
 }
 ```
 
-<!-- <br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg) -->
-<!-- &copy; Popular Mechanics -->
+<br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg)
+&copy; Popular Mechanics
 
-<!-- # Links {-} -->
+# Links {-}
 
-<!-- * [Main text](https://masonyoungblood.github.io/whale_efficiency/) -->
-<!-- * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) -->
-<!-- * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab) -->
-<!-- * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency) -->
+* [Main text](https://masonyoungblood.github.io/whale_efficiency/)
+* [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
+* [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
+* [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
 
 ```{r admin, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE}
 #set working directory, load sheet of datasets used, and source modeling functions
