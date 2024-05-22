@@ -48,6 +48,37 @@ library(dplyr)
 * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
 * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
 
+# Distribution of Durations and Intervals
+
+```{r density, echo = FALSE, eval = FALSE}
+#get z-scored durations
+durations <- c(scale(blue_data$duration), scale(bowhead_data$duration), scale(humpback_data$duration), scale(right_data$duration), scale(sei_data$duration), scale(killer_data$duration))
+
+#get z-scored intervals
+intervals <- c(scale(fin_data$wood_2022$duration), scale(fin_data$best_2022$duration), scale(fin_data$romagosa_2024$duration), scale(minke_data$duration), scale(bottlenose_data$duration), scale(commersons_data$duration), scale(heavisides_data$duration), scale(hectors_data$duration), scale(narrow_data$duration), scale(peales_data$duration), scale(rissos_data$duration), scale(sperm_data$gero_2016), scale(sperm_data$hersh_2022), scale(sperm_data$vachon_2022))
+
+#get densities
+durations_density <- density(durations, adjust = 4, n = 1000)
+intervals_density <- density(intervals, adjust = 4, n = 1000)
+
+#combine for plotting
+plot_data <- data.frame(x = c(durations_density$x, intervals_density$x), y = c(durations_density$y, intervals_density$y), Type = rep(c("Durations", "Intervals"), each = 1000))
+
+#plot and save
+png("plots/density.png", width = 4, height = 3, units = "in", res = 600)
+ggplot(plot_data, aes(x = x, y = y, color = Type)) + 
+  geom_line() + 
+  ylab("Density") + 
+  scale_x_continuous(name = "z-Scored Measure", limits = c(-2.5, 5)) + 
+  scale_color_manual(values = c("#638ccc", "#ca5670")) + 
+  theme_linedraw(base_size = 8, base_family = "Avenir")
+dev.off()
+```
+
+```{r supp-figure-density, echo = FALSE, fig.align = "center", out.width = "50%", fig.cap = "The distribution of element durations and inter-element intervals from the whale vocal sequences included in this analysis. The times are z-scored within each study to enable direct comparison."}
+knitr::include_graphics("../plots/density.png")
+```
+
 # Effects in Whale Data
 
 ```{r supp-whale-length-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
