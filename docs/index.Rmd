@@ -2,24 +2,24 @@
 title: "Language-like efficiency in whale communication"
 abstract: "Human language and other animal communication systems tend to be optimized for efficiency---the benefits that they bestow relative to the costs of learning and producing them. One of the clearest manifestations of communicative efficiency is Menzerath's law, which predicts that longer sequences (e.g., songs) will be comprised of shorter elements (e.g., notes). In this study, I assessed the evidence for Menzerath's law in cetaceans by analyzing vocal sequences from 16 baleen and toothed whale species and comparing them to spoken data from 51 human languages. The vocalizations of 11 of the 16 whale species included in this analysis adhere to Menzerath's law to an extent that is comparable to, and sometimes far greater than, what is observed in spoken human language data. Humpback whales exhibit Menzerath's law both at the level of notes within phrases and phrases within songs. There is also a broad tendency for vocal shortening---elements or intervals getting shorter over the course of sequences---which may point to simple energetic constraints. Overall, the results of this study suggest that the vocalizations of a wide range of whale species have undergone compression for increased communicative efficiency."
 keywords: "whale song, Menzerath's law, linguistic laws, communicative efficiency, cultural evolution"
-author:
-  name: Mason Youngblood
-  email: masonyoungblood@gmail.com
-  affiliation: Institute for Advanced Computational Science, Stony Brook University
-output:
-  bookdown::html_document2:
-    theme: cosmo
-    code_folding: hide
-    toc: true
-    toc_depth: 3
-    toc_float: true
-    global_numbering: true
 # author:
-#   - Mason Youngblood ^[Institute for Advanced Computational Science, Stony Brook University, masonyoungblood@gmail.com]
+#   name: Mason Youngblood
+#   email: masonyoungblood@gmail.com
+#   affiliation: Institute for Advanced Computational Science, Stony Brook University
 # output:
-#   bookdown::word_document2:
-#     reference_docx: "template.docx"
+#   bookdown::html_document2:
+#     theme: cosmo
+#     code_folding: hide
+#     toc: true
+#     toc_depth: 3
+#     toc_float: true
 #     global_numbering: true
+author:
+  - Mason Youngblood ^[Institute for Advanced Computational Science, Stony Brook University, masonyoungblood@gmail.com]
+output:
+  bookdown::word_document2:
+    reference_docx: "template.docx"
+    global_numbering: true
 always_allow_html: true
 bibliography: bibliography.json
 link-citations: true
@@ -43,7 +43,7 @@ fig_caption: true
 <!-- has some sort of waiver policy, unclear but potentially do-able: https://royalsocietypublishing.org/rspb/for-authors -->
 
 <!-- TARGET 4 IS BIOLOGY LETTERS -->
-<!-- no explicity waiver policy: https://royalsocietypublishing.org/rsbl/for-authors -->
+<!-- no explicit waiver policy: https://royalsocietypublishing.org/rsbl/for-authors -->
 <!-- 3500 words -->
 <!-- excludes references, title, author list, data accessibility, ethics, author contributions, and competing interests -->
 <!-- includes legends, acknowledgments, and funding statements -->
@@ -52,7 +52,7 @@ fig_caption: true
 <!--- Bibliography management done via (cmd+k to insert): https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/ -->
 <!-- Github hosting done via: https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page -->
 
-```{r word-doc, echo = FALSE, eval = FALSE}
+```{r word-doc, echo = FALSE, eval = TRUE}
 #note that several aspects of formatting aren't working properly
   #incorrect formatting of special characters in table 1
   #code blocks print
@@ -78,15 +78,15 @@ div.col-md-12 .pull-right {
 }
 ```
 
-<br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg)
-&copy; Popular Mechanics
+<!-- <br>![](https://hips.hearstapps.com/hmg-prod/images/high-angle-view-of-humpback-whale-swimming-in-sea-royalty-free-image-1702574312.jpg) -->
+<!-- &copy; Popular Mechanics -->
 
-# Links {-}
+<!-- # Links {-} -->
 
-* [Main text](https://masonyoungblood.github.io/whale_efficiency/)
-* [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
-* [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
-* [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
+<!-- * [Main text](https://masonyoungblood.github.io/whale_efficiency/) -->
+<!-- * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) -->
+<!-- * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab) -->
+<!-- * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency) -->
 
 ```{r admin, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE}
 #set working directory, load sheet of datasets used, and source modeling functions
@@ -123,64 +123,7 @@ I focus on Menzerath's law, rather than other commonly-studied features like Zip
 knitr::include_graphics("plots/spectrograms.png")
 ```
 
-<!-- [@kang21; @allen_etal19; @markov_ostrovskaya90; @mccowan_etal99; @stepanov_etal23; @vradi21],  -->
-
-<!-- Use @semple_etal22 as a reference for the other "big two" linguistic laws -->
-
-<!-- Zipf's rank-frequency and brevity laws appear to be present in the vocalizations of humpback whales and bottlenose dolphins. -->
-
-<!-- Pygmy blue whale songs do not adhere to Menzerath's law [@jolliffe_etal23]. -->
-
-<!-- Zipf's law of abbreviation holds in humpback whales but not in Risso's dolphin, Beluga whales, or killer whales [@kang21]. -->
-
-<!-- Zipf's rank-frequency law holds in humpback whales [@allen_etal19]. -->
-
-<!-- Zipf's rank-frequency law in whistles [@markov_ostrovskaya90; @mccowan_etal99] and burst pulses [@stepanov_etal23], Zipf's law of abbreviation in whistles [@vradi21] and burst pulses [@stepanov_etal23], and Menzerath's law in whistles [@vradi21] and burst pulses [@stepanov_etal23]. -->
-
-# Methods
-
-## Data
-
-Cetacean vocal sequences have different names in different species (e.g., songs, codas, burst-pulses), and there is significant variation in research effort across taxa, so I used a mixture of different strategies to compile a convenience sample of candidate datasets. For heavily studied species I was able to find papers by using species-specific search term combinations like {"humpback whale" AND "song sequences"} and {"sperm whale" AND "codas"} on Google Scholar. For less represented taxa, like dolphins and porpoises, I also searched for datasets directly on repositories like Dryad, Zenodo, and Figshare. Within odontocetes (i.e., toothed whales), who produce clicks for echolocation, I only included vocalizations that have a known or hypothesized communication function (e.g., sperm whale codas, dolphin burst-pulses) [@hersh_etal22; @martin_etal18].
-
-In total, I found `r nrow(datasets)` studies that reported the durations of elements, or the intervals between elements, within vocal sequences. `r length(which(datasets$Open == "Yes" & datasets$Used == "Yes"))` of these had open data that were suitable for analysis. I emailed the corresponding authors of the remaining studies and was granted access to `r length(which(datasets$Used == "Yes" & datasets$Open == "No"))` closed datasets that were suitable for analysis. <!-- `r length(which(datasets$Acquired == "Yes")) - length(which(datasets$Used == "Yes"))` of the acquired datasets could not be included in the main analysis due to low sample size (i.e., two sequences [REF]) or because they were the wrong level of analysis (e.g., phrases within songs rather than elements within phrases [REF]). -->The final `r length(which(datasets$Used == "Yes"))` datasets can be seen in Table \@ref(tab:table-datasets) [@lewis_etal18; @erbs_etal21; @romagosa_etal24; @wood_sirovic22; @best_etal22; @schall_etal21; @schall_etal22; @owen_etal19; @martin_etal22; @crance_etal19; @macklin_etal24; @stepanov_etal23; @martin_etal21; @martin_etal18; @nielsen_etal24; @selbmann_etal23; @terada_etal22; @martin_etal24; @arranz_etal16; @hersh_etal22; @vachon_etal22a; @gero_etal16; @sharpe_etal17]. Three of the datasets, two in humpback whales [@schall_etal21; @schall_etal22] and one in killer whales [@selbmann_etal23], were analyzed separately because they log the durations of higher-level units (e.g., for the humpbacks, phrases within songs rather than notes within phrases). Element durations were defined as the time between the beginning and end of a sound (Figure \@ref(fig:figure-spectrograms)). Inter-element intervals were usually defined as the time between the beginning of a sound and the one that comes next, although several studies did not explicitly specify this in their methods [@terada_etal22; @arranz_etal16, @hersh_etal22; @vachon_etal22a; @gero_etal16].
-
-The phrase-level humpback whale dataset [@owen_etal19] was the only one that did not include the durations of individual elements or intervals in sequences. Instead, Owen et al. [@owen_etal19] report the sequences as strings of element categories, with a separate file that logs the durations of many different elements from each category. For this dataset, I interpolated the sequences with the median duration of each element category. Supplementary analysis with human language data suggests that interpolation with median durations systematically reduces the strength of Menzerath's law, which should lead to more conservative conclusions (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)).
-
-The phylogeny in Figures \@ref(fig:figure-myst-plot) and \@ref(fig:figure-odon-plot) comes from a metatree of Cetacea comprised of both molecular and morphological data [@lloyd_slater21]. As the phylogeny was primarily for visualization purposes, I assigned three species that do not appear in the metatree to close relatives in the same genus: the narrow-ridged finless porpoise (*Neophocaena asiaeorientalis*) to the Indo-Pacific finless porpoise (*Neophocaena phocaenoides*), the Commerson's dolphin (*Cephalorhynchus commersonii*) to the Chilean dolphin (*Cephalorhynchus eutropia*), and the Peale's dolphin (*Lagenorhynchus australis*) to the white-beaked dolphin (*Lagenorhynchus albirostris*).
-
-As a comparison with the whale data, I also analyzed spoken language data from DoReCo [@seifart_etal22]&mdash;a corpus of ~500,000 annotated words (with phonemes) from 51 languages that focuses on small and endangered languages [@seifart_etal22]. DoReCo has been used in previous studies of Menzerath's law [@stave_etal21]. The only pre-processing was removing everything marked as an "exceptional speech event" (i.e., singing, disfluencies, silent pauses). For the main analysis, I followed Menzerath [@menzerath54] in using the durations of phonemes within words, but the results with the durations of words within sentences can be found in the [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html).
-
-```{r data-table, echo = FALSE, message = FALSE, warning = FALSE}
-#load libraries
-library(flextable)
-library(dplyr)
-library(ftExtra)
-library(officer)
-
-#store data to print
-table_data <- datasets[which(datasets$Used == "Yes"), c(5, 6, 7, 8, 1, 10, 11)]
-
-#order by group and then by species
-table_data <- table_data[with(table_data, order(Group, Species)), ]
-
-#restructure references
-table_data$Zotero <- paste0(table_data$Dataset, paste0(" [@", table_data$Zotero, "]"))
-colnames(table_data)[which(colnames(table_data) == "Zotero")] <- "Source"
-table_data <- table_data[, -which(colnames(table_data) == "Dataset")]
-
-#print table
-flex_table <- flextable(table_data) %>% 
-  merge_v(j = 1) %>% merge_v(j = 2) %>%
-  theme_vanilla() %>% set_table_properties(layout = "autofit") %>%
-  set_caption("The datasets included in this analysis, with whether they are open access, the vocalization category, and whether the sequences are comprised of element durations or inter-element intervals.", autonum = run_autonum(seq_id = "tab", bkm = "table-datasets")) %>%
-  colformat_md()
-flex_table
-```
-
-## Mathematical Models
-
-In this study, I focus on the Menzerath-Altmann law&mdash;a precise and more robust mathematical form of Menzerath's law [@altmann80; @g_torre_etal21]. Here is the standard form of the Menzerath-Altmann law where $y$ is the duration of elements within a sequence comprised of $x$ elements, and $a$, $b$, and $c$ are parameters controlling the shape of the relationship.
+I focus on the Menzerath-Altmann law&mdash;a precise and more robust mathematical form of Menzerath's law [@altmann80; @g_torre_etal21]. Here is the standard form of the Menzerath-Altmann law where $y$ is the duration of elements within a sequence comprised of $x$ elements, and $a$, $b$, and $c$ are parameters controlling the shape of the relationship.
 
 \begin{equation}
 y = ax^{b}e^{cx} \;\;\textrm{(full model)}
@@ -206,27 +149,7 @@ With some simple algebra we can convert Equation \@ref(eq:fullmenz) and Equation
 (\#eq:reducedmenzlinear)
 \end{equation}
 
-I will use Equation \@ref(eq:reducedmenzlinear) to enable direct comparison with previous studies of the Menzerath-Altmann law in non-human animals [@james_etal21; @lewis_etal23; @gustison_etal16; @vradi21; @stepanov_etal23; @clink_lau20; @favaro_etal20; @huang_etal20], and because the inclusion of $x$ twice in Equation \@ref(eq:fullmenzlinear) leads to fairly severe problems with multicollinearity ($\bar{VIF}$ = 17.2).
-
-$y$ is usually the mean duration of elements within sequences, but I will use the full distribution of element durations within sequences [@youngblood24]. This leads to similar estimates of $a$ and $b$ in linguistic corpora, helps to avoid spurious "regression to the mean" effects [@milicka23; @gustison_etal16; @ferrer-i-cancho_etal14], and better captures uncertainty in the models [@youngblood24]. I also follow other work in excluding single-element sequences (i.e., with a length of one) from the analysis, which have been shown to depart from Menzerath's law [@heesen_etal19; @torre_etal19; @g_torre_etal21; @hernandez-fernandez_etal19].
-
-## Model Fitting
-
-All models were fit using the *lme4* (v1.1-35.1) package in *R* (v4.3.1) [@bates_etal15] with the BOBYQA optimizer. To avoid the many problems associated with *p*-values [@nuzzo14; @amrhein_etal19], I report mean estimates and 95% Wald confidence intervals, and interpret intervals that do not overlap zero as indicating a strong effect. To enable direct comparison of fixed effects across different models, I used maximum likelihood and z-scored the sequence lengths and element or interval durations within species and languages [@fox_etal15]. All reported models were manually checked for convergence.
-
-The main model used to test Menzerath's law was Equation \@ref(eq:reducedmenzlinear) with sequence ID as a varying intercept to account for the repeated measurements of durations within sequences. Some species had multiple datasets, in which case the study ID was included as a second varying intercept. Here is the main model in Wilkinson notation&mdash;standard R model syntax.
-
-\begin{equation}
-\ln(\textrm{duration}) \sim \ln(\textrm{length}) + (1|\textrm{sequence})
-(\#eq:lengthmodel)
-\end{equation}
-
-Additionally, I fit a second model that included the position of each element or interval in the sequence as a fixed effect, following previous studies of Menzerath's law in non-human animals [@james_etal21; @lewis_etal23; @vradi21; @gustison_etal16; @clink_lau20; @huang_etal20]. Position was normalized between 0 and 1 using the function $(n - 1)/(l - 1)$, where $n$ is the position of the element or interval and $l$ is the length of the sequence [@james_etal21]. The purpose of this model was to assess whether Menzerath's law is driven by a shortening of elements or intervals over the course of the sequence, or a tendency to begin long sequences with shorter elements or intervals.
-
-\begin{equation}
-\ln(\textrm{duration}) \sim \ln(\textrm{length}) + \textrm{position} + (1|\textrm{sequence})
-(\#eq:positionmodel)
-\end{equation}
+I will use Equation \@ref(eq:reducedmenzlinear) to enable direct comparison with previous studies of the Menzerath-Altmann law in non-human animals [@james_etal21; @lewis_etal23; @gustison_etal16; @vradi21; @stepanov_etal23; @clink_lau20; @favaro_etal20; @huang_etal20], and because the inclusion of $x$ twice in Equation \@ref(eq:fullmenzlinear) leads to severe multicollinearity.
 
 ```{r run-models, echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE}
 #fit models to datasets
@@ -246,6 +169,7 @@ narrow_models <- menz_fit(narrow_data)
 rissos_models <- menz_fit(rissos_data)
 bottlenose_models <- menz_fit(bottlenose_data)
 heavisides_models <- menz_fit(heavisides_data)
+heavisides_patterned_models <- menz_fit(heavisides_patterned_data)
 commersons_models <- menz_fit(commersons_data)
 peales_models <- menz_fit(peales_data)
 hectors_models <- menz_fit(hectors_data)
@@ -268,6 +192,7 @@ save(narrow_models, file = "models/narrow_models.RData")
 save(rissos_models, file = "models/rissos_models.RData")
 save(bottlenose_models, file = "models/bottlenose_models.RData")
 save(heavisides_models, file = "models/heavisides_models.RData")
+save(heavisides_patterned_models, file = "models/heavisides_patterned_models.RData")
 save(commersons_models, file = "models/commersons_models.RData")
 save(peales_models, file = "models/peales_models.RData")
 save(hectors_models, file = "models/hectors_models.RData")
@@ -279,7 +204,7 @@ save(sei_models, file = "models/sei_models.RData")
 vifs <- c(car::vif(sperm_models$actual$full),
           car::vif(humpback_models$actual$full),
           car::vif(fin_models$actual$full),
-          #car::vif(killer_models$actual$full), #throws error during model fitting, another reason to drop
+          #car::vif(killer_models$actual$full), #throws error during model fitting
           car::vif(blue_models$actual$full),
           car::vif(minke_models$actual$full),
           car::vif(bowhead_models$actual$full),
@@ -476,18 +401,6 @@ load("models/phonemes_in_words.RData")
 load("models/words_in_sentences.RData")
 ```
 
-Finally, I assessed broader cross-species trends in Menzerath's law with expanded forms of Equation \@ref(eq:lengthmodel) and \@ref(eq:positionmodel) applied to all species at once. Interactions between length and position and the following two features were added: (1) the group the species comes from, to determine whether the effect varies between Mysticetes and Odontocetes, and (2) the type of vocalization, to determine whether the effect is stronger for elements or intervals. Group and type were not added as separate fixed effects (outside of the interactions) because the z-scaling of duration within species removes species differences. Sequence and study were included as varying intercepts. The effect of sequence length on element/interval duration does not have significant phylogenetic signal ($K$ = `r round(phylo_signal$K, 2)`; $p$ = `r round(phylo_signal$P, 2)`), computed using the method of Ives et al. [@ives_etal07] as implemented in the *phytools* package (2.1.1) in *R* (v4.3.1) [@revell24], so I did not include phylogeny in the modeling.
-
-\begin{align*}
-\ln(\textrm{duration}) & \sim \ln(\textrm{length}) \\ & + \ln(\textrm{length}) : \textrm{group} + \ln(\textrm{length}) : \textrm{type} \\ & + (1|\textrm{sequence}) + (1|\textrm{study})
-(\#eq:lengthmodelall)
-\end{align*}
-
-\begin{align*}
-\ln(\textrm{duration}) & \sim \ln(\textrm{length}) \\ & + \ln(\textrm{length}) : \textrm{group} + \ln(\textrm{length}) : \textrm{type} \\ & + \textrm{position} \\ & + \textrm{position} : \textrm{group} + \textrm{position} : \textrm{type} \\ & + (1|\textrm{sequence}) + (1|\textrm{study})
-(\#eq:positionmodelall)
-\end{align*}
-
 ```{r combined-model, echo = TRUE, eval = FALSE}
 #combine data from all species to be analyzed in a single model
 all_species_data <- list(sperm = sperm_data, humpback = humpback_data, fin = fin_data, killer = killer_data, blue = blue_data, minke = minke_data, bowhead = bowhead_data, right = right_data, narrow = narrow_data, rissos = rissos_data, bottlenose = bottlenose_data, heavisides = heavisides_data, commersons = commersons_data, peales = peales_data, hectors = hectors_data, sei = sei_data)
@@ -496,15 +409,12 @@ all_species_data <- list(sperm = sperm_data, humpback = humpback_data, fin = fin
 groups <- c(1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 types <- c(1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
+#check for convergence
 summary(all_species_model$base)$optinfo$conv$lme4$messages
 
 #run model
 #positive interaction means that 1 has weaker ML than 0
 all_species_model <- menz_compare(all_species_data, groups, types)
-
-# #print messages from model to check convergence
-# summary(all_species_model$base)$optinfo$conv$lme4$messages
-# summary(all_species_model$position)$optinfo$conv$lme4$messages
 
 #return 
 save(all_species_model, file = "models/all_species_model.RData")
@@ -624,11 +534,36 @@ human_tables <- list(length = words_length_table, position = words_position_tabl
 save(human_tables, file = "tables/human_tables.RData")
 ```
 
-I originally planned to compare the patterns in the real data with simulated data from a null model that is thought to account for production constraints [@james_etal21], as I recently did for house finch song [@youngblood24], but analyses of language data suggest that it is far too conservative of a null model. More details about this exploratory analysis can be found in the [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html).
-
 # Results
 
-In total, this analysis includes `r format(n_elements, big.mark = ",")` elements and intervals from `r format(n_sequences, big.mark = ",")` sequences, `r format(n_studies, big.mark = ",")` studies, and `r length(unique(datasets$Species[which(datasets$Used == "Yes")]))` species.
+In total, this analysis includes `r format(n_elements, big.mark = ",")` elements and intervals from `r format(n_sequences, big.mark = ",")` sequences, `r format(n_studies, big.mark = ",")` studies, and `r length(unique(datasets$Species[which(datasets$Used == "Yes")]))` species (see Table \@ref(tab:table-datasets)).
+
+```{r data-table, echo = FALSE, message = FALSE, warning = FALSE}
+#load libraries
+library(flextable)
+library(dplyr)
+library(ftExtra)
+library(officer)
+
+#store data to print
+table_data <- datasets[which(datasets$Used == "Yes"), c(5, 6, 7, 8, 1, 10, 11)]
+
+#order by group and then by species
+table_data <- table_data[with(table_data, order(Group, Species)), ]
+
+#restructure references
+table_data$Zotero <- paste0(table_data$Dataset, paste0(" [@", table_data$Zotero, "]"))
+colnames(table_data)[which(colnames(table_data) == "Zotero")] <- "Source"
+table_data <- table_data[, -which(colnames(table_data) == "Dataset")]
+
+#print table
+flex_table <- flextable(table_data) %>% 
+  merge_v(j = 1) %>% merge_v(j = 2) %>%
+  theme_vanilla() %>% set_table_properties(layout = "autofit") %>%
+  set_caption("The datasets included in this analysis, with whether they are open access, the vocalization category, and whether the sequences are comprised of element durations or inter-element intervals.", autonum = run_autonum(seq_id = "tab", bkm = "table-datasets")) %>%
+  colformat_md()
+flex_table
+```
 
 The strength of Menzerath's law in baleen and toothed whale species can be seen in Figures \@ref(fig:figure-myst-plot) and \@ref(fig:figure-odon-plot), respectively. In all baleen whale species, except for the North Pacific right whale, there is a negative relationship between sequence length and element or interval duration consistent with Menzerath's law. The results are more mixed for the toothed whale species, where only five of the nine exhibit Menzerath's law. All three dolphins in the *Cephalorhynchus* genus, as well as killer whales, display a neutral or positive relationship between sequence element and element or interval duration.
 
@@ -854,12 +789,6 @@ combined_words_position_plot <- ggplot(combined_words_plot_data) +
 png("plots/word_level_effects.png", width = 8, height = 6, units = "in", res = 600)
 cowplot::plot_grid(cowplot::plot_grid(combined_words_length_plot + theme(axis.text.x = element_blank(), legend.position = "none"), combined_words_position_plot + theme(legend.position = "none"), ncol = 1, align = "v", rel_heights = c(0.66, 1)), cowplot::get_legend(combined_words_length_plot), nrow = 1, rel_widths = c(1, 0.12))
 dev.off()
-
-# #export plot of phonemes in words
-# png("plots/word_level_effects.png", width = 8, height = 4, units = "in", res = 600)
-# #cairo_pdf("plots/effects.pdf", width = 8, height = 4, family = "avenir")
-# combined_words_plot
-# dev.off()
 ```
 
 ```{r figure-word-effects, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The 95% confidence intervals for the effect of sequence length (top; computed from Equation \\@ref(eq:lengthmodel)) and position (bottom; computed from Equation \\@ref(eq:positionmodel)) on element/interval duration for the 16 whale species and 51 human languages. The human language data are comprised of phonemes within words."}
@@ -896,7 +825,7 @@ flextable(table, col_keys = colnames(table)) %>%
 
 The vocalizations of 11 of the 16 whale species included in this analysis adhere to Menzerath's law, suggesting that they have undergone compression for increased communicative efficiency. Among these 11 species, the strength of Menzerath's law is comparable to, and sometimes far greater than, what is observed in spoken human language data. In the main text, I compared the whale sequences to phonemes within words because I was working with the smallest reported units for each species, but the results are similar for words within sentences (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)). For two species, humpback whales and killer whales, I was able to analyze sequences at two levels of analysis. Humpback whales exhibit Menzerath's law for both notes within phrases and phrases within songs. Killer whales, on the other hand, only exhibit Menzerath's law at the level of call sequences, as opposed to the elements comprising calls. When data from all 16 whale species are included in a single analysis, there is strong evidence for both Menzerath's law and for an effect of position&mdash;elements and intervals tend to be shortened over the course of sequences.
 
-Several species' produce vocalizations that do not adhere to Menzerath's law&mdash;killer whales (at the level of elements within calls), North Pacific right whales, and the three *Cephalorhynchus* dolphin species. The fact that killer whale vocalizations exhibit Menzerath's law in their call sequences, but not elements within calls, suggests that the former may be the more relevant level of analysis for communication [@kershenbaum_etal16]. The results from the North Pacific right whales are more puzzling. The data used in this study are from the first documented recordings of song in any right whale species [@crance_etal19], and are comprised of four song types with fairly dramatic differences in sequence lengths and interval durations (see clusters in Figure \@ref(fig:figure-myst-plot)). When Menzerath's law is assessed separately on each song type, two display the expected negative relationship, one displays a neutral relationship, and one displays a positive relationship between sequence length and interval duration. One speculative explanation for the mixed results in North Pacific right whales is that the songs may be in an early stage of cultural evolution. Crance et al. [@crance_etal19] found only one clear case of difference animals producing the same song type, and linguistic laws may emerge from repeated cultural transmission between individuals [@arnon_kirby24]. The three *Cephalorhynchus* species in this study&mdash;Hector's dolphins, Commerson's dolphins, and Heaviside's dolphins&mdash;all produce both narrowband high-frequency and broadband clicks that are thought to function in both echolocation and communication [@nielsen_etal24; @martin_etal21; @martin_etal18]. I only analyzed the rapid burst pulses of these clicks that are associated with social behavior, but it is possible that the clicks' use in echolocation reduces pressure for communicative efficiency. However, the burst pulses of the four other dolphin and porpoise species included in this study do adhere to Menzerath's law, so this hypothesis only makes sense if the boundaries between echolocation and communication are fuzzier in *Cephalorhynchus*. Another interesting detail is that Heaviside's dolphins produce temporally-patterned burst pulses with much more rhythmic variation in some social situations [@martin_etal19]. Data on temporally-patterned burst pulses were not available for use in this study, but it would be interesting to see whether Menzerath's law is present in these more complex vocalizations.
+Several species' produce vocalizations that do not adhere to Menzerath's law&mdash;killer whales (at the level of elements within calls), North Pacific right whales, and the three *Cephalorhynchus* dolphin species. The fact that killer whale vocalizations exhibit Menzerath's law in their call sequences, but not elements within calls, suggests that the former may be the more relevant level of analysis for communication [@kershenbaum_etal16]. The results from the North Pacific right whales are more puzzling. The data used in this study are from the first documented recordings of song in any right whale species [@crance_etal19], and are comprised of four song types with fairly dramatic differences in sequence lengths and interval durations (see clusters in Figure \@ref(fig:figure-myst-plot)). When Menzerath's law is assessed separately on each song type, two display the expected negative relationship, one displays a neutral relationship, and one displays a positive relationship between sequence length and interval duration. One speculative explanation for the mixed results in North Pacific right whales is that the songs may be in an early stage of cultural evolution, either for the first time or as part of recovery from endangerment. Crance et al. [@crance_etal19] found only one clear case of different animals producing the same song type, and linguistic laws may emerge from repeated cultural transmission between individuals [@arnon_kirby24]. The three *Cephalorhynchus* species in this study&mdash;Hector's dolphins, Commerson's dolphins, and Heaviside's dolphins&mdash;all produce burst pulses with both narrowband high-frequency and broadband clicks [@nielsen_etal24; @martin_etal21; @martin_etal18]. The former are thought to be used for echolocation and cryptic communication (above the hearing range of killer whales), whereas the latter are used for long-range communication [@martin_etal18]. One potential explanation for the absence of Menzerath's law in *Cephalorhynchus* is that the crypsis of narrowband high-frequency clicks is more important than their efficiency. Another interesting detail is that Heaviside's and Hector's dolphins sometimes produce temporally-patterned burst pulses with much more rhythmic variation during social interactions [@martin_etal19; @nielsen_etal24]. A preliminary analysis of patterned burst pulses from Heaviside's dolphins [@martin_etal19] shows that they do adhere to Menzerath's law (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)), suggesting that they may experience more information compression than burst pulses with more consistent intervals. Patterned burst pulses may be a good candidate for future studies of communication in *Cephalorhynchus*, although more documentation of these relatively rare vocalizations is needed.
 
 On a related note, Menzerath's law does not appear to be universal in spoken language at the level of phonemes in words (Figure \@ref(fig:figure-word-effects)) or words within sentences ([Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)), which is consistent with previous work on clauses in written sentences [@hou_etal17; @tanaka-ishii21] and syllables in written words [@meyer02; @g_torre_etal21]. Menzerath's law in language, then, appears to be a statistical tendency rather than an absolute universal [@piantadosi_gibson14], as opposed to Zipf's rank-frequency and brevity laws [@piantadosi14; @bentz_ferrer-i-cancho16].
 
@@ -904,19 +833,55 @@ The shortening of elements and intervals later in sequences is an unexpected fin
 
 Another explanation comes from primates, where coppery titi monkeys, eastern grey gibbons, and gelada baboons shorten some aspects of their vocalizations over the course of sequences (elements for the first two, intervals for the third) [@clink_lau20; @gustison_etal16]. Longer vocalizations are more energetically costly [@zhang_ghazanfar18; @franz_goller03; @holt_etal15], which is probably why humans and other mammals shorten their vocalizations as they fatigue [@vannoni_mcelligott09; @samson_etal14; @fujiki_etal22]. Gustison et al. [@gustison_etal16] and Clink and Lau [@clink_lau20] hypothesize that vocal shortening later in sequences reflects this simple energetic constraint, and that it may even explain Menzerath's law in some species. Other work in humans and birds supports the idea that Menzerath's law has physical origins [@torre_etal19; @hernandez-fernandez_etal19; @james_etal21]&mdash;a development that some have described as "liberating" after decades of debate about the origins of linguistic laws [@benesova_etal21]. In humans, Menzerath's law appears to be stronger in spoken than in written language [@torre_etal19; @hernandez-fernandez_etal19], and deafened canaries and zebra finches produce songs consistent with the law without hearing adult birds [@james_etal21]. If Gustison et al. [@gustison_etal16] and Clink and Lau [@clink_lau20] are correct, then the presence of vocal shortening may point to a physical original for Menzerath's law in whale communication.
 
-<!-- Recent studies in humans and birds suggest that Menzerath's law may have physical origins. In humans, Menzerath's law appears to be stronger in spoken than in written language [@torre_etal19; @hernandez-fernandez_etal19]. Another study found that omitting glottal stops, which do not affect meaning, causes Menzerath's law to break down [@benesova_etal21]. In birds, deafened canaries and zebra finches produce songs consistent with Menzerath's law, even though they were unable to learn from adult birds [@james_etal21]. -->
+The results of this study contribute to an emerging consensus that whale communication, alongside bird song, exhibits striking parallels with human language [@garland_etal17; @suzuki_etal06; @pines18; @allen_etal19; @begus_etal23; @stepanov_etal23; @sharma_etal24]. It is important to note, however, that similarity in form does not necessarily imply similarity in function. Language-like structure can emerge from pressure for efficiency even when communication carries no semantic meaning [@youngblood24]. While some species' communication has the capacity to convey a great deal of information [@sharma_etal24], researchers should be wary of over-interpreting similarities with language [@ryan_bossert24; @rendell24]. Further comparisons with music [@hersh_etal24], which exhibits many language-like features without semantic meaning [@rohrmeier_etal15], may also be needed to illuminate the diverse forms and functions of communication across whale species.
 
-<!-- "To move away from linguistics and to try to explain the law from the physical conditions of communication seems liberating—because a century-long effort of linguistic explanation of linguistic laws has brought disagreements and controversies rather than a clear explanation" [@benesova_etal21]. -->
+# Materials & Methods
 
-<!-- It is important to note, though, that different levels of analysis in human language exhibit different amplitudes of Menzerath's law [@cramer05], so comparisons with other constructs (e.g., clauses within sentences) may yield different results. -->
+## Data
 
-<!-- , which is why they are thought to function as "honest" advertisements of mate quality in some species [@clutton-brock_albon79; @fitch_hauser95] -->
+Cetacean vocal sequences have different names in different species (e.g., songs, codas, burst-pulses), and there is significant variation in research effort across taxa, so I used a mixture of different strategies to compile a convenience sample of candidate datasets. For heavily studied species I was able to find papers by using species-specific search term combinations like {"humpback whale" AND "song sequences"} and {"sperm whale" AND "codas"} on Google Scholar. For less represented taxa, like dolphins and porpoises, I also searched for datasets directly on repositories like Dryad, Zenodo, and Figshare. Within odontocetes (i.e., toothed whales), who produce clicks for echolocation, I only included vocalizations that have a known or hypothesized communication function (e.g., sperm whale codas, dolphin burst-pulses) [@hersh_etal22; @martin_etal18].
 
-<!-- Vowel lengthening right before word, phrase, and sentence boundaries... Two major hypothesis are: it helps listeners perceive boundaries, and it results from some aspect of articulatory control (it's a physical byproduct) [@oller73]. There is widespread variation in the strength of lengthening though, which indicates that it interacts with the phonological constraints of languages [@paschen_etal22; @seifart_etal21]. Lengthening appears to happen in birdsong, but its unclear if longer note types are used or if existing note types are plasitcally lengthened [@mol_etal17]. One explanation for lengthening is that when speakers switch from exhaling to inhaling it is energetically cheaper to gradually stop by slowing down [@mann_etal21], and that this tendency became adapted for marking boundaries through cultural evolution [@matzinger_fitch21]. Both Odontocetes and Mysticetes have adaptations allowing them to produce vocalizations without breathing [@elemans_etal24]. Final lengthening also happens in music and birdsong [@mann_etal21; @tierney_etal11]. @tierney_etal11 predict that, if lengthening results from motor constraints, then species that "sing without rapidly and actively changing the shape of their vocal tract should not show a tendency to lengthen final notes". -->
+In total, I found `r nrow(datasets)` studies that reported the durations of elements, or the intervals between elements, within vocal sequences. `r length(which(datasets$Open == "Yes" & datasets$Used == "Yes"))` of these had open data that were suitable for analysis. I emailed the corresponding authors of the remaining studies and was granted access to `r length(which(datasets$Used == "Yes" & datasets$Open == "No"))` closed datasets that were suitable for analysis. The final `r length(which(datasets$Used == "Yes"))` datasets can be seen in Table \@ref(tab:table-datasets) [@lewis_etal18; @erbs_etal21; @romagosa_etal24; @wood_sirovic22; @best_etal22; @schall_etal21; @schall_etal22; @owen_etal19; @martin_etal22; @crance_etal19; @macklin_etal24; @cerchio_weir22; @stepanov_etal23; @martin_etal21; @martin_etal18; @nielsen_etal24; @selbmann_etal23; @terada_etal22; @martin_etal24; @arranz_etal16; @hersh_etal22; @vachon_etal22a; @gero_etal16; @sharpe_etal17]. Three of the datasets, two in humpback whales [@schall_etal21; @schall_etal22] and one in killer whales [@selbmann_etal23], were analyzed separately because they log the durations of higher-level units (e.g., for the humpbacks, phrases within songs rather than notes within phrases). Element durations were defined as the time between the beginning and end of a sound (Figure \@ref(fig:figure-spectrograms)). Inter-element intervals were usually defined as the time between the beginning of a sound and the one that comes next, although several studies did not explicitly specify this in their methods [@terada_etal22; @arranz_etal16, @hersh_etal22; @vachon_etal22a; @gero_etal16].
 
-<!-- Interestingly, I found that elements and intervals tend to be shortened over the course of sequences. @gustison_etal16 found in geladas that element duration did not change over the course of sequences, but that interval duration decreased... @lewis_etal23 propose that a negative effect of position on element duration (which they found the opposite of) *would have been* evidence that it drives Menzerath's law. [continue narrowing down the position stories in each cited article below] @huang_etal20 found in gibbons that one species has a positive correlation while the other has none... they also talk about how a negative relationship would be consistent with breathing constraints (and cite @gustison_etal16). @clink_lau20 also says that a negative relationship is consistent with energetic constraints. They found that tarsiers had a positive relationship while tit monkeys and male gibbon solos (from a different species than huang) had a negative relationship. In birds, most species display a positive relationship but three display a negative relationship [@james_etal21]... @g_torre_etal21 only show this for four languages, whereas I do so in 51! -->
+The phrase-level humpback whale dataset [@owen_etal19] was the only one that did not include the durations of individual elements or intervals in sequences. Instead, Owen et al. [@owen_etal19] report the sequences as strings of element categories, with a separate file that logs the durations of many different elements from each category. For this dataset, I interpolated the sequences with the median duration of each element category. Supplementary analysis with human language data suggests that interpolation with median durations systematically reduces the strength of Menzerath's law, which should lead to more conservative conclusions (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)).
 
-<!-- Interestingly, I found that the relationship between an element's position in the sequences and its duration was variable across human languages and whale species. This results is in conflict with a previous study that found a generally positive relationship between characters in syllables and their position in written words 21 languages [@g_torre_etal21]. In birds, elements that appear later in sequences tend to be longer [@james_etal21; @lewis_etal23]. This is also true in bottlenose dolphins [@vradi21], but the story is more complicated in primates where the presence and slope of the relationship depends on the species [@huang_etal20; @gustison_etal16; @clink_lau20]... -->
+The phylogeny in Figures \@ref(fig:figure-myst-plot) and \@ref(fig:figure-odon-plot) comes from a metatree of Cetacea comprised of both molecular and morphological data [@lloyd_slater21]. As the phylogeny was primarily for visualization purposes, I assigned three species that do not appear in the metatree to close relatives in the same genus: the narrow-ridged finless porpoise (*Neophocaena asiaeorientalis*) to the Indo-Pacific finless porpoise (*Neophocaena phocaenoides*), the Commerson's dolphin (*Cephalorhynchus commersonii*) to the Chilean dolphin (*Cephalorhynchus eutropia*), and the Peale's dolphin (*Lagenorhynchus australis*) to the white-beaked dolphin (*Lagenorhynchus albirostris*).
+
+As a comparison with the whale data, I also analyzed spoken language data from DoReCo [@seifart_etal22]&mdash;a corpus of ~500,000 annotated words (with phonemes) from 51 languages that focuses on small and endangered languages [@seifart_etal22]. DoReCo has been used in previous studies of Menzerath's law [@stave_etal21]. The only pre-processing was removing everything marked as an "exceptional speech event" (i.e., singing, disfluencies, silent pauses). For the main analysis, I followed Menzerath [@menzerath54] in using the durations of phonemes within words, but the results with the durations of words within sentences can be found in the [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html).
+
+## Model Fitting
+
+All models were fit using the *lme4* (v1.1-35.1) package in *R* (v4.3.1) [@bates_etal15] with the BOBYQA optimizer. To avoid the many problems associated with *p*-values [@nuzzo14; @amrhein_etal19], I report mean estimates and 95% Wald confidence intervals, and interpret intervals that do not overlap zero as indicating a strong effect. To enable direct comparison of fixed effects across different models, I used maximum likelihood and z-scored the sequence lengths and element or interval durations within species and languages [@fox_etal15]. All reported models were manually checked for convergence.
+
+In Equation \@ref(eq:reducedmenzlinear), $y$ is usually the mean duration of elements within sequences, but I will use the full distribution of element durations within sequences [@youngblood24]. This leads to similar estimates of $a$ and $b$ in linguistic corpora, helps to avoid spurious "regression to the mean" effects [@milicka23; @gustison_etal16; @ferrer-i-cancho_etal14], and better captures uncertainty in the models [@youngblood24]. I also follow other work in excluding single-element sequences (i.e., with a length of one) from the analysis, which have been shown to depart from Menzerath's law [@heesen_etal19; @torre_etal19; @g_torre_etal21; @hernandez-fernandez_etal19].
+
+The main model used to test Menzerath's law was Equation \@ref(eq:reducedmenzlinear) with sequence ID as a varying intercept to account for the repeated measurements of durations within sequences. Some species had multiple datasets, in which case the study ID was included as a second varying intercept. Here is the main model in Wilkinson notation&mdash;standard R model syntax.
+
+\begin{equation}
+\ln(\textrm{duration}) \sim \ln(\textrm{length}) + (1|\textrm{sequence})
+(\#eq:lengthmodel)
+\end{equation}
+
+Additionally, I fit a second model that included the position of each element or interval in the sequence as a fixed effect, following previous studies of Menzerath's law in non-human animals [@james_etal21; @lewis_etal23; @vradi21; @gustison_etal16; @clink_lau20; @huang_etal20]. Position was normalized between 0 and 1 using the function $(n - 1)/(l - 1)$, where $n$ is the position of the element or interval and $l$ is the length of the sequence [@james_etal21]. The purpose of this model was to assess whether Menzerath's law is driven by a shortening of elements or intervals over the course of the sequence, or a tendency to begin long sequences with shorter elements or intervals.
+
+\begin{equation}
+\ln(\textrm{duration}) \sim \ln(\textrm{length}) + \textrm{position} + (1|\textrm{sequence})
+(\#eq:positionmodel)
+\end{equation}
+
+Finally, I assessed broader cross-species trends in Menzerath's law with expanded forms of Equation \@ref(eq:lengthmodel) and \@ref(eq:positionmodel) applied to all species at once. Interactions between length and position and the following two features were added: (1) the group the species comes from, to determine whether the effect varies between Mysticetes and Odontocetes, and (2) the type of vocalization, to determine whether the effect is stronger for elements or intervals. Group and type were not added as separate fixed effects (outside of the interactions) because the z-scaling of duration within species removes species differences. Sequence and study were included as varying intercepts. The effect of sequence length on element/interval duration does not have significant phylogenetic signal ($K$ = `r round(phylo_signal$K, 2)`; $p$ = `r round(phylo_signal$P, 2)`), computed using the method of Ives et al. [@ives_etal07] as implemented in the *phytools* package (2.1.1) in *R* (v4.3.1) [@revell24], so I did not include phylogeny in the modeling.
+
+\begin{align*}
+\ln(\textrm{duration}) & \sim \ln(\textrm{length}) \\ & + \ln(\textrm{length}) : \textrm{group} + \ln(\textrm{length}) : \textrm{type} \\ & + (1|\textrm{sequence}) + (1|\textrm{study})
+(\#eq:lengthmodelall)
+\end{align*}
+
+\begin{align*}
+\ln(\textrm{duration}) & \sim \ln(\textrm{length}) \\ & + \ln(\textrm{length}) : \textrm{group} + \ln(\textrm{length}) : \textrm{type} \\ & + \textrm{position} \\ & + \textrm{position} : \textrm{group} + \textrm{position} : \textrm{type} \\ & + (1|\textrm{sequence}) + (1|\textrm{study})
+(\#eq:positionmodelall)
+\end{align*}
+
+I originally planned to compare the patterns in the real data with simulated data from a null model that is thought to account for production constraints [@james_etal21], as I recently did for house finch song [@youngblood24], but analyses of language data suggest that it is far too conservative of a null model. More details about this exploratory analysis can be found in the [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html).
 
 # Acknowledgments {-}
 

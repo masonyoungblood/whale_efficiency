@@ -1,5 +1,5 @@
 #set working directory
-setwd("~/Documents/Work/Spring 2024/Whale ZLA/whale_song_efficiency/docs")
+setwd("~/Documents/Work/Spring 2024/Whale ZLA/whale_efficiency/docs")
 
 # SPERM WHALES ------------------------------------------------------------
 
@@ -372,7 +372,25 @@ sei_macklin_2024 <- do.call(rbind, lapply(unique_sequences, function(x){
 #   }
 # }))
 
-sei_data <- sei_macklin_2024
+sei_cerchio_2022 <- readxl::read_xlsx("data/sei_cerchio_2022.xlsx")
+sei_cerchio_2022 <- sei_cerchio_2022[order(sei_cerchio_2022$`Begin Date Time`), ]
+
+sei_cerchio_2022$interval <- c(NA, sapply(2:nrow(sei_cerchio_2022), function(x){as.numeric(sei_cerchio_2022$`Begin Date Time`[x] - sei_cerchio_2022$`Begin Date Time`[x - 1], units = "secs")}))
+counter <- 1
+sequence <- counter
+for(i in 2:nrow(sei_cerchio_2022)){
+  if(sei_cerchio_2022$interval[i] > 3){
+    counter <- counter + 1
+    sequence <- c(sequence, counter)
+  }
+  if(sei_cerchio_2022$interval[i] <= 3){
+    sequence <- c(sequence, counter)
+  }
+}
+
+sei_cerchio_2022 <- data.frame(duration = sei_cerchio_2022$`Duration (s)`, sequence = sequence)
+
+sei_data <- list(cerchio_2022 = sei_cerchio_2022, macklin_2024 = sei_macklin_2024)
 save(sei_data, file = "data/processed/sei_data.RData")
 
 # HEAVISIDE'S DOLPHINS ----------------------------------------------------
@@ -384,6 +402,14 @@ heavisides_data <- do.call(rbind, lapply(1:length(files), function(x){
   data.frame(duration = diff(R.matlab::readMat(paste0("data/heavisides_martin_2018/NBHF and BB bps/", files[x]))$clicks[, 1]), sequence = x)
 }))
 save(heavisides_data, file = "data/processed/heavisides_data.RData")
+
+files <- list.files("data/heavisides_martin_2018/patterned")
+files <- files[grep(".mat", files)]
+
+heavisides_patterned_data <- do.call(rbind, lapply(1:length(files), function(x){
+  data.frame(duration = diff(R.matlab::readMat(paste0("data/heavisides_martin_2018/patterned/", files[x]))$clicks[, 1]), sequence = x)
+}))
+save(heavisides_patterned_data, file = "data/processed/heavisides_patterned_data.RData")
 
 # COMMERSON'S DOLPHINS ----------------------------------------------------
 
