@@ -236,13 +236,13 @@ menz_fit <- function(data, n_sim_data = 10, use_mean = FALSE, rm_singles = TRUE,
 }
 
 #function for creating menzerath plot
-menz_plot <- function(data, model, tokens = FALSE, intervals = FALSE, rm_singles = TRUE, unit = "s", color = "black", alpha = 1, effects_panel = 0.2, prop_dist_to_plot = 1){
+menz_plot <- function(data, model, tokens = FALSE, intervals = FALSE, rm_singles = TRUE, original_axes = TRUE, unit = "s", color = "black", alpha = 1, effects_panel = 0.2, prop_dist_to_plot = 1, effects_axis = c(-0.8, 0.4), effects_breaks = 6, y_breaks = 2){
   #get intercept and effects for best fit line
   intercept <- summary(model$actual$reduced_scaled)$coef[1, 1]
   effect <- summary(model$actual$reduced_scaled)$coef[2, 1]
   
   #construct ylabel from function options
-  ylab <- paste0(ifelse(!tokens, "Mean ", ""), ifelse(!intervals, "ED (", "IEI ("), unit, ")")
+  ylab <- paste0(ifelse(!tokens, "Mean ", ""), ifelse(!intervals, "ED (", "IOI ("), unit, ")")
   
   #if multiple datasets then collapse into single
   if(!is.data.frame(data)){
@@ -262,27 +262,39 @@ menz_plot <- function(data, model, tokens = FALSE, intervals = FALSE, rm_singles
   #if there are any non-sequences (length less than 2) remove them
   if(rm_singles & length(which(data$length < 2)) > 0){data <- data[-which(data$length < 2), ]}
   
-  #get original scaling from data
-  og_scaled_x <- scale(log(data$length))
-  og_scaled_y <- scale(log(data$duration))
-  
-  #function that predicts durations from lengths, based on intercepts, effects, and means and sds from scaling
-  pred_durations <- function(intercept, effect, length, mean_log_length, sd_log_length, mean_log_dur, sd_log_dur){
-    return(exp((intercept + effect*((log(length) - mean_log_length)/sd_log_length))*sd_log_dur + mean_log_dur))
+  #if the original axes of the data are to be plotted
+  if(original_axes){
+    #get original scaling from data
+    og_scaled_x <- scale(log(data$length))
+    og_scaled_y <- scale(log(data$duration))
+    
+    #function that predicts durations from lengths, based on intercepts, effects, and means and sds from scaling
+    pred_durations <- function(intercept, effect, length, mean_log_length, sd_log_length, mean_log_dur, sd_log_dur){
+      return(exp((intercept + effect*((log(length) - mean_log_length)/sd_log_length))*sd_log_dur + mean_log_dur))
+    }
+    
+    #compute best fit line for plotting
+    best_fit_data <- data.frame(x = seq(from = min(data$length), to = max(data$length), length.out = 1000))
+    best_fit_data$y <- pred_durations(intercept, effect, length = best_fit_data$x,
+                                      mean_log_length = attr(og_scaled_x, "scaled:center"), sd_log_length = attr(og_scaled_x, "scaled:scale"),
+                                      mean_log_dur = attr(og_scaled_y, "scaled:center"), sd_log_dur = attr(og_scaled_y, "scaled:scale"))
+  } else{
+    #otherwise
+    #overwrite original data with scaled and logged data
+    data$length <- scale(log(data$length))
+    data$duration <- scale(log(data$duration))
+    
+    #compute best fit line for plotting
+    best_fit_data <- data.frame(x = seq(from = min(data$length), to = max(data$length), length.out = 1000))
+    best_fit_data$y <- (best_fit_data$x*effect) + intercept
   }
-  
-  #compute best fit line for plotting
-  best_fit_data <- data.frame(x = seq(from = min(data$length), to = max(data$length), length.out = 1000))
-  best_fit_data$y <- pred_durations(intercept, effect, length = best_fit_data$x,
-                                    mean_log_length = attr(og_scaled_x, "scaled:center"), sd_log_length = attr(og_scaled_x, "scaled:scale"),
-                                    mean_log_dur = attr(og_scaled_y, "scaled:center"), sd_log_dur = attr(og_scaled_y, "scaled:scale"))
   
   #construct plot
   plot <- ggplot(data, aes(x = length, y = duration)) +
     geom_point(colour = scales::alpha(color, alpha), size = 1, stroke = 0) +
     geom_line(data = best_fit_data, aes(x = x, y = y), colour = "black", linewidth = 0.5) +
     theme_linedraw(base_size = 6, base_family = "Avenir") +
-    scale_y_continuous(breaks = scales::pretty_breaks(n = 2)) + 
+    scale_y_continuous(breaks = scales::pretty_breaks(n = y_breaks)) + 
     xlim(min(data$length), as.numeric(quantile(data$length, prop_dist_to_plot))) + 
     #ylim(min(data$duration), as.numeric(quantile(data$duration, prop_dist_to_plot))) + 
     xlab(paste0("# of ", ifelse(intervals, "Intervals", "Elements"), " in Sequence")) + ylab(ylab) + 
@@ -296,8 +308,8 @@ menz_plot <- function(data, model, tokens = FALSE, intervals = FALSE, rm_singles
     geom_point(aes(x = 1, y = summary(model$actual$reduced_scaled)$coef[2, 1]), size = 1.5, stroke = 0, colour = scales::alpha(color, alpha)) + 
     geom_linerange(aes(x = 1, ymin = bounds[1], ymax = bounds[2]), colour = scales::alpha(color, alpha)) + 
     theme_linedraw(base_size = 6, base_family = "Avenir") + 
-    geom_hline(yintercept = 0, lty = "dashed") + 
-    scale_y_continuous(name = "Slope", position = "right", labels = scales::number_format(accuracy = 0.1), breaks = scales::pretty_breaks(n = 2)) + 
+    geom_hline(yintercept = 0, lty = "dotted") + 
+    scale_y_continuous(name = "Slope", position = "right", limits = effects_axis, labels = scales::number_format(accuracy = 0.1), breaks = scales::pretty_breaks(n = effects_breaks)) + 
     scale_x_continuous(name = "...", breaks = c(1), labels = c("A"), limits = c(0.5, 1.5)) + 
     theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), 
           axis.ticks.x = element_blank(),
@@ -491,20 +503,234 @@ label_maker <- function(data, rm_singles = TRUE, intervals = FALSE){
 }
 
 #create function for extracting model effects and confidence intervals
-table_output <- function(model, w_position = FALSE){
+table_output <- function(model, w_position = FALSE, zla = FALSE){
   #prod_null_all <- as.numeric(summary(model$prod_null$reduced_scaled, conf.int = TRUE, method = "Wald")[2, c(2, 7, 8)])
   
-  if(w_position){
-    length_effect <- summary(model$actual$position_scaled)$coefficients[2, 1]
-    length_confints <- as.numeric(confint(model$actual$position_scaled, parm = "scale(log(length))", method = "Wald"))
-    position_effect <- summary(model$actual$position_scaled)$coefficients[3, 1]
-    position_confints <- as.numeric(confint(model$actual$position_scaled, parm = "scale(position)", method = "Wald"))
-    output <- c(length_effect, length_confints, position_effect, position_confints)
-  } else{
-    length_effect <- summary(model$actual$reduced_scaled)$coefficients[2, 1]
-    length_confints <- as.numeric(confint(model$actual$reduced_scaled, parm = "scale(log(length))", method = "Wald"))
-    output <- c(length_effect, length_confints)
+  if(!zla){
+    if(w_position){
+      length_effect <- summary(model$actual$position_scaled)$coefficients[2, 1]
+      length_confints <- as.numeric(confint(model$actual$position_scaled, parm = "scale(log(length))", method = "Wald"))
+      position_effect <- summary(model$actual$position_scaled)$coefficients[3, 1]
+      position_confints <- as.numeric(confint(model$actual$position_scaled, parm = "scale(position)", method = "Wald"))
+      output <- c(length_effect, length_confints, position_effect, position_confints)
+    } else{
+      length_effect <- summary(model$actual$reduced_scaled)$coefficients[2, 1]
+      length_confints <- as.numeric(confint(model$actual$reduced_scaled, parm = "scale(log(length))", method = "Wald"))
+      output <- c(length_effect, length_confints)
+    }
+  }
+  
+  if(zla){
+    effect <- summary(model)$coefficients[2, 1]
+    confints <- confint(model, parm = "count", method = "Wald")
+    output <- c(effect, confints)
   }
   
   return(output)
+}
+
+#fit zla models
+zla_fit <- function(data){
+  #if data are from multiple studies, combine them (scaling within studies to enable comparison despite different sample sizes)
+  if(!is.data.frame(data)){
+    data <- do.call(rbind, lapply(1:length(data), function(x){
+      data[[x]]$count <- scale(sapply(1:nrow(data[[x]]), function(y){length(which(data[[x]]$type == data[[x]]$type[y]))}))
+      data[[x]]$study <- x
+      data[[x]]
+    }))
+    lme4::lmer(scale(log(duration)) ~ count + (1|type) + (1|study), data = data, REML = FALSE, control = lme4::lmerControl(optimizer = "bobyqa"))
+  } else{
+    #otherwise run normally
+    data$count <- scale(sapply(1:nrow(data), function(x){length(which(data$type == data$type[x]))}))
+    lme4::lmer(scale(log(duration)) ~ count + (1|type), data = data, REML = FALSE, control = lme4::lmerControl(optimizer = "bobyqa"))
+  }
+}
+
+#function for creating zla plot
+zla_plot <- function(data, model, original_axes = TRUE, color = "black", aggregated = TRUE, alpha = 1, effects_panel = 0.2, effects_breaks = 8, ylims = NULL, effects_axis = c(-1, 1.2), y_breaks = 2){
+  #structure data for plotting
+  if(!is.data.frame(data)){
+    data <- do.call(rbind, lapply(1:length(data), function(x){
+      data[[x]]$raw_count <- sapply(1:nrow(data[[x]]), function(y){length(which(data[[x]]$type == data[[x]]$type[y]))})
+      data[[x]]$count <- scale(sapply(1:nrow(data[[x]]), function(y){length(which(data[[x]]$type == data[[x]]$type[y]))}))
+      data[[x]]$study <- x
+      data[[x]]
+    }))
+  } else{
+    data$raw_count <- sapply(1:nrow(data), function(x){length(which(data$type == data$type[x]))})
+    data$count <- scale(sapply(1:nrow(data), function(x){length(which(data$type == data$type[x]))}))
+  }
+  
+  #get intercept and effects for best fit line
+  intercept <- summary(model)$coef[1, 1]
+  effect <- summary(model)$coef[2, 1]
+  
+  #if the original axes of the data are to be plotted
+  if(original_axes){
+    #get original scaling from data
+    og_scaled_y <- scale(log(data$duration))
+    
+    #function that predicts durations from lengths, based on intercepts, effects, and means and sds from scaling
+    pred_durations <- function(intercept, effect, count, mean_log_dur, sd_log_dur){
+      return(exp((intercept + effect*count)*sd_log_dur + mean_log_dur))
+    }
+    
+    #compute best fit line for plotting
+    best_fit_data <- data.frame(x = seq(from = min(data$count), to = max(data$count), length.out = 1000))
+    best_fit_data$y <- pred_durations(intercept, effect, count = best_fit_data$x,
+                                      mean_log_dur = attr(og_scaled_y, "scaled:center"), sd_log_dur = attr(og_scaled_y, "scaled:scale"))
+    best_fit_data$x <- seq(from = min(data$raw_count), to = max(data$raw_count), length.out = 1000)
+  } else{
+    #otherwise
+    #overwrite original data with scaled and logged data
+    data$duration <- scale(log(data$duration))
+    
+    #compute best fit line for plotting
+    best_fit_data <- data.frame(x = seq(from = min(data$count), to = max(data$count), length.out = 1000))
+    best_fit_data$y <- (best_fit_data$x*effect) + intercept
+  }
+  
+  #construct plot, aggregating durations into types to match menzerath plot
+  #with option to specify custom xlim
+  if(aggregated){
+    if(original_axes){
+      data <- aggregate(duration ~ type + raw_count, data, mean)
+      colnames(data) <- c("type", "count", "duration")
+    } else{
+      data <- aggregate(duration ~ type + count, data, mean)
+      colnames(data) <- c("type", "count", "duration")
+    }
+  }
+  if(is.null(ylims)){
+    plot <- ggplot(data, aes(x = count, y = duration)) +
+      geom_point(colour = scales::alpha(color, alpha), size = 1, stroke = 0) +
+      geom_line(data = best_fit_data, aes(x = x, y = y), colour = "black", linewidth = 0.5) +
+      theme_linedraw(base_size = 6, base_family = "Avenir") +
+      xlab("Count") + ylab("Mean ED (s)") + 
+      scale_y_continuous(breaks = scales::pretty_breaks(n = y_breaks)) + 
+      theme(axis.text.y = element_text(angle = 90))
+  } else{
+    plot <- ggplot(data, aes(x = count, y = duration)) +
+      geom_point(colour = scales::alpha(color, alpha), size = 1, stroke = 0) +
+      geom_line(data = best_fit_data, aes(x = x, y = y), colour = "black", linewidth = 0.5) +
+      theme_linedraw(base_size = 6, base_family = "Avenir") +
+      xlab("Count") + ylab("Mean ED (s)") + 
+      scale_y_continuous(breaks = scales::pretty_breaks(n = y_breaks), limits = c(ylims[1], ylims[2])) + 
+      theme(axis.text.y = element_text(angle = 90))
+  }
+  
+  #get bounds of confidence interval
+  bounds <- confint(model, parm = "count", method = "Wald")
+  
+  #construct effects plot
+  effects_plot <- ggplot() + 
+    geom_point(aes(x = 1, y = summary(model)$coef[2, 1]), size = 1.5, stroke = 0, colour = scales::alpha(color, alpha)) + 
+    geom_linerange(aes(x = 1, ymin = bounds[1], ymax = bounds[2]), colour = scales::alpha(color, alpha)) + 
+    theme_linedraw(base_size = 6, base_family = "Avenir") + 
+    geom_hline(yintercept = 0, lty = "dotted") + 
+    scale_y_continuous(name = "Slope", position = "right", limits = effects_axis, labels = scales::number_format(accuracy = 0.1), breaks = scales::pretty_breaks(n = effects_breaks)) + 
+    scale_x_continuous(name = "...", breaks = c(1), labels = c("A"), limits = c(0.5, 1.5)) + 
+    theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank(), 
+          axis.ticks.x = element_blank(),
+          axis.title.x = element_text(colour = "white"),
+          axis.text.x = element_text(colour = "white"))
+  
+  #return plot
+  return(cowplot::plot_grid(plot, effects_plot, rel_widths = c(1, effects_panel)))
+}
+
+#create label for phylogeny plots
+zla_label_maker <- function(data){
+  #store boolean of whether data are from multiple studies
+  multiple_studies <- !is.data.frame(data)
+  
+  #set number of studies to zero by default
+  n_studies <- 1
+  
+  #if multiple studies are in the data
+  if(multiple_studies){
+    #store actual number of studies
+    n_studies <- length(data)
+    
+    #collapse data
+    data <- data.frame(type = unlist(lapply(1:length(data), function(x){paste0(x, "-", data[[x]]$type)})),
+                       duration = unlist(lapply(1:length(data), function(x){data[[x]]$duration})))
+  }
+  
+  #create text label
+  return(paste0(formatC(nrow(data), big.mark = ","), " Elements", "\n", 
+                formatC(length(unique(data$type)), big.mark = ","), " ", "Types", "\n",
+                n_studies, " ", ifelse(multiple_studies, "Studies", "Study")))
+}
+
+#read human phonemic data from the doreco dataset for zla
+zla_read_phonemes <- function(path){
+  #read in and format csv file
+  data <- read.csv(path, header = FALSE)
+  if(length(which(is.na(data[1, ]))) > 0){
+    data <- data[, 1:(min(which(is.na(data[1, ]))) - 1)]
+  }
+  colnames(data) <- data[1, ]
+  data <- data[-1, ]
+  data$duration <- as.numeric(data$end) - as.numeric(data$start)
+  
+  #remove exceptional speech events, such as pauses, singing, and disfluencies: https://doreco.huma-num.fr/HowTo
+  data <- data[-which(data$ph %in% c("<<fp>>", "<<fs>>", "<<pr>>", "<<fm>>", "<<sg>>", "<<bc>>", "<<id>>", "<<on>>", "<<wip>>", "<<ui>>", "<p:>")), ]
+  
+  #phonemes
+  phonemes_zla <- data.frame(type = data$ph, duration = data$duration)
+  
+  #words
+  words_zla <- aggregate(duration ~ wd_ID, data, sum)
+  words_zla$wd <- data$wd[match(words_zla$wd_ID, data$wd_ID)]
+  words_zla <- data.frame(type = words_zla$wd, duration = words_zla$duration)
+  
+  #return both
+  return(list(phonemes = phonemes_zla, words = words_zla))
+}
+
+#function for assessing zipf's law of abbreviation across species
+#data should be a nested list, where top levels are species, and second levels are individual studies (if applicable)
+#group should be a vector of 0/1, 0 for mysticetes and 1 for odontocetes
+zipf_compare <- function(data, group, include_group = TRUE, cores = 7){
+  #combine datasets
+  data <- do.call(rbind, parallel::mclapply(1:length(data), function(x){
+    #store temporary version of data to modify
+    temp <- data[[x]]
+    
+    #if data are from multiple studies, combine them (scaling within studies to enable comparison despite different sample sizes)
+    if(!is.data.frame(temp)){
+      temp <- do.call(rbind, lapply(1:length(temp), function(y){
+        temp[[y]]$count <- scale(sapply(1:nrow(temp[[y]]), function(z){length(which(temp[[y]]$type == temp[[y]]$type[z]))}))
+        temp[[y]]$duration <- scale(log(temp[[y]]$duration))
+        temp[[y]]$species <- x
+        temp[[y]]$study <- y
+        if(include_group){temp[[y]]$group <- group[x]}
+        return(temp[[y]])
+      }))
+      
+      #concatenate what needs to be concatenated
+      temp$study <- paste0(temp$species, "-", temp$study)
+    } else{
+      #otherwise run normally
+      temp$count <- scale(sapply(1:nrow(temp), function(x){length(which(temp$type == temp$type[x]))}))
+      temp$duration <- scale(log(temp$duration))
+      temp$species <- x
+      temp$study <- 1
+      if(include_group){temp$group <- group[x]}
+      
+      #concatenate what needs to be concatenated
+      temp$study <- paste0(temp$species, "-", temp$study)
+    }
+    
+    #and return
+    return(temp) 
+  }, mc.cores = cores))
+  
+  #run model
+  if(include_group){model <- lmer(duration ~ count + count:group + (1|study), data = data, REML = FALSE, control = lmerControl(optimizer = "bobyqa"))}
+  if(!include_group){model <- lmer(duration ~ count + (1|study), data = data, REML = FALSE, control = lmerControl(optimizer = "bobyqa"))}
+  
+  #return model
+  return(model)
 }

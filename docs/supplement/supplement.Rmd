@@ -21,17 +21,19 @@ output:
 always_allow_html: true
 bibliography: bibliography.json
 link-citations: true
-# csl: apa.csl
-csl: ../vancouver.csl
+csl: ../science.csl
 fig_caption: true
 ---
 
-```{r, echo = FALSE, eval = FALSE}
-#optionally hide all code
-knitr::opts_chunk$set(echo = FALSE)
-
-#set fonts of flextables
-flextable::set_flextable_defaults(font.family = "Garamond", font.size = 10, padding.top = 1, padding.bottom = 1, keep_with_next = FALSE)
+```{r word-doc, echo = FALSE, eval = TRUE}
+#if output is a word document
+if(!knitr::is_html_output()){
+  #optionally hide all code
+  knitr::opts_chunk$set(echo = FALSE)
+  
+  #set fonts of flextables
+  flextable::set_flextable_defaults(font.family = "Garamond", font.size = 10, padding.top = 1, padding.bottom = 1, keep_with_next = FALSE)
+}
 ```
 
 ```{r echo = FALSE, message = FALSE}
@@ -41,14 +43,22 @@ library(officer)
 library(dplyr)
 ```
 
-# Links {-}
+```{r load-models, echo = FALSE, eval = FALSE}
+#load fitted models
+files <- list.files("../models/")[grep(".RData", list.files("../models/"))]
+for(i in 1:length(files)){load(paste0("../models/", files[i]))}
+```
 
-* [Main text](https://masonyoungblood.github.io/whale_efficiency/)
-* [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
-* [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
-* [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
+<!-- # Links {-} -->
 
-# Distribution of Durations and Intervals
+<!-- * [Main text](https://masonyoungblood.github.io/whale_efficiency/) -->
+<!-- * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) -->
+<!-- * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab) -->
+<!-- * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency) -->
+
+# Menzerath's Law
+
+## Durations and Intervals
 
 ```{r density, echo = FALSE, eval = FALSE}
 #get z-scored durations
@@ -62,7 +72,7 @@ durations_density <- density(durations, adjust = 4, n = 1000)
 intervals_density <- density(intervals, adjust = 4, n = 1000)
 
 #combine for plotting
-plot_data <- data.frame(x = c(durations_density$x, intervals_density$x), y = c(durations_density$y, intervals_density$y), Type = rep(c("Durations", "Intervals"), each = 1000))
+plot_data <- data.frame(x = c(durations_density$x, intervals_density$x), y = c(durations_density$y, intervals_density$y), Type = rep(c("Elements", "Intervals"), each = 1000))
 
 #plot and save
 png("../plots/density.png", width = 4, height = 3, units = "in", res = 600)
@@ -70,22 +80,48 @@ ggplot(plot_data, aes(x = x, y = y, color = Type)) +
   geom_line() + 
   ylab("Density") + 
   scale_x_continuous(name = "z-Scored Measure", limits = c(-2.5, 5)) + 
-  scale_color_manual(values = c("#638ccc", "#ca5670")) + 
+  scale_color_manual(values = c("#D55E00", "#0072B2")) + 
   theme_linedraw(base_size = 8, base_family = "Avenir")
 dev.off()
 ```
 
-```{r supp-figure-density, echo = FALSE, fig.align = "center", out.width = "50%", fig.cap = "The distribution of element durations and inter-element intervals from the whale vocal sequences included in this analysis. The times are z-scored within each study to enable direct comparison."}
+```{r supp-figure-density, echo = FALSE, fig.align = "center", out.width = "50%", fig.cap = "The distribution of element durations and inter-onset intervals from the whale vocal sequences included in this analysis. The times are z-scored within each study to enable direct comparison."}
 knitr::include_graphics("../plots/density.png")
 ```
 
-# Effects in Whale Data
+To assess whether the strength of Menzerath's law in human language is similar when computed from element durations and inter-onset intervals, I conducted a supplementary analysis with a corpus of spoken language data that was collected to study efficiency in information encoding [@coupe_etal19]. DoReCo could not be used for this supplementary analysis because it includes the short gaps between phonemes in its measurements [@seifart_etal22], making it impossible to analyze element durations and inter-onset intervals separately without a reanalysis of the raw data. Coupe et al.'s dataset is composed of 2,288 recordings of speech, ranging from three to five sentences in length, and representing 17 different languages [@coupe_etal19]. For each recording, they collected the number of syllables, the overall duration including vocalizations and silence, and the duration only including silence, making it possible to compute the average element duration and inter-onset interval of each recording.
+
+Each sequence in Coupe et al.'s data is a set of sentences from a single speaker [@coupe_etal19]. Analyzing Menzerath's law in utterances above the sentence-level is unusual but has precedent [@rothe-neves_etal18; @schusterova_etal14]. It would be ideal to conduct this analysis at the same level of the linguistic hierarchy as DoReCo (e.g., phonemes within words, words within sentences.), but Coupe et al.'s dataset is the only one I found that separates phonation from silence [@coupe_etal19].
+
+For each sequence, I analyzed (1) the length in syllables, (2) the average duration of syllables, and (3) the average inter-onset interval between syllables. These data were analyzed using the same linear model as in the main text, excluding the varying intercept because each point corresponds to the average duration/interval within a sequence:
+
+\begin{equation}
+\ln(\textrm{duration}) \sim \ln(\textrm{length})
+(\#eq:supplengthmodel)
+\end{equation}
+
+```{r durations-intervals-compare, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+#load in data
+data <- read.table("../data/humans_coupe_2019.csv", header = TRUE)
+
+#run models
+duration_model <- lm(scale(log(phonationtime/nsyll)) ~ scale(log(nsyll)), data)
+#interval_model <- lm(scale(log((dur - phonationtime)/nsyll)) ~ scale(log(nsyll)), data) #inter-element intervals
+interval_model <- lm(scale(log(dur/nsyll)) ~ scale(log(nsyll)), data) #inter-onset intervals
+```
+
+The results indicate that the strength of Menzerath's law for syllables in series of sentences is quite similar when computed from element durations (estimate = `r round(coefficients(duration_model)[2], 3)`, 95% CI: [`r round(confint(duration_model, method = "Wald")[2, 1], 3)`, `r round(confint(duration_model, method = "Wald")[2, 2], 3)`]) and inter-onset intervals (estimate = `r round(coefficients(interval_model)[2], 3)`, 95% CI: [`r round(confint(interval_model, method = "Wald")[2, 1], 3)`, `r round(confint(interval_model, method = "Wald")[2, 2], 3)`]).
+
+## Effects in Whale Data
 
 ```{r supp-whale-length-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
 #load packages and data
 library(flextable)
 library(dplyr)
 load("../tables/whale_tables.RData")
+
+#add elements and intervals
+whale_tables$length <- cbind(whale_tables$length[, c(1:2)], c("Type", "Elements", "Elements", "Elements", "Intervals", "Elements", "Elements", "Intervals", "Intervals", "Intervals", "Intervals", "Elements", "Intervals", "Intervals", "Intervals", "Intervals"), whale_tables$length[, c(3:5)])
 
 #print table
 flextable(whale_tables$length[-1, ]) %>% 
@@ -94,7 +130,7 @@ flextable(whale_tables$length[-1, ]) %>%
   theme_vanilla() %>% 
   merge_at(1:6, 1) %>% merge_at(7:15, 1) %>%
   set_table_properties(layout = "autofit") %>%
-  set_caption("The effect of sequence length on element/interval duration for each whale species, computed from the base model that excludes position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+  set_caption("The effect of sequence length on element durations and inter-onset intervals for each whale species, computed from the base model that excludes position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
 ```
 
 ```{r supp-whale-position-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
@@ -103,18 +139,21 @@ library(flextable)
 library(dplyr)
 load("../tables/whale_tables.RData")
 
+#add elements and intervals
+whale_tables$position <- cbind(whale_tables$position[, c(1:2)], c("", "Type", "Elements", "Elements", "Elements", "Intervals", "Elements", "Elements", "Intervals", "Intervals", "Intervals", "Intervals", "Elements", "Intervals", "Intervals", "Intervals", "Intervals"), whale_tables$position[, c(3:8)])
+
 #print table
 flextable(whale_tables$position[-c(1:2), ]) %>% 
   delete_part(part = "header") %>%
   add_header_row(values = whale_tables$position[2, ]) %>%
-  add_header_row(values = c("", "Length", "Position"), colwidths = c(2, 3, 3)) %>%
+  add_header_row(values = c("", "Length", "Position"), colwidths = c(3, 3, 3)) %>%
   theme_vanilla() %>% 
   merge_at(1:6, 1) %>% merge_at(7:15, 1) %>%
   set_table_properties(layout = "autofit") %>%
-  set_caption("The effect of sequence length and element/interval position on element/interval duration for each whale species, computed from the expanded model that includes both length and position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+  set_caption("The effect of sequence length and position on element durations and inter-onset intervals for each whale species, computed from the expanded model that includes both length and position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
 ```
 
-# Effects in Human Data
+## Effects in Human Data
 
 ```{r supp-human-length-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
 #load packages and data
@@ -128,7 +167,7 @@ flextable(human_tables$length[-1, ]) %>%
   add_header_row(values = human_tables$length[1, ]) %>%
   theme_vanilla() %>% 
   set_table_properties(layout = "autofit") %>%
-  set_caption("The effect of sequence length on element/interval duration for each human language, computed from the base model that excludes position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+  set_caption("The effect of sequence length on inter-onset intervals for each human language, computed from the base model that excludes position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
 ```
 
 ```{r supp-human-position-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
@@ -144,10 +183,10 @@ flextable(human_tables$position[-c(1:2), ]) %>%
   add_header_row(values = c("", "Length", "Position"), colwidths = c(1, 3, 3)) %>%
   theme_vanilla() %>% 
   set_table_properties(layout = "autofit") %>%
-  set_caption("The effect of sequence length and element/interval position on element/interval duration for each human language, computed from the expanded model that includes both length and position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+  set_caption("The effect of sequence length and position on inter-onset intervals for each human language, computed from the expanded model that includes both length and position. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
 ```
 
-# Words in Sentences
+## Words in Sentences
 
 ```{r words-in-sentences, echo = FALSE, eval = FALSE, message = FALSE, warning = FALSE}
 #get labels for plotting
@@ -176,9 +215,9 @@ whales_plot_data <- whales_plot_data[order(whales_plot_data$length_median, decre
 
 #reorder everything for a single axis
 whales_plot_data$x <- 1:nrow(whales_plot_data)
-whales_plot_data$group <- 1
+whales_plot_data$group <- c(1, 2, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 1) #1 is elements, 2 is intervals
 words_in_sentences_plot_data$x <- (max(whales_plot_data$x)+1):(max(whales_plot_data$x)+nrow(words_in_sentences_plot_data))
-words_in_sentences_plot_data$group <- 2
+words_in_sentences_plot_data$group <- 3
 
 #combine whale data with sentence data
 combined_sentences_plot_data <- rbind(words_in_sentences_plot_data, whales_plot_data)
@@ -192,7 +231,7 @@ combined_sentences_length_plot <- ggplot(combined_sentences_plot_data) +
                      #name = expression("95% CI for "~italic("b")~"(Strength of Menzerath's Law)")) + 
                      name = "Effect of Length on Duration") + 
   scale_x_continuous(breaks = combined_sentences_plot_data$x, labels = combined_sentences_plot_data$label, name = NULL, limits = c(0, nrow(combined_sentences_plot_data) + 1), expand = c(0, 0)) + 
-  scale_color_manual(values = c("#638ccc", "#ca5670"), labels = c("Whales", "Humans"), name = "Taxa") + 
+  scale_color_manual(values = c("#D55E00", "#009E73", "#0072B2"), labels = c("Whales (ED)", "Whales (IOI)", "Humans (IOI)"), name = "Taxa") + 
   theme_linedraw(base_size = 8, base_family = "Avenir") + theme(axis.text.x = element_text(angle = 90, hjust = 0.99, vjust = 0.5), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
 
 #generate plot of words in sentences against whales, for position
@@ -204,7 +243,7 @@ combined_sentences_position_plot <- ggplot(combined_sentences_plot_data) +
                      #name = expression("95% CI for "~italic("b")~"(Strength of Menzerath's Law)")) + 
                      name = "Effect of Position on Duration") + 
   scale_x_continuous(breaks = combined_sentences_plot_data$x, labels = combined_sentences_plot_data$label, name = NULL, limits = c(0, nrow(combined_sentences_plot_data) + 1), expand = c(0, 0)) + 
-  scale_color_manual(values = c("#638ccc", "#ca5670"), labels = c("Whales", "Humans"), name = "Taxa") + 
+  scale_color_manual(values = c("#D55E00", "#009E73", "#0072B2"), labels = c("Whales (ED)", "Whales (IOI)", "Humans (IOI)"), name = "Taxa") + 
   theme_linedraw(base_size = 8, base_family = "Avenir") + theme(axis.text.x = element_text(angle = 90, hjust = 0.99, vjust = 0.5), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
 
 #export plot of words in sentences
@@ -213,11 +252,11 @@ cowplot::plot_grid(cowplot::plot_grid(combined_sentences_length_plot + theme(axi
 dev.off()
 ```
 
-```{r supp-figure-sentence-effects, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The 95% confidence intervals for the effect of sequence length (top) and position (bottom) on element/interval duration for the 16 whale species and 51 human languages. The human language data are comprised of words within sentences."}
+```{r supp-figure-sentence-effects, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The 95% confidence intervals for the effect of sequence length (top) and position (bottom) on element durations and inter-onset intervals for the 16 whale species and 51 human languages. The human language data are comprised of words within sentences. The colors correspond to the taxonomic group and whether the data are element durations (ED) or inter-onset intervals (IOI)."}
 knitr::include_graphics("../plots/sentence_level_effects.png")
 ```
 
-# Production Constraint Model
+## Production Constraint Model
 
 ```{r passing-null, eval = FALSE, echo = FALSE}
 #what proportion of languages and whale species are stronger than the production model
@@ -225,13 +264,11 @@ table(factor(sapply(phonemes_in_words_effects, function(x){x$length[2] < x$prod_
 table(factor(sapply(whales_effects, function(x){x$length[2] < x$prod_null[2]}), levels = c(TRUE, FALSE))) #12/16 = 75%
 ```
 
-<!-- Menzerath's law can sometimes be reproduced by null models that include structural constraints [@g_torre_etal21; @tanaka-ishii21; @ferrer-i-cancho_etal14]. Most notably,  -->
-
 James et al. [@james_etal21] recently found that Menzerath's law can be detected in pseudorandom sequences of birdsong syllables that are forced to match the durations of real songs. James et al. [@james_etal21] interpret their model as approximating simple motor constraints, while stronger effects in the real data would indicate additional mechanisms (e.g., communicative efficiency through behavioral plasticity). I originally planned to compare the strength of Menzerath's law in the real data with simulated data from the model of James et al. [@james_etal21], as I recently did for house finch song [@youngblood24], but analyses of language data suggest that it is far too conservative of a null model. 0 of the 51 of languages in the DoReCo dataset exhibit Menzerath's law to a greater extent than simulated data. Even though many whale species exhibit Menzerath's law to a greater extent than simulated data from the null model of James et al. [@james_etal21] (75%; 12 out of 16 species), I do not want to over-interpret this result given the pattern in the human data. Upon further reflection I think that the fundamental assumption of James et al. [@james_etal21], that sequence durations are governed by motor constraints alone, is unlikely to apply to many species with more complex communication systems. In humpback whales and sperm whales, for example, there appears to be significant inter-individual variation in song and coda length depending on social context [@mercado22; @hersh_etal22]. More details about this analysis are below.
 
-The production constraint model of James et al. [@james_etal21] works as follows. For each iteration of the model, a pseudorandom sequence was produced for each real song in the dataset. Syllables were randomly sampled (with replacement) from the population until the duration of the random sequence exceeded the duration of the real song. If the difference between the duration of the random sequence and the real song was <50% of the duration of the final syllable, then the final syllable was kept in the sequence. Otherwise, it was removed. Each iteration of the model produces a set of random sequences with approximately the same distribution of durations as the real data.
+The production constraint model of James et al. [@james_etal21] works as follows. For each iteration of the model, a pseudorandom sequence was produced for each real song in the dataset. Syllables were randomly sampled (with replacement) from the population until the duration of the random sequence exceeded the duration of the real song. If the difference between the duration of the random sequence and the real song was < 50% of the duration of the final syllable, then the final syllable was kept in the sequence. Otherwise, it was removed. Each iteration of the model produces a set of random sequences with approximately the same distribution of durations as the real data.
 
-For each species, I generated 100 simulated datasets from the (1) random sequence model and the (2) production constraint model. Then, I fit Menzerath's law separately to each of the 100 simulated datasets and pooled the model estimates for $a$ and $b$ using Rubin's rule as implemented in the *mice* package in *R* [@buuren_groothuis-oudshoorn11]. The results can be seen in Figure \@ref(fig:supp-figure-words-null).
+For each species, I generated 100 simulated datasets from the (1) random sequence model and the (2) production constraint model. Then, I fit Menzerath's law separately to each of the 100 simulated datasets and pooled the model estimates for $a$ and $b$ using Rubin's rule as implemented in the *mice* package in *R*. The results can be seen in Figure \@ref(fig:supp-figure-words-null).
 
 Most importantly, the estimated effects from the production constraint model tend to be more negative than those from the real human language data, suggesting that this null model is far too conservative to be informative about "language-like" efficiency.
 
@@ -262,9 +299,9 @@ whales_plot_data <- whales_plot_data[order(whales_plot_data$length_median, decre
 
 #reorder everything for a single axis
 whales_plot_data$x <- 1:nrow(whales_plot_data)
-whales_plot_data$group <- 1
+whales_plot_data$group <- c(1, 2, 1, 2, 2, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 1) #1 is elements, 2 is intervals
 phonemes_in_words_plot_data$x <- (max(whales_plot_data$x)+1):(max(whales_plot_data$x)+nrow(phonemes_in_words_plot_data))
-phonemes_in_words_plot_data$group <- 2
+phonemes_in_words_plot_data$group <- 3
 
 #combine whale data with word data
 combined_words_plot_data <- rbind(phonemes_in_words_plot_data, whales_plot_data)
@@ -281,16 +318,16 @@ ggplot(combined_words_plot_data) +
                      #name = expression("95% CI for "~italic("b")~"(Strength of Menzerath's Law)")) + 
                      name = "Effect of Length on Duration") + 
   scale_x_continuous(breaks = combined_words_plot_data$x, labels = combined_words_plot_data$label, name = NULL, limits = c(0, nrow(combined_words_plot_data) + 1), expand = c(0, 0)) + 
-  scale_color_manual(values = c("#638ccc", "#ca5670"), labels = c("Whales", "Humans"), name = "Taxa") + 
+  scale_color_manual(values = c("#D55E00", "#009E73", "#0072B2"), labels = c("Whales (ED)", "Whales (IOI)", "Humans (IOI)"), name = "Taxa") + 
   theme_linedraw(base_size = 8, base_family = "Avenir") + theme(axis.text.x = element_text(angle = 90, hjust = 0.99, vjust = 0.5), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
 dev.off()
 ```
 
-```{r supp-figure-words-null, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The point estimates from the real data alongside 95% confidence intervals from 10 simulated datasets from the production constraint model, for the effect of sequence length on element/interval duration for the 16 whale species and 51 human languages. The human language data are comprised of phonemes within words."}
+```{r supp-figure-words-null, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The point estimates (points) from the real data alongside 95% confidence intervals (bars) from 10 simulated datasets from the production constraint model, for the effect of sequence length on element durations and inter-onset intervals for the 16 whale species and 51 human languages. The human language data are comprised of phonemes within words. The colors correspond to the taxonomic group and whether the data are element durations (ED) or inter-onset intervals (IOI)."}
 knitr::include_graphics("../plots/word_level_effects_null.png")
 ```
 
-# Median Interpolation
+## Median Interpolation
 
 ```{r interp-check, eval = FALSE, echo = FALSE, message = FALSE, warning = FALSE}
 #source functions
@@ -353,24 +390,128 @@ ggplot(plot_data) +
   geom_hline(aes(yintercept = 0), lty = "dashed") + 
   scale_y_continuous(name = "Effect of Length on Duration") + 
   scale_x_continuous(breaks = plot_data$x, labels = plot_data$label, name = NULL, limits = c(0, nrow(plot_data) + 1), expand = c(0, 0)) + 
-  scale_color_manual(values = c("#ca5670", "#638ccc"), labels = c("Original", "Interpolated"), name = "Data Type") + 
+  scale_color_manual(values = c("#D55E00", "#638ccc"), labels = c("Original", "Interpolated"), name = "Data Type") + 
   theme_linedraw(base_size = 8, base_family = "Avenir") + theme(axis.text.x = element_text(angle = 90, hjust = 0.99, vjust = 0.5), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
 dev.off()
 ```
 
-```{r supp-figure-interpolation, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The point estimates from the original datasets (red) compared to median-interpolated datasets (blue). Interpolating sequences with the median duration of each element category appears to systematically shift model estimates towards zero (in over 90% of cases)."}
+```{r supp-figure-interpolation, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The point estimates from the original datasets (orange) compared to median-interpolated datasets (blue). Interpolating sequences with the median inter-onset interval of each phoneme appears to systematically shift model estimates towards zero (in over 90% of cases)."}
 knitr::include_graphics("../plots/interpolation_check.png")
 ```
 
-# Patterned Burst Pulses
+## Patterned Burst Pulses
 
 ```{r, echo = FALSE, eval = TRUE}
 #load data and model
-load("../data/processed/heavisides_patterned_data.RData")
+load("../data/processed_menz/heavisides_patterned_data.RData")
 load("../models/heavisides_patterned_models.RData")
 ```
 
-Martin et al. [@martin_etal19] noticed that Heaviside's dolphins sometimes produce temporally-patterned burst pulses with much more rhythmic variation, especially during social interactions. I analyzed `r max(heavisides_patterned_data$sequence)` patterned burst pulses provided by Martin et al. [@martin_etal19] and found that they adhere to Menzerath's law&mdash;there is a negative relationship between sequence length and element duration (estimate = `r round(lme4::fixef(heavisides_patterned_models$actual$reduced_scaled)[2], 3)`, 95% CI: [`r round(confint(heavisides_patterned_models$actual$reduced_scaled, method = "Wald")[4, 1], 3)`, `r round(confint(heavisides_patterned_models$actual$reduced_scaled, method = "Wald")[4, 2], 3)`]).
+Martin et al. [@martin_etal19] noticed that Heaviside's dolphins sometimes produce temporally-patterned burst pulses with much more rhythmic variation, especially during social interactions. I analyzed `r max(heavisides_patterned_data$sequence)` patterned burst pulses provided by Martin et al. [@martin_etal19] and found that they adhere to Menzerath's law&mdash;there is a negative relationship between sequence length and inter-onset intervals (estimate = `r round(lme4::fixef(heavisides_patterned_models$actual$reduced_scaled)[2], 3)`, 95% CI: [`r round(confint(heavisides_patterned_models$actual$reduced_scaled, method = "Wald")[4, 1], 3)`, `r round(confint(heavisides_patterned_models$actual$reduced_scaled, method = "Wald")[4, 2], 3)`]).
+
+## Plots with Transformed Axes
+
+```{r supp-figure-myst-trans-plot, echo = FALSE, fig.align = "center", out.width = "80%", fig.cap = "The baleen whale (Mysticete) species included in the study (left), alongside the distribution of element durations or inter-onset intervals and sequence lengths (middle) and the slope of Menzerath's law (right). The x- and y-axes have been log-transformed and z-scored to match the structure of the statistical model. Each point in the distribution plots (middle) marks the mean element duration or inter-onset interval, but the slopes on the right were computed from the full set of elements/intervals. The bars in the slope plots (right) mark the 95% confidence intervals around the point estimates."}
+knitr::include_graphics("../plots/myst_phylo_trans.png")
+```
+
+```{r supp-figure-odon-trans-plot, echo = FALSE, fig.align = "center", out.width = "80%", fig.cap = "The toothed whale (Odontocete) species included in the study (left), alongside the distribution of element durations or inter-onset intervals and sequence lengths (middle) and the slope of Menzerath's law (right). The x- and y-axes have been log-transformed and z-scored to match the structure of the statistical model. Each point in the distribution plots (middle) marks the mean element duration or inter-onset interval, but the slopes on the right were computed from the full set of elements/intervals. The bars in the slope plots (right) mark the 95% confidence intervals around the point estimates."}
+knitr::include_graphics("../plots/odon_phylo_trans.png")
+```
+
+# Zipf's Law of Abbreviation
+
+## Effects in Whale Data
+
+```{r supp-whale-zla-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+#load packages and data
+library(flextable)
+library(dplyr)
+load("../tables/whale_zla_table.RData")
+
+#print table
+flextable(zla_table[-1, ]) %>% 
+  delete_part(part = "header") %>%
+  add_header_row(values = zla_table[1, ]) %>%
+  theme_vanilla() %>% 
+  merge_at(1:4, 1) %>%
+  set_table_properties(layout = "autofit") %>%
+  set_caption("The effect of count on element duration for each whale species. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+```
+
+## Effects in Human Data
+
+```{r supp-human-zla-table, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+#load packages and data
+library(flextable)
+library(dplyr)
+load("../tables/human_zla_table.RData")
+
+#print table
+flextable(phonemes_table[-1, ]) %>% 
+  delete_part(part = "header") %>%
+  add_header_row(values = phonemes_table[1, ]) %>%
+  theme_vanilla() %>% 
+  set_table_properties(layout = "autofit") %>%
+  set_caption("The effect of count on element duration for each human language, at the level of phonemes. 2.5% and 97.5% denote the lower and upper bounds of the 95% confidence intervals.")
+```
+
+## Words
+
+```{r words-zla, echo = FALSE, eval = FALSE, message = FALSE, warning = FALSE}
+#get labels for plotting
+human_dataset_labels <- list.files("../data/doreco/")
+human_dataset_labels <- substr(human_dataset_labels[grep("doreco", human_dataset_labels)], 1, 15)
+human_dataset_labels <- as.character(sapply(human_dataset_labels, function(x){gsub(" DoReCo dataset.*", "", gsub("^The ", "", readLines(paste0("../data/doreco/", x, "_extended/", x, "_dataset-info.txt")[1])[1]))}))
+human_dataset_labels[which(human_dataset_labels == "Nǁng")] <- "Nllng" #special characters
+
+#extract effects for words
+words_effects <- data.frame(do.call(rbind, lapply(1:length(words_zla), function(x){c(confint(words_zla[[x]], parm = "count", method = "Wald")[1], summary(words_zla[[x]])$coefficients[2, 1], confint(words_zla[[x]], parm = "count", method = "Wald")[2])})))
+colnames(words_effects) <- c("lower", "median", "upper")
+words_effects$label <- human_dataset_labels
+words_effects <- words_effects[order(words_effects$median, decreasing = TRUE), ]
+
+#compute effects for whale data
+whales_effects <- data.frame(do.call(rbind, lapply(list(humpback_models_zla, bowhead_models_zla, sei_models_zla, blue_models_zla, killer_models_zla), function(x){c(confint(x, parm = "count", method = "Wald")[1], summary(x)$coefficients[2, 1], confint(x, parm = "count", method = "Wald")[2])})))
+colnames(whales_effects) <- c("lower", "median", "upper")
+whales_effects$label <- c("Humpback Whale", "Bowhead Whale", "Sei Whale", "Blue Whale", "Killer Whale")
+whales_effects <- whales_effects[order(whales_effects$median, decreasing = TRUE), ]
+
+#reorder everything for a single axis
+whales_effects$x <- 1:nrow(whales_effects)
+whales_effects$group <- 1 #1 for elements, 2 for intervals
+words_effects$x <- (max(whales_effects$x)+1):(max(whales_effects$x)+nrow(words_effects))
+words_effects$group <- 3
+
+#combine whale data with words data
+combined_plot_data <- rbind(words_effects, whales_effects)
+
+#generate plot of words against whales
+combined_plot <- ggplot(combined_plot_data) + 
+  geom_linerange(aes(x = x, ymin = lower, ymax = upper, color = factor(group))) + 
+  geom_hline(aes(yintercept = 0), lty = "dashed") + 
+  geom_vline(aes(xintercept = nrow(whales_effects) + 0.5), lty = "dotted") + 
+  scale_y_continuous(limits = c(min(combined_plot_data$lower)*1.05, max(combined_plot_data$upper)*1.05), 
+                     name = "Effect of Count on Duration") + 
+  scale_x_continuous(breaks = combined_plot_data$x, labels = combined_plot_data$label, name = NULL, limits = c(0, nrow(combined_plot_data) + 1), expand = c(0, 0)) + 
+  #scale_color_manual(values = c("#D55E00", "#009E73", "#0072B2"), labels = c("Whales (ED)", "Whales (IOI)", "Humans (IOI)"), name = "Taxa") + 
+  scale_color_manual(values = c("#D55E00", "#0072B2"), labels = c("Whales (ED)", "Humans (IOI)"), name = "Taxa") +   theme_linedraw(base_size = 8, base_family = "Avenir") + theme(axis.text.x = element_text(angle = 90, hjust = 0.99, vjust = 0.5), panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank())
+
+#export plot of phonemes in words
+png("../plots/word_effects_zla.png", width = 8, height = 3.5, units = "in", res = 600)
+combined_plot
+dev.off()
+```
+
+```{r supp-figure-word-zla, echo = FALSE, fig.align = "center", out.width = "100%", fig.cap = "The 95% confidence intervals for the effect of count on element duration for the five whale species and 51 human languages. The human language data are comprised of words. The colors correspond to the taxonomic group and whether the data are element durations (ED) or inter-onset intervals (IOI)."}
+knitr::include_graphics("../plots/word_effects_zla.png")
+```
+
+## Plot with Transformed Axis
+
+```{r supp-figure-zla-trans-plot, echo = FALSE, fig.align = "center", out.width = "80%", fig.cap = "The whale species included in the study (left), alongside the distribution of element durations and counts (middle) and the slope of Zipf's law of abbreviation (right). The x-axis has been z-scored, and the y-axis has been z-scored and log-transformed, to match the structure of the statistical model. Each point in the distribution plots (middle) marks the mean duration of elements, but the slopes on the right were computed from the full set of elements. The bars in the slope plots (right) mark the 95% confidence intervals around the point estimates."}
+knitr::include_graphics("../plots/zla_phylo_trans.png")
+```
 
 # References {-}
 

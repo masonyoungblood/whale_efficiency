@@ -25,7 +25,7 @@ sperm_vachon_2022 <- do.call(rbind, lapply(c(1:nrow(sperm_vachon_2022))[-which(r
 }))
 
 sperm_data <- list(gero_2016 = sperm_gero_2016, hersh_2022 = sperm_hersh_2022, vachon_2022 = sperm_vachon_2022)
-save(sperm_data, file = "data/processed/sperm_data.RData")
+save(sperm_data, file = "data/processed_menz/sperm_data.RData")
 
 # FIN WHALES --------------------------------------------------------------
 
@@ -54,7 +54,7 @@ fin_best_2022 <- do.call(rbind, parallel::mclapply(unique(fin_best_2022$songid),
 }, mc.cores = 7))
 
 fin_data <- list(wood_2022 = fin_wood_2022, best_2022 = fin_best_2022, romagosa_2024 = fin_romagosa_2024)
-save(fin_data, file = "data/processed/fin_data.RData")
+save(fin_data, file = "data/processed_menz/fin_data.RData")
 
 # KILLER WHALES -----------------------------------------------------------
 
@@ -65,7 +65,7 @@ killer_sharpe_2017 <- do.call(rbind, lapply(1:nrow(killer_sharpe_2017), function
 }))
 
 killer_data <- killer_sharpe_2017
-save(killer_data, file = "data/processed/killer_data.RData")
+save(killer_data, file = "data/processed_menz/killer_data.RData")
 
 killer_selbmann_2023 <- read.csv("data/killer_selbmann_2023.csv")
 song_gaps <- which(killer_selbmann_2023$pause > 1.72) #pause gap based on analysis here: https://www.nature.com/articles/s41598-023-48349-1#Sec4
@@ -79,7 +79,15 @@ killer_selbmann_2023$duration <- killer_selbmann_2023$end_time-killer_selbmann_2
 killer_selbmann_2023 <- killer_selbmann_2023[, c(7, 6)]
 
 killer_sequence_data <- killer_selbmann_2023
-save(killer_sequence_data, file = "data/processed/killer_sequence_data.RData")
+save(killer_sequence_data, file = "data/processed_menz/killer_sequence_data.RData")
+
+#ZLA
+killer_sharpe_2017 <- readxl::read_xlsx("data/killer_sharpe_2017.xlsx")
+killer_sharpe_2017 <- data.frame(type = killer_sharpe_2017$`Final Call Type`, duration = sapply(1:nrow(killer_sharpe_2017), function(x){sum(as.numeric(killer_sharpe_2017[x, -1]), na.rm = TRUE)}))
+killer_selbmann_2023 <- read.csv("data/killer_selbmann_2023.csv")
+killer_selbmann_2023 <- data.frame(type = killer_selbmann_2023$calltype, duration = killer_selbmann_2023$end_time - killer_selbmann_2023$start_time)
+killer_data <- list(sharpe_2017 = killer_sharpe_2017, selbmann_2023 = killer_selbmann_2023)
+save(killer_data, file = "data/processed_zla/killer_data.RData")
 
 # BLUE WHALES -------------------------------------------------------------
 
@@ -113,12 +121,40 @@ for(x in 2:nrow(blue_lewis_2018)){
   }
 }
 blue_lewis_2018$sequence <- phrases
-blue_lewis_2018$length <-  sapply(1:nrow(blue_lewis_2018), function(x){length(which(blue_lewis_2018$phrase == blue_lewis_2018$phrase[x]))})
+blue_lewis_2018$length <-  sapply(1:nrow(blue_lewis_2018), function(x){length(which(blue_lewis_2018$sequence == blue_lewis_2018$sequence[x]))})
 blue_lewis_2018$duration <- as.numeric(blue_lewis_2018$end - blue_lewis_2018$start)
+# blue_data_intervals <- blue_lewis_2018
 blue_lewis_2018 <- blue_lewis_2018[, c(7, 5)]
 
+# #get interval data
+# blue_data_intervals <- blue_data_intervals[which(blue_data_intervals$length > 1), ]
+# 
+# #extract intervals
+# blue_data_intervals <- do.call(rbind, lapply(unique(blue_data_intervals$sequence), function(x){
+#   data.frame(duration = blue_data_intervals$pause[which(blue_data_intervals$sequence == x)][-1], sequence = blue_data_intervals$sequence[which(blue_data_intervals$sequence == x)][-1])
+# }))
+# blue_data_intervals <- blue_data_intervals[-which(blue_data_intervals$duration == 0), ]
+# save(blue_data_intervals, file = "data/processed_menz/blue_data_intervals.RData")
+
 blue_data <- blue_lewis_2018
-save(blue_data, file = "data/processed/blue_data.RData")
+save(blue_data, file = "data/processed_menz/blue_data.RData")
+
+#ZLA
+blue_lewis_2018 <- do.call(rbind, lapply(2:43, function(x){
+  temp <- readxl::read_xlsx("data/blue_lewis_2018.xlsx", sheet = x)
+  temp <- temp[which(temp[, 7] == "tagged whale"), ]
+  temp <- data.frame(type = temp$`Call Type`, start = temp$`Call start time`, end = temp$`Call end time`)
+  return(temp)
+}))
+blue_lewis_2018 <- blue_lewis_2018[-which(is.na(blue_lewis_2018$end)), ]
+blue_lewis_2018 <- blue_lewis_2018[order(blue_lewis_2018$start), ]
+blue_lewis_2018$pause <- c(0, as.numeric(blue_lewis_2018$start[2:nrow(blue_lewis_2018)]-blue_lewis_2018$start[1:(nrow(blue_lewis_2018)-1)]))
+blue_lewis_2018$type[which(blue_lewis_2018$type == "A NE Pacific")] <- "A"
+blue_lewis_2018$type[which(blue_lewis_2018$type == "B NE Pacific")] <- "B"
+blue_lewis_2018 <- blue_lewis_2018[-which(blue_lewis_2018$type == "D"), ]
+blue_lewis_2018 <- data.frame(type = blue_lewis_2018$type, duration = as.numeric(blue_lewis_2018$end - blue_lewis_2018$start))
+blue_data <- blue_lewis_2018
+save(blue_data, file = "data/processed_zla/blue_data.RData")
 
 # HUMPBACK WHALES ---------------------------------------------------------
 
@@ -139,6 +175,8 @@ humpback_schall_2021 <- do.call(rbind, lapply(1:length(humpback_schall_2021), fu
   temp <- read.csv(paste0("data/humpback_schall_2021/", humpback_schall_2021[x]), sep = "\t")
   data.frame(duration = temp$End.Time..s.-temp$Begin.Time..s., sequence = x)
 }))
+#removing clear outlier, a phrase with a duration of 752 seconds (when median is 9.6 seconds)
+humpback_schall_2021 <- humpback_schall_2021[-which(humpback_schall_2021$duration > 200), ]
 
 humpback_schall_2022 <- list.files("data/humpback_schall_2022", "*.txt")
 humpback_schall_2022 <- humpback_schall_2022[-grep("sel.", humpback_schall_2022)]
@@ -148,10 +186,41 @@ humpback_schall_2022 <- do.call(rbind, lapply(1:length(humpback_schall_2022), fu
 }))
 
 humpback_data <- humpback_owen_2019
-save(humpback_data, file = "data/processed/humpback_data.RData")
+save(humpback_data, file = "data/processed_menz/humpback_data.RData")
 
 humpback_phrase_data <- list(schall_2021 = humpback_schall_2021, schall_2022 = humpback_schall_2022)
-save(humpback_phrase_data, file = "data/processed/humpback_phrase_data.RData")
+save(humpback_phrase_data, file = "data/processed_menz/humpback_phrase_data.RData")
+
+#ZLA
+humpback_owen_2019 <- read.csv("data/humpback_owen_2019/units.txt", sep = "\t")
+humpback_owen_2019 <- data.frame(type = humpback_owen_2019$Sound, duration = humpback_owen_2019$Dur)
+humpback_schall_2021 <- list.files("data/humpback_schall_2021", "*.txt")
+humpback_schall_2021 <- do.call(rbind, lapply(1:length(humpback_schall_2021), function(x){
+  temp <- read.csv(paste0("data/humpback_schall_2021/", humpback_schall_2021[x]), sep = "\t")
+  if(length(which(temp$Category %in% c("", "?"))) > 0){
+    temp <- temp[-which(temp$Category %in% c("", "?")), ]
+  }
+  temp$Category <- substr(temp$Category, 1, 2)
+  data.frame(type = temp$Category, duration = temp$End.Time..s.-temp$Begin.Time..s.)
+}))
+#removing clear outlier, a phrase with a duration of 752 seconds (when median is 9.6 seconds)
+humpback_schall_2021 <- humpback_schall_2021[-which(humpback_schall_2021$duration > 200), ]
+
+humpback_schall_2022 <- list.files("data/humpback_schall_2022", "*.txt")
+humpback_schall_2022 <- humpback_schall_2022[-grep("sel.", humpback_schall_2022)]
+humpback_schall_2022 <- humpback_schall_2022[-grep("Br", humpback_schall_2022)] #removing files not used in schall 2022's analysis (according to the README)
+humpback_schall_2022 <- do.call(rbind, lapply(1:length(humpback_schall_2022), function(x){
+  temp <- read.csv(paste0("data/humpback_schall_2022/", humpback_schall_2022[x]), sep = "\t")
+  if(length(which(temp$Category %in% c("", "?"))) > 0){
+    temp <- temp[-which(temp$Category %in% c("", "?")), ]
+  }
+  temp$Category <- substr(temp$Category, 1, 2)
+  data.frame(type = temp$Category, duration = temp$End.Time..s.-temp$Begin.Time..s.)
+}))
+humpback_data <- humpback_owen_2019
+save(humpback_data, file = "data/processed_zla/humpback_data.RData")
+humpback_phrase_data <- list(schall_2021 = humpback_schall_2021, schall_2022 = humpback_schall_2022)
+save(humpback_phrase_data, file = "data/processed_zla/humpback_phrase_data.RData")
 
 # MINKE WHALES ------------------------------------------------------------
 
@@ -198,7 +267,7 @@ minke_martin_2022_elements <- do.call(rbind, lapply(1:length(unique(minke_martin
 minke_martin_2022$sequence <- as.numeric(factor(minke_martin_2022$sequence))
 
 minke_data <- minke_martin_2022
-save(minke_data, file = "data/processed/minke_data.RData")
+save(minke_data, file = "data/processed_menz/minke_data.RData")
 
 # BOWHEAD WHALES ----------------------------------------------------------
 
@@ -206,7 +275,13 @@ bowhead_erbs_2021 <- read.csv("data/bowhead_erbs_2021.csv")
 bowhead_erbs_2021 <- data.frame(duration = bowhead_erbs_2021$X..Delta.Time..s.., sequence = as.numeric(factor(bowhead_erbs_2021$stype)))
 
 bowhead_data <- bowhead_erbs_2021
-save(bowhead_data, file = "data/processed/bowhead_data.RData")
+save(bowhead_data, file = "data/processed_menz/bowhead_data.RData")
+
+#ZLA
+bowhead_erbs_2021 <- read.csv("data/bowhead_erbs_2021.csv")
+bowhead_erbs_2021 <- data.frame(type = bowhead_erbs_2021$label, duration = bowhead_erbs_2021$X..Delta.Time..s..)
+bowhead_data <- bowhead_erbs_2021
+save(bowhead_data, file = "data/processed_zla/bowhead_data.RData")
 
 # RIGHT WHALES ------------------------------------------------------------
 
@@ -295,7 +370,7 @@ right_crance_2019[[4]]$sequence <- paste0("4-", right_crance_2019[[4]]$sequence)
 right_crance_2019 <- do.call(rbind, right_crance_2019)
 
 right_data <- right_crance_2019
-save(right_data, file = "data/processed/right_data.RData")
+save(right_data, file = "data/processed_menz/right_data.RData")
 
 # NARROW-RIDGED FINLESS PORPOISES -----------------------------------------
 
@@ -309,7 +384,7 @@ narrow_terada_2022 <- do.call(rbind, lapply(1:length(to_iter), function(x){
 narrow_terada_2022 <- narrow_terada_2022[-which(is.na(narrow_terada_2022$duration)), ]
 
 narrow_data <- narrow_terada_2022
-save(narrow_data, file = "data/processed/narrow_data.RData")
+save(narrow_data, file = "data/processed_menz/narrow_data.RData")
 
 # BOTTLENOSE DOLPHINS -----------------------------------------------------
 
@@ -318,12 +393,12 @@ save(narrow_data, file = "data/processed/narrow_data.RData")
 # bottlenose_moore_2020 <- data.frame(duration = bottlenose_moore_2020$Duration..s., sequence = bottlenose_moore_2020$train)
 
 # bottlenose_data <- bottlenose_moore_2020
-# save(bottlenose_data, file = "data/processed/bottlenose_data.RData")
+# save(bottlenose_data, file = "data/processed_menz/bottlenose_data.RData")
 
 bottlenose_stepanov_2023 <- readxl::read_xlsx("data/bottlenose_stepanov_2023.xlsx")
 bottlenose_data <- data.frame(duration = bottlenose_stepanov_2023$DURATION, sequence = bottlenose_stepanov_2023$SEQNO)
 bottlenose_data$duration[which(bottlenose_data$duration == 0)] <- median(bottlenose_data$duration)
-save(bottlenose_data, file = "data/processed/bottlenose_data.RData")
+save(bottlenose_data, file = "data/processed_menz/bottlenose_data.RData")
 
 # RISSO'S DOLPHINS --------------------------------------------------------
 
@@ -338,7 +413,7 @@ rissos_arranz_2016 <- do.call(rbind, lapply(1:length(split_inds), function(x){
 rissos_arranz_2016$duration[which(rissos_arranz_2016$duration == 0)] <- mean(rissos_arranz_2016$duration[-which(rissos_arranz_2016$duration == 0)])
 
 rissos_data <- rissos_arranz_2016
-save(rissos_data, file = "data/processed/rissos_data.RData")
+save(rissos_data, file = "data/processed_menz/rissos_data.RData")
 
 # SEI WHALES --------------------------------------------------------------
 
@@ -362,15 +437,18 @@ for(i in 1:nrow(sei_macklin_2024)){
 }
 
 unique_sequences <- na.omit(unique(sequence))
-sei_macklin_2024 <- do.call(rbind, lapply(unique_sequences, function(x){
-  data.frame(duration = na.omit(sei_macklin_2024$Duration95[which(sequence == x)]), sequence = x)
-}))
-# sei_macklin_2024 <- do.call(rbind, lapply(unique_sequences, function(x){
+
+# #get intervals as well
+# sei_macklin_2024_intervals <- do.call(rbind, lapply(unique_sequences, function(x){
 #   duration <- na.omit(sei_macklin_2024$Intracall.Spacing[which(sequence == x)])
-#   if(length(duration) > 1){
+#   if(length(duration) > 0){
 #     data.frame(duration = duration, sequence = x)
 #   }
 # }))
+
+sei_macklin_2024 <- do.call(rbind, lapply(unique_sequences, function(x){
+  data.frame(duration = na.omit(sei_macklin_2024$Duration95[which(sequence == x)]), sequence = x)
+}))
 
 sei_cerchio_2022 <- readxl::read_xlsx("data/sei_cerchio_2022.xlsx")
 sei_cerchio_2022 <- sei_cerchio_2022[order(sei_cerchio_2022$`Begin Date Time`), ]
@@ -391,7 +469,14 @@ for(i in 2:nrow(sei_cerchio_2022)){
 sei_cerchio_2022 <- data.frame(duration = sei_cerchio_2022$`Duration (s)`, sequence = sequence)
 
 sei_data <- list(cerchio_2022 = sei_cerchio_2022, macklin_2024 = sei_macklin_2024)
-save(sei_data, file = "data/processed/sei_data.RData")
+save(sei_data, file = "data/processed_menz/sei_data.RData")
+
+#ZLA
+#only cerchio, because macklin does not break downsweeps out into individual types
+sei_cerchio_2022 <- readxl::read_xlsx("data/sei_cerchio_2022.xlsx")
+sei_cerchio_2022 <- data.frame(type = sei_cerchio_2022$`Call-Type`, duration = sei_cerchio_2022$`Duration (s)`)
+sei_data <- sei_cerchio_2022
+save(sei_data, file = "data/processed_zla/sei_data.RData")
 
 # HEAVISIDE'S DOLPHINS ----------------------------------------------------
 
@@ -401,7 +486,7 @@ files <- files[grep(".mat", files)]
 heavisides_data <- do.call(rbind, lapply(1:length(files), function(x){
   data.frame(duration = diff(R.matlab::readMat(paste0("data/heavisides_martin_2018/NBHF and BB bps/", files[x]))$clicks[, 1]), sequence = x)
 }))
-save(heavisides_data, file = "data/processed/heavisides_data.RData")
+save(heavisides_data, file = "data/processed_menz/heavisides_data.RData")
 
 files <- list.files("data/heavisides_martin_2018/patterned")
 files <- files[grep(".mat", files)]
@@ -409,7 +494,7 @@ files <- files[grep(".mat", files)]
 heavisides_patterned_data <- do.call(rbind, lapply(1:length(files), function(x){
   data.frame(duration = diff(R.matlab::readMat(paste0("data/heavisides_martin_2018/patterned/", files[x]))$clicks[, 1]), sequence = x)
 }))
-save(heavisides_patterned_data, file = "data/processed/heavisides_patterned_data.RData")
+save(heavisides_patterned_data, file = "data/processed_menz/heavisides_patterned_data.RData")
 
 # COMMERSON'S DOLPHINS ----------------------------------------------------
 
@@ -428,7 +513,7 @@ commersons_bb <- do.call(rbind, lapply(1:length(files), function(x){
 }))
 
 commersons_data <- rbind(commersons_nbhf, commersons_bb)
-save(commersons_data, file = "data/processed/commersons_data.RData")
+save(commersons_data, file = "data/processed_menz/commersons_data.RData")
 
 # HECTOR'S DOLPHINS -------------------------------------------------------
 
@@ -447,7 +532,7 @@ hectors_bb <- do.call(rbind, lapply(1:length(files), function(x){
 }))
 
 hectors_data <- rbind(hectors_nbhf, hectors_bb)
-save(hectors_data, file = "data/processed/hectors_data.RData")
+save(hectors_data, file = "data/processed_menz/hectors_data.RData")
 
 # PEALE'S DOLPHINS --------------------------------------------------------
 
@@ -466,4 +551,4 @@ peales_bb <- do.call(rbind, lapply(1:length(files), function(x){
 }))
 
 peales_data <- rbind(peales_nbhf, peales_bb)
-save(peales_data, file = "data/processed/peales_data.RData")
+save(peales_data, file = "data/processed_menz/peales_data.RData")
