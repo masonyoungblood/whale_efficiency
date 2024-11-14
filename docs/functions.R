@@ -535,6 +535,7 @@ zla_fit <- function(data){
   if(!is.data.frame(data)){
     data <- do.call(rbind, lapply(1:length(data), function(x){
       data[[x]]$count <- scale(sapply(1:nrow(data[[x]]), function(y){length(which(data[[x]]$type == data[[x]]$type[y]))}))
+      #data[[x]]$count <- scale(log(sapply(1:nrow(data[[x]]), function(y){length(which(data[[x]]$type == data[[x]]$type[y]))}))) #to check robustness against log-transformation
       data[[x]]$study <- x
       data[[x]]
     }))

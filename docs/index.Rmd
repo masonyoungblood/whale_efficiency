@@ -1,7 +1,7 @@
 ---
 title: "Language-like efficiency in whale communication"
 abstract: "Vocal communication systems in humans and other animals experience selection for efficiency---optimizing the benefits they convey relative to the costs of producing them. Two hallmarks of efficiency, Menzerath’s law and Zipf’s law of abbreviation, predict that longer sequences will consist of shorter elements and more frequent elements will be shorter, respectively. Here, I assessed the evidence for both laws in cetaceans by analyzing vocal sequences from 16 baleen and toothed whale species and comparing them to 51 human languages. 11 whale species exhibit Menzerath's law, sometimes with greater effect sizes than human speech. Two of the five whale species with categorized element types exhibit Zipf's law of abbreviation. On average, whales also tend to shorten elements and intervals towards the end of sequences, although this varies by species. Overall, the results of this study suggest that the vocalizations of many cetacean species have undergone compression for increased efficiency in time."
-keywords: "whale song, Menzerath's law, linguistic laws, communicative efficiency, cultural evolution"
+keywords: "whale communication, Menzerath's law, Zipf's law of abbreviation, efficiency, cultural evolution"
 author:
   name: Mason Youngblood
   email: masonyoungblood@gmail.com
@@ -26,33 +26,6 @@ link-citations: true
 csl: science.csl
 fig_caption: true
 ---
-
-<!-- TARGET 1 IS PNAS -->
-<!-- generous waiver policy: https://www.pnas.org/author-center/publication-charges -->
-<!-- 4000 words -->
-<!-- budget of 50 references and 4 medium-size figures and tables -->
-
-<!-- TARGET 2 IS CURRENT BIOLOGY -->
-<!-- very limited waiver policy that may be a barrier: https://www.cell.com/open-access -->
-<!-- 5000 words -->
-<!-- budget of 7 figures and tables -->
-
-<!-- TARGET 3 IS SCIENCE ADVANCES -->
-<!-- financial hardship discounts: https://www.science.org/content/page/science-advances-licensing-and-charges -->
-<!-- 15000 words -->
-<!-- budget of 10 figures and tables -->
-<!-- budget of 80 references -->
-
-<!-- TARGET 4 IS PROCEEDINGS B -->
-<!-- ~8500 words (assuming three figures and a table) -->
-<!-- has some sort of waiver policy, unclear but potentially do-able: https://royalsocietypublishing.org/rspb/for-authors -->
-
-<!-- TARGET 5 IS BIOLOGY LETTERS -->
-<!-- no explicit waiver policy: https://royalsocietypublishing.org/rsbl/for-authors -->
-<!-- 3500 words -->
-<!-- excludes references, title, author list, data accessibility, ethics, author contributions, and competing interests -->
-<!-- includes legends, acknowledgments, and funding statements -->
-<!-- budget of three figures and three tables -->
 
 <!--- Bibliography management done via (cmd+k to insert): https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/ -->
 <!-- Github hosting done via: https://mbounthavong.com/blog/2022/7/30/hosting-a-r-markdown-html-file-on-a-github-page -->
@@ -184,7 +157,7 @@ The main model used to test Menzerath's law was a linear model with the log-tran
 (\#eq:lengthmodel)
 \end{equation}
 
-The strength of Menzerath's law in baleen and toothed whale species, computed using Equation \@ref(eq:lengthmodel), can be seen in Figures \@ref(fig:figure-myst-plot) and \@ref(fig:figure-odon-plot), respectively (see ([Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)) for the same plots with transformed axes to match the statistical model). In all baleen whale species, except for the North Pacific right whale, there is a negative relationship between sequence length and element durations or inter-onset intervals consistent with Menzerath's law. The results are more mixed for the toothed whale species, where only five of the nine exhibit Menzerath's law. All three dolphins in the *Cephalorhynchus* genus, as well as killer whales, display a neutral or positive relationship between sequence length and element durations or inter-onset intervals.
+The strength of Menzerath's law in baleen and toothed whale species, computed using Equation \@ref(eq:lengthmodel), can be seen in Figures \@ref(fig:figure-myst-plot) and \@ref(fig:figure-odon-plot), respectively (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) for the same plots with transformed axes to match the statistical model). In all baleen whale species, except for the North Pacific right whale, there is a negative relationship between sequence length and element durations or inter-onset intervals consistent with Menzerath's law. The results are more mixed for the toothed whale species, where only five of the nine exhibit Menzerath's law. All three dolphins in the *Cephalorhynchus* genus, as well as killer whales, display a neutral or positive relationship between sequence length and element durations or inter-onset intervals.
 
 ```{r phylo_plot, echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE}
 #load libraries and data
@@ -617,7 +590,7 @@ Unlike Menzerath's law, Zipf's law of abbreviation is a qualitative law that sim
 (\#eq:zipfmodel)
 \end{equation}
 
-The strength of Zipf's law of abbreviation in the five whale species considered, computed using Equation \@ref(eq:zipfmodel), can be found Figure \@ref(fig:figure-zla-plot)  (see ([Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)) for the same plot with transformed axes to match the statistical model). The negative relationship between element duration and count is only found in blue whales and humpback whales. Blue whales from the northeast Pacific population analyzed in this study only use two call types in sequences (A and B calls) [@lewis_etal18], so I confirmed Zipf's law of abbreviation in that species using a simpler lognormal model with duration as the outcome variable and whether the element is of the more common type (B calls) as a fixed effect (binary: 1/0). An element coming from the more common type negatively predicts duration (estimate = `r round(coef(summary(blue_models_zla_simple))[2, 1], 3)`, 95% CI: [`r round(confint(blue_models_zla_simple, type = "Wald")[2, 1], 3)`, `r round(confint(blue_models_zla_simple, type = "Wald")[2, 2], 3)`], supporting the result shown in Figure \@ref(fig:figure-zla-plot).
+The strength of Zipf's law of abbreviation in the five whale species considered, computed using Equation \@ref(eq:zipfmodel), can be found Figure \@ref(fig:figure-zla-plot)  (see [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) for the same plot with transformed axes to match the statistical model). The negative relationship between element duration and count is only found in blue whales and humpback whales. Blue whales from the northeast Pacific population analyzed in this study only use two call types in sequences (A and B calls) [@lewis_etal18], so I confirmed Zipf's law of abbreviation in that species using a simpler lognormal model with duration as the outcome variable and whether the element is of the more common type (B calls) as a fixed effect (binary: 1/0). An element coming from the more common type negatively predicts duration (estimate = `r round(coef(summary(blue_models_zla_simple))[2, 1], 3)`, 95% CI: [`r round(confint(blue_models_zla_simple, type = "Wald")[2, 1], 3)`, `r round(confint(blue_models_zla_simple, type = "Wald")[2, 2], 3)`], supporting the result shown in Figure \@ref(fig:figure-zla-plot).
 
 For humpback whales, I also assessed Zipf's law of abbreviation using data from a higher level of analysis (i.e., one step up in the structural hierarchy). Common phrases tend to be shorter in duration (estimate = `r round(fixef(humpback_phrase_models_zla)[2], 3)`, 95% CI: [`r round(confint(humpback_phrase_models_zla, method = "Wald")[5, 1], 3)`, `r round(confint(humpback_phrase_models_zla, method = "Wald")[5, 2], 3)`], using Equation \@ref(eq:zipfmodel)), similar to the pattern for notes within phrases.
 

@@ -49,12 +49,12 @@ files <- list.files("../models/")[grep(".RData", list.files("../models/"))]
 for(i in 1:length(files)){load(paste0("../models/", files[i]))}
 ```
 
-<!-- # Links {-} -->
+# Links {-}
 
-<!-- * [Main text](https://masonyoungblood.github.io/whale_efficiency/) -->
-<!-- * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html) -->
-<!-- * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab) -->
-<!-- * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency) -->
+* [Main text](https://masonyoungblood.github.io/whale_efficiency/)
+* [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
+* [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
+* [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
 
 # Menzerath's Law
 
