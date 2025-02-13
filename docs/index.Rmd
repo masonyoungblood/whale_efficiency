@@ -36,8 +36,8 @@ fig_caption: true
   #code blocks print
   #abstract header looks bad
   #equation labels of 7 and 8 need custom formatting
-  #set font to 10-point garamond in table 2
-  #replace indents with five spaces in table 2
+  #set font to 10-point garamond in table 2 and 3
+  #replace indents with five spaces in table 2 and 3
 #if output is a word document
 if(!knitr::is_html_output()){
   #hide all code
@@ -64,8 +64,10 @@ div.col-md-12 .pull-right {
 
 * [Main text](https://masonyoungblood.github.io/whale_efficiency/)
 * [Supplementary information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html)
+* [Science Advances publication](https://www.science.org/doi/10.1126/sciadv.ads6014)
 * [PsyArXiv preprint](https://doi.org/10.31234/osf.io/tduab)
 * [GitHub repository](https://github.com/masonyoungblood/whale_efficiency)
+* [DoReCo reference list](https://masonyoungblood.github.io/whale_efficiency/supplement/doreco_list.html)
 
 ```{r admin, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE}
 #set working directory, load sheet of datasets used, and source modeling functions
@@ -842,7 +844,7 @@ The findings of this study contribute to an emerging consensus that whale commun
 
 A parallel analysis of human speech data from 51 languages reveals multiple exceptions to Menzerath's law at the levels of phonemes within words and words within sentences, while Zipf's law of abbreviation appears to be universal across these levels. Previous studies of these two laws in human speech have focused on one or two languages [@hernandez-fernandez_etal19; @torre_etal19] or converted spoken data from nine languages into written formats [@stave_etal21].
 
-It is important to recognize that similarity in form does not necessarily imply similarity in function. Language-like structure can emerge from pressures for efficiency even when communication carries no semantic meaning [@youngblood24]. While some cetacean species have the capacity to convey a great deal of information [@sharma_etal24], researchers should be wary of over-interpreting structural similarities with language @rendell24]. Further comparisons with music&mdash;which shares many language-like features without conveying semantic meaning [@rohrmeier_etal15]&mdash;may also help illuminate the diverse forms and functions of communication across whale species [@hersh_etal24].
+It is important to recognize that similarity in form does not necessarily imply similarity in function. Language-like structure can emerge from pressures for efficiency even when communication carries no semantic meaning [@youngblood24]. While some cetacean species have the capacity to convey a great deal of information [@sharma_etal24], researchers should be wary of over-interpreting structural similarities with language [@rendell24]. Further comparisons with music&mdash;which shares many language-like features without conveying semantic meaning [@rohrmeier_etal15]&mdash;may also help illuminate the diverse forms and functions of communication across whale species [@hersh_etal24].
 
 # Materials & Methods
 
@@ -1394,7 +1396,7 @@ In Equation \@ref(eq:reducedmenzlinear), $y$ is usually the mean duration of ele
 
 I originally planned to compare the patterns in the real data with simulated data from a null model that is thought to account for production constraints [@james_etal21], as I recently did for house finch song [@youngblood24], but analyses of language data suggest that it is far too conservative of a null model. More details about this exploratory analysis can be found in the [Supplementary Information](https://masonyoungblood.github.io/whale_efficiency/supplement/supplement.html).
 
-Several previous studies of Menzerath's law in non-human communication have also included individual identity as a varying intercept [@huang_etal20; @clink_lau20]. I did not include individual identity in the models because it is only available for the narrow-ridged finless porpoises [@terada_etal22] and is rarely included in linguistics studies [@torre_etal19].
+Several previous studies of Menzerath's law in non-human communication have also included individual identity as a varying intercept [@huang_etal20; @clink_lau20]. I did not include individual identity in the models because it is not available in any of the included datasets is rarely included in linguistics studies [@torre_etal19].
 
 All details about Zipf's law of abbreviation can be found in the [Results].
 
